@@ -70,12 +70,17 @@ The primary goal is to preserve the proven OCR-to-translation workflow while add
 
 ## Technical Considerations
 
+**CRITICAL: Generic Architecture Required**
+- **Country Abstraction**: Create a generic country management system where adding new countries requires ZERO code changes to core modules
+- **Configuration-Driven**: All country-specific data (paths, themes, names) must be in a single configuration file
+- **Backward Compatibility**: Spanish functionality must work identically with zero breaking changes
 - **Data Structure**: Refactor single CSV to country-specific files in `/data/countries/[country]/menu-items.csv`
 - **Theme System**: Implement CSS custom properties for easy country theme switching
 - **Country Configuration**: Create configuration object mapping countries to data files and themes
 - **Settings Integration**: Extend existing SettingsManager to handle country preference
 - **Search Engine**: Modify SearchEngine to load country-specific datasets
 - **Caching**: Update data caching to handle multiple country datasets
+- **Error Handling**: Remove hardcoded "Spanish Menu Cheater" references and make generic
 
 ## Success Metrics
 

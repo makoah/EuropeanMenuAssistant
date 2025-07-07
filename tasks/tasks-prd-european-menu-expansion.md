@@ -25,13 +25,15 @@
   - [x] 1.1 Create directory structure: data/countries/spain/, data/countries/france/, data/countries/germany/, data/countries/italy/
   - [x] 1.2 Migrate existing spanish_menu_items.csv to data/countries/spain/menu-items.csv with identical content
   - [ ] 1.3 Create placeholder menu-items.csv files for Germany and Italy with 10-15 sample items each
-  - [ ] 1.4 Update dataManager.js to reference new file paths and verify Spanish functionality remains unchanged
-- [ ] 2.0 Implement Country Management System
-  - [ ] 2.1 Create js/countryManager.js with country configuration object (country codes, display names, data paths, theme names)
-  - [ ] 2.2 Add country detection and switching logic in countryManager.js
-  - [ ] 2.3 Implement country persistence using localStorage in countryManager.js
-  - [ ] 2.4 Create comprehensive unit tests for countryManager.js
-  - [ ] 2.5 Integrate countryManager with main.js application controller
+  - [ ] 1.4 CRITICAL FIX: Remove hardcoded references and implement generic country management before proceeding
+- [ ] 2.0 Implement Generic Country Management System (PRIORITY)
+  - [ ] 2.1 Create js/countryManager.js with comprehensive country configuration
+  - [ ] 2.2 Update dataManager.js to use country-agnostic data loading
+  - [ ] 2.3 Remove all hardcoded "Spanish Menu Cheater" references from main.js and make generic
+  - [ ] 2.4 Update error messages and UI text to be country-generic
+  - [ ] 2.5 Implement country persistence and default to Spain for backward compatibility
+  - [ ] 2.6 Test that Spanish functionality works identically after changes
+  - [ ] 2.7 Create comprehensive unit tests for countryManager.js
 - [ ] 3.0 Add French Menu Database
   - [ ] 3.1 Research and compile 200+ common French menu items with English translations
   - [ ] 3.2 Create data/countries/france/menu-items.csv with proper CSV structure (id, french, english, category, description, tags, allergens, dietary, region, popularity)
