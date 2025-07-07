@@ -22,8 +22,8 @@
 ## Tasks
 
 - [ ] 1.0 Create Multi-Country Data Structure
-  - [ ] 1.1 Create directory structure: data/countries/spain/, data/countries/france/, data/countries/germany/, data/countries/italy/
-  - [ ] 1.2 Migrate existing spanish_menu_items.csv to data/countries/spain/menu-items.csv with identical content
+  - [x] 1.1 Create directory structure: data/countries/spain/, data/countries/france/, data/countries/germany/, data/countries/italy/
+  - [x] 1.2 Migrate existing spanish_menu_items.csv to data/countries/spain/menu-items.csv with identical content
   - [ ] 1.3 Create placeholder menu-items.csv files for Germany and Italy with 10-15 sample items each
   - [ ] 1.4 Update dataManager.js to reference new file paths and verify Spanish functionality remains unchanged
 - [ ] 2.0 Implement Country Management System
