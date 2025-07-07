@@ -124,7 +124,7 @@ export class UpdateManager {
      */
     async checkDataUpdates() {
         try {
-            const response = await fetch('/data/spanish_menu_items.csv', {
+            const response = await fetch('/data/countries/spain/menu-items.csv', {
                 cache: 'no-cache',
                 headers: {
                     'Cache-Control': 'no-cache'
@@ -142,7 +142,7 @@ export class UpdateManager {
                     // Clear data cache to force refresh
                     if ('caches' in window) {
                         const cache = await caches.open('spanish-menu-data-v1.0.0');
-                        await cache.delete('/data/spanish_menu_items.csv');
+                        await cache.delete('/data/countries/spain/menu-items.csv');
                     }
                     
                     // Notify app of data update

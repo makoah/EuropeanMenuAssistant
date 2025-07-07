@@ -9,7 +9,7 @@ class MockDataManager {
     constructor() {
         this.menuItems = [];
         this.isLoaded = false;
-        this.dataSource = 'data/spanish_menu_items.csv';
+        this.dataSource = 'data/countries/spain/menu-items.csv';
         this.version = '1.0.0';
         this.lastUpdated = null;
         

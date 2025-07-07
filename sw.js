@@ -19,7 +19,7 @@ const APP_SHELL_FILES = [
 
 // Critical data files for offline search functionality
 const DATA_FILES = [
-  '/SpanishMenuCheater/data/spanish_menu_items.csv'
+  '/SpanishMenuCheater/data/countries/spain/menu-items.csv'
 ];
 
 // External resources with fallback handling
