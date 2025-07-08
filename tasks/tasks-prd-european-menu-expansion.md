@@ -35,7 +35,7 @@
   - [x] 2.6 Test that Spanish functionality works identically after changes
   - [ ] 2.7 Create comprehensive unit tests for countryManager.js
 - [ ] 3.0 Add French Menu Database
-  - [ ] 3.1 Research and compile 200+ common French menu items with English translations
+  - [x] 3.1 Research and compile 200+ common French menu items with English translations
   - [ ] 3.2 Create data/countries/france/menu-items.csv with proper CSV structure (id, french, english, category, description, tags, allergens, dietary, region, popularity)
   - [ ] 3.3 Validate French data format matches Spanish CSV structure exactly
   - [ ] 3.4 Test French menu data loading and search functionality

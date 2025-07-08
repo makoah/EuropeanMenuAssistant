@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇫🇷 French Menu Demo</title>
+    <style>
+        :root {
+            --primary-color: #0055A4;
+            --secondary-color: #EF4135;
+            --accent-color: #FFFFFF;
+            --background-color: #f8f9ff;
+            --text-color: #1a1a2e;
+        }
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: var(--background-color);
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 { 
+            text-align: center; 
+            color: var(--primary-color); 
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .demo-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 2px solid var(--secondary-color); 
+            border-radius: 10px;
+            background: var(--background-color);
+        }
+        .demo-section h2 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .country-switcher {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .country-btn {
+            margin: 0 10px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .country-btn.france {
+            background: linear-gradient(135deg, #0055A4, #EF4135);
+            color: white;
+        }
+        .country-btn.spain {
+            background: linear-gradient(135deg, #C41E3A, #FFD700);
+            color: white;
+        }
+        .country-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .search-demo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-input {
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            width: 300px;
+            margin: 0 10px;
+        }
+        .search-btn {
+            padding: 15px 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .results-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .menu-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .menu-item h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+        .menu-item .english {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .menu-item .description {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .menu-item .price {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #cce7ff; color: #004085; }
+        .sample-searches {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .sample-btn {
+            margin: 5px;
+            padding: 8px 15px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .sample-btn:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇫🇷 French Menu Assistant Demo</h1>
+        
+        <div class="demo-section">
+            <h2>🌍 Country Selection</h2>
+            <div class="country-switcher">
+                <button class="country-btn france" onclick="switchToFrance()">🇫🇷 France</button>
+                <button class="country-btn spain" onclick="switchToSpain()">🇪🇸 Spain</button>
+            </div>
+            <div id="country-status" class="status info">Loading country manager...</div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔍 Search Demo</h2>
+            <div class="search-demo">
+                <input type="text" id="search-input" class="search-input" placeholder="Search French menu items..." oninput="performSearch()" onkeyup="performSearch()">
+                <button class="search-btn" onclick="performSearch()">Search</button>
+            </div>
+            <div class="sample-searches">
+                <strong>Try these French terms:</strong><br>
+                <button class="sample-btn" onclick="searchFor('crème brûlée')">crème brûlée</button>
+                <button class="sample-btn" onclick="searchFor('coq au vin')">coq au vin</button>
+                <button class="sample-btn" onclick="searchFor('boeuf bourguignon')">boeuf bourguignon</button>
+                <button class="sample-btn" onclick="searchFor('fromage')">fromage</button>
+                <button class="sample-btn" onclick="searchFor('escargots')">escargots</button>
+                <button class="sample-btn" onclick="searchFor('foie gras')">foie gras</button>
+            </div>
+            <div id="search-status" class="status info">Ready to search...</div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📋 Results</h2>
+            <div id="results-container" class="results-grid">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { CountryManager } from './js/countryManager.js';
+        import { DataManager } from './js/dataManager.js';
+        import { SearchEngine } from './js/searchEngine.js';
+
+        let countryManager, dataManager, searchEngine;
+        let currentCountry = 'france';
+
+        // Initialize the demo
+        async function initializeDemo() {
+            try {
+                // Apply French theme by default
+                applyFrenchTheme();
+                
+                // Initialize country manager
+                countryManager = new CountryManager();
+                
+                // Set to France by default
+                countryManager.setCountry('france');
+                
+                // Initialize data manager
+                dataManager = new DataManager(countryManager);
+                
+                // Load French data
+                await dataManager.loadMenuData();
+                
+                // Initialize search engine
+                searchEngine = new SearchEngine(dataManager);
+                
+                // Update status
+                updateCountryStatus();
+                document.getElementById('search-status').innerHTML = 
+                    `<span style="color: #155724;">✅ Ready to search ${dataManager.getMenuItems().length} French menu items!</span>`;
+                
+                // Show some sample items
+                showSampleItems();
+                
+            } catch (error) {
+                console.error('Demo initialization error:', error);
+                document.getElementById('country-status').innerHTML = 
+                    `<span style="color: #721c24;">❌ Error: ${error.message}</span>`;
+            }
+        }
+
+        function updateCountryStatus() {
+            const country = countryManager.getCountryInfo();
+            const itemCount = dataManager.getMenuItems().length;
+            
+            document.getElementById('country-status').innerHTML = 
+                `<span style="color: #155724;">✅ Current: ${country.displayName} (${itemCount} items)</span>`;
+        }
+
+        function showSampleItems() {
+            const items = dataManager.getMenuItems().slice(0, 6);
+            displayResults(items.map(item => ({ item, score: 1.0 })));
+        }
+
+        function displayResults(results) {
+            const container = document.getElementById('results-container');
+            
+            if (results.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: #666; padding: 40px;">No items found</div>';
+                return;
+            }
+            
+            container.innerHTML = results.map(result => {
+                const item = result.item;
+                return `
+                    <div class="menu-item">
+                        <h3>${item.localName}</h3>
+                        <div class="english">${item.englishName}</div>
+                        <div class="description">${item.description}</div>
+                        <div class="price">${item.priceRange}</div>
+                        ${result.score < 1.0 ? `<small>Match: ${(result.score * 100).toFixed(0)}%</small>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Theme switching functions
+        function applyFrenchTheme() {
+            document.documentElement.style.setProperty('--primary-color', '#0055A4');
+            document.documentElement.style.setProperty('--secondary-color', '#EF4135');
+            document.documentElement.style.setProperty('--background-color', '#f8f9ff');
+            document.documentElement.style.setProperty('--text-color', '#1a1a2e');
+        }
+
+        function applySpanishTheme() {
+            document.documentElement.style.setProperty('--primary-color', '#C41E3A');
+            document.documentElement.style.setProperty('--secondary-color', '#FFD700');
+            document.documentElement.style.setProperty('--background-color', '#fff8f0');
+            document.documentElement.style.setProperty('--text-color', '#2c1810');
+        }
+
+        // Global functions for the demo
+        window.switchToFrance = async function() {
+            try {
+                document.getElementById('country-status').innerHTML = 
+                    '<span style="color: #004085;">🔄 Switching to France...</span>';
+                
+                // Apply French theme
+                applyFrenchTheme();
+                
+                countryManager.setCountry('france');
+                dataManager = new DataManager(countryManager);
+                await dataManager.loadMenuData();
+                searchEngine = new SearchEngine(dataManager);
+                currentCountry = 'france';
+                
+                updateCountryStatus();
+                document.getElementById('search-input').placeholder = 'Search French menu items...';
+                document.getElementById('search-input').value = '';
+                
+                showSampleItems();
+                
+            } catch (error) {
+                document.getElementById('country-status').innerHTML = 
+                    `<span style="color: #721c24;">❌ Error switching to France: ${error.message}</span>`;
+            }
+        };
+
+        window.switchToSpain = async function() {
+            try {
+                document.getElementById('country-status').innerHTML = 
+                    '<span style="color: #004085;">🔄 Switching to Spain...</span>';
+                
+                // Apply Spanish theme
+                applySpanishTheme();
+                
+                countryManager.setCountry('spain');
+                dataManager = new DataManager(countryManager);
+                await dataManager.loadMenuData();
+                searchEngine = new SearchEngine(dataManager);
+                currentCountry = 'spain';
+                
+                updateCountryStatus();
+                document.getElementById('search-input').placeholder = 'Search Spanish menu items...';
+                document.getElementById('search-input').value = '';
+                
+                showSampleItems();
+                
+            } catch (error) {
+                document.getElementById('country-status').innerHTML = 
+                    `<span style="color: #721c24;">❌ Error switching to Spain: ${error.message}</span>`;
+            }
+        };
+
+        window.performSearch = function() {
+            const query = document.getElementById('search-input').value.trim();
+            
+            if (!searchEngine) {
+                document.getElementById('search-status').innerHTML = 
+                    '<span style="color: #721c24;">❌ Search engine not initialized</span>';
+                return;
+            }
+            
+            if (query.length === 0) {
+                document.getElementById('search-status').innerHTML = 
+                    `<span style="color: #155724;">✅ Ready to search ${dataManager.getMenuItems().length} items</span>`;
+                showSampleItems();
+                return;
+            }
+            
+            if (query.length < 2) {
+                document.getElementById('search-status').innerHTML = 
+                    '<span style="color: #004085;">ℹ️ Type at least 2 characters to search</span>';
+                return;
+            }
+            
+            const results = searchEngine.search(query);
+            
+            document.getElementById('search-status').innerHTML = 
+                `<span style="color: #155724;">✅ Found ${results.length} results for "${query}"</span>`;
+            
+            displayResults(results.slice(0, 20));
+        };
+
+        window.searchFor = function(term) {
+            document.getElementById('search-input').value = term;
+            performSearch();
+        };
+
+        // Initialize demo when page loads
+        window.addEventListener('load', initializeDemo);
+    </script>
+</body>
+</html>
