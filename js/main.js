@@ -1132,7 +1132,7 @@ class EuropeanMenuAssistant {
         
         card.innerHTML = `
             <div class="result-header">
-                <h3 class="result-spanish">${this.escapeHtml(item.spanishName)}</h3>
+                <h3 class="result-local">${this.escapeHtml(item.localName)}</h3>
                 ${item.priceRange ? `<span class="result-price">${this.escapeHtml(item.priceRange)}</span>` : ''}
             </div>
             <h4 class="result-english">${this.escapeHtml(translationName)}</h4>
