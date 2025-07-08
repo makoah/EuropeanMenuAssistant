@@ -52,10 +52,14 @@ export class SearchEngine {
         
         menuItems.forEach(item => {
             // Index local language name (Spanish, French, German, etc.)
-            this.addToIndex(item.localName.toLowerCase(), item, 'local');
+            if (item.localName) {
+                this.addToIndex(item.localName.toLowerCase(), item, 'local');
+            }
             
             // Index English name
-            this.addToIndex(item.englishName.toLowerCase(), item, 'english');
+            if (item.englishName) {
+                this.addToIndex(item.englishName.toLowerCase(), item, 'english');
+            }
             
             // Index description words
             if (item.description) {
@@ -67,9 +71,9 @@ export class SearchEngine {
                 });
             }
             
-            // Index individual words from Spanish and English names
-            const localWords = this.extractWords(item.localName.toLowerCase());
-            const englishWords = this.extractWords(item.englishName.toLowerCase());
+            // Index individual words from local and English names
+            const localWords = item.localName ? this.extractWords(item.localName.toLowerCase()) : [];
+            const englishWords = item.englishName ? this.extractWords(item.englishName.toLowerCase()) : [];
             
             [...localWords, ...englishWords].forEach(word => {
                 if (word.length > 1) {
@@ -466,8 +470,12 @@ export class SearchEngine {
         matches.slice(0, 3).forEach(match => {
             if (suggestions.size >= this.config.maxSuggestions) return;
             
-            suggestions.add(match.item.localName.toLowerCase());
-            suggestions.add(match.item.englishName.toLowerCase());
+            if (match.item.localName) {
+                suggestions.add(match.item.localName.toLowerCase());
+            }
+            if (match.item.englishName) {
+                suggestions.add(match.item.englishName.toLowerCase());
+            }
         });
         
         return Array.from(suggestions)
@@ -570,7 +578,7 @@ export class SearchEngine {
                 if (firstEntry) {
                     suggestions.add({
                         text: term,
-                        context: firstEntry.item.localName,
+                        context: firstEntry.item.localName || firstEntry.item.englishName || 'Unknown',
                         type: firstEntry.type
                     });
                 }
