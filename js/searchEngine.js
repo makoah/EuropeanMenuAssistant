@@ -17,7 +17,7 @@ export class SearchEngine {
             fuzzyThreshold: 0.3, // Minimum similarity score (0-1)
             exactMatchBonus: 0.5, // Bonus for exact matches
             wordStartBonus: 0.3, // Bonus for matching word starts
-            spanishNameWeight: 1.0, // Weight for Spanish name matches
+            localNameWeight: 1.0, // Weight for local language name matches
             englishNameWeight: 0.8, // Weight for English name matches
             descriptionWeight: 0.5 // Weight for description matches
         };
@@ -51,8 +51,8 @@ export class SearchEngine {
         const menuItems = this.dataManager.getMenuItems();
         
         menuItems.forEach(item => {
-            // Index Spanish name
-            this.addToIndex(item.spanishName.toLowerCase(), item, 'spanish');
+            // Index local language name (Spanish, French, German, etc.)
+            this.addToIndex(item.localName.toLowerCase(), item, 'local');
             
             // Index English name
             this.addToIndex(item.englishName.toLowerCase(), item, 'english');
@@ -68,10 +68,10 @@ export class SearchEngine {
             }
             
             // Index individual words from Spanish and English names
-            const spanishWords = this.extractWords(item.spanishName.toLowerCase());
+            const localWords = this.extractWords(item.localName.toLowerCase());
             const englishWords = this.extractWords(item.englishName.toLowerCase());
             
-            [...spanishWords, ...englishWords].forEach(word => {
+            [...localWords, ...englishWords].forEach(word => {
                 if (word.length > 1) {
                     this.addToIndex(word, item, 'word');
                 }
@@ -105,7 +105,7 @@ export class SearchEngine {
      */
     getTypeWeight(type) {
         switch (type) {
-            case 'spanish': return this.config.spanishNameWeight;
+            case 'local': return this.config.localNameWeight;
             case 'english': return this.config.englishNameWeight;
             case 'description': return this.config.descriptionWeight;
             case 'word': return 0.7;
@@ -466,7 +466,7 @@ export class SearchEngine {
         matches.slice(0, 3).forEach(match => {
             if (suggestions.size >= this.config.maxSuggestions) return;
             
-            suggestions.add(match.item.spanishName.toLowerCase());
+            suggestions.add(match.item.localName.toLowerCase());
             suggestions.add(match.item.englishName.toLowerCase());
         });
         
@@ -570,7 +570,7 @@ export class SearchEngine {
                 if (firstEntry) {
                     suggestions.add({
                         text: term,
-                        context: firstEntry.item.spanishName,
+                        context: firstEntry.item.localName,
                         type: firstEntry.type
                     });
                 }
