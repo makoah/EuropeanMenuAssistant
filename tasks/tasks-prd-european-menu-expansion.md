@@ -32,7 +32,7 @@
   - [x] 2.3 Remove all hardcoded "Spanish Menu Cheater" references from main.js and make generic
   - [x] 2.4 Update error messages and UI text to be country-generic
   - [ ] 2.5 Implement country persistence and default to Spain for backward compatibility
-  - [ ] 2.6 Test that Spanish functionality works identically after changes
+  - [x] 2.6 Test that Spanish functionality works identically after changes
   - [ ] 2.7 Create comprehensive unit tests for countryManager.js
 - [ ] 3.0 Add French Menu Database
   - [ ] 3.1 Research and compile 200+ common French menu items with English translations

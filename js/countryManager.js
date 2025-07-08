@@ -202,6 +202,12 @@ export class CountryManager {
         const country = this.countries[countryCode];
         if (!country) return;
         
+        // Skip if document is not available (e.g., in tests)
+        if (typeof document === 'undefined') {
+            console.log('🌍 Document not available, skipping theme application');
+            return;
+        }
+        
         const root = document.documentElement;
         const theme = country.theme;
         
@@ -252,6 +258,10 @@ export class CountryManager {
      */
     saveCountryPreference(countryCode) {
         try {
+            if (typeof localStorage === 'undefined') {
+                console.warn('localStorage not available, cannot save country preference');
+                return;
+            }
             localStorage.setItem(this.storageKey, countryCode);
         } catch (error) {
             console.warn('Failed to save country preference:', error);
@@ -263,6 +273,10 @@ export class CountryManager {
      */
     loadCountryPreference() {
         try {
+            if (typeof localStorage === 'undefined') {
+                console.warn('localStorage not available, using default country');
+                return null;
+            }
             return localStorage.getItem(this.storageKey);
         } catch (error) {
             console.warn('Failed to load country preference:', error);

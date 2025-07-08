@@ -284,8 +284,8 @@ class EuropeanMenuAssistant {
             // Initialize CountryManager first
             this.countryManager = new CountryManager();
             
-            // Initialize DataManager
-            this.dataManager = new DataManager();
+            // Initialize DataManager with shared CountryManager
+            this.dataManager = new DataManager(this.countryManager);
             
             // Initialize SearchEngine (after DataManager)
             this.searchEngine = new SearchEngine(this.dataManager);

@@ -7,10 +7,10 @@
 import { CountryManager } from './countryManager.js';
 
 export class DataManager {
-    constructor() {
+    constructor(countryManager = null) {
         this.menuItems = [];
         this.isLoaded = false;
-        this.countryManager = new CountryManager();
+        this.countryManager = countryManager || new CountryManager();
         this.dataSource = null; // Will be set dynamically by country
         this.version = '1.0.0';
         this.lastUpdated = null;
