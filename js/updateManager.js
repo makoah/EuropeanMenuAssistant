@@ -141,7 +141,7 @@ export class UpdateManager {
                     
                     // Clear data cache to force refresh
                     if ('caches' in window) {
-                        const cache = await caches.open('spanish-menu-data-v1.0.0');
+                        const cache = await caches.open('european-menu-data-v1.0.0');
                         await cache.delete('/data/countries/spain/menu-items.csv');
                     }
                     

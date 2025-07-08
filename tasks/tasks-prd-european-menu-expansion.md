@@ -27,10 +27,10 @@
   - [ ] 1.3 Create placeholder menu-items.csv files for Germany and Italy with 10-15 sample items each
   - [ ] 1.4 CRITICAL FIX: Remove hardcoded references and implement generic country management before proceeding
 - [ ] 2.0 Implement Generic Country Management System (PRIORITY)
-  - [ ] 2.1 Create js/countryManager.js with comprehensive country configuration
-  - [ ] 2.2 Update dataManager.js to use country-agnostic data loading
-  - [ ] 2.3 Remove all hardcoded "Spanish Menu Cheater" references from main.js and make generic
-  - [ ] 2.4 Update error messages and UI text to be country-generic
+  - [x] 2.1 Create js/countryManager.js with comprehensive country configuration
+  - [x] 2.2 Update dataManager.js to use country-agnostic data loading
+  - [x] 2.3 Remove all hardcoded "Spanish Menu Cheater" references from main.js and make generic
+  - [x] 2.4 Update error messages and UI text to be country-generic
   - [ ] 2.5 Implement country persistence and default to Spain for backward compatibility
   - [ ] 2.6 Test that Spanish functionality works identically after changes
   - [ ] 2.7 Create comprehensive unit tests for countryManager.js

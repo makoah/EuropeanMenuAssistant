@@ -1,12 +1,14 @@
 /**
- * Spanish Menu Cheater - Main Application Entry Point
+ * European Menu Assistant - Main Application Entry Point
  * 
  * This is the main JavaScript file that initializes the PWA application.
  * It coordinates between different modules and handles the application lifecycle.
+ * Supports multiple European countries with dynamic configuration.
  */
 
-// Import modules (will be created in subsequent tasks)
+// Import modules
 import { DataManager } from './dataManager.js';
+import { CountryManager } from './countryManager.js';
 import { SearchEngine } from './searchEngine.js';
 import { UpdateManager } from './updateManager.js';
 import { PreferencesManager } from './preferencesManager.js';
@@ -24,13 +26,14 @@ import UsageTracker from './usageTracker.js';
  * Main Application Class
  * Coordinates all modules and manages application state
  */
-class SpanishMenuCheater {
+class EuropeanMenuAssistant {
     constructor() {
         this.isInitialized = false;
         this.isDataLoaded = false;
         this.currentLanguage = 'en'; // Default to English
         
         // Module instances (will be initialized later)
+        this.countryManager = null;
         this.dataManager = null;
         this.searchEngine = null;
         this.updateManager = null;
@@ -119,7 +122,7 @@ class SpanishMenuCheater {
      */
     async init() {
         try {
-            console.log('🚀 Spanish Menu Cheater - Starting initialization...');
+            console.log('🚀 European Menu Assistant - Starting initialization...');
             
             // Add event listeners for application lifecycle
             if (document.readyState === 'loading') {
@@ -278,6 +281,9 @@ class SpanishMenuCheater {
         console.log('🔧 Initializing modules...');
         
         try {
+            // Initialize CountryManager first
+            this.countryManager = new CountryManager();
+            
             // Initialize DataManager
             this.dataManager = new DataManager();
             
@@ -625,8 +631,8 @@ class SpanishMenuCheater {
      */
     async handleShareButton() {
         const shareData = {
-            title: 'Spanish Menu Cheater',
-            text: 'Check out Spanish Menu Cheater - a free offline Spanish menu translator! Perfect for traveling in Spain 🇪🇸',
+            title: this.countryManager.getAppName(),
+            text: `Check out ${this.countryManager.getAppName()} - a free offline European menu translator! Perfect for traveling in Europe ${this.countryManager.getCountryInfo().flag}`,
             url: window.location.href
         };
 
@@ -1356,7 +1362,7 @@ class SpanishMenuCheater {
                 <h2>📴 Offline Mode</h2>
                 <div class="offline-message">
                     <p><strong>No internet connection detected.</strong></p>
-                    <p>Spanish Menu Cheater is designed to work completely offline once the data has been downloaded.</p>
+                    <p>${this.countryManager.getAppName()} is designed to work completely offline once the data has been downloaded.</p>
                     
                     <div class="offline-instructions">
                         <h3>To use offline features:</h3>
@@ -1430,7 +1436,7 @@ class SpanishMenuCheater {
         document.body.innerHTML = `
             <div style="padding: 2rem; text-align: center; color: #DC143C;">
                 <h1>Application Error</h1>
-                <p>Failed to initialize Spanish Menu Cheater.</p>
+                <p>Failed to initialize European Menu Assistant.</p>
                 <p style="font-size: 0.875rem; margin-top: 1rem;">
                     Please refresh the page to try again.
                 </p>
@@ -2309,7 +2315,7 @@ class SpanishMenuCheater {
 /**
  * Create and initialize the application
  */
-const app = new SpanishMenuCheater();
+const app = new EuropeanMenuAssistant();
 
 // Start the application
 app.init().catch(error => {
@@ -2317,6 +2323,6 @@ app.init().catch(error => {
 });
 
 // Export for potential testing or external access
-window.SpanishMenuCheater = app;
+window.EuropeanMenuAssistant = app;
 
-console.log('📱 Spanish Menu Cheater - Main module loaded');
+console.log('📱 European Menu Assistant - Main module loaded');

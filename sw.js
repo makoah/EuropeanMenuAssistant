@@ -1,25 +1,26 @@
-// Spanish Menu Cheater PWA - Service Worker
+// European Menu Assistant PWA - Service Worker
 // Provides offline functionality for complete app experience
 
-const CACHE_NAME = 'spanish-menu-cheater-v1.0.0';
-const DATA_CACHE_NAME = 'spanish-menu-data-v1.0.0';
+const CACHE_NAME = 'european-menu-assistant-v1.0.0';
+const DATA_CACHE_NAME = 'european-menu-data-v1.0.0';
 
 // Define all resources needed for offline functionality
 const APP_SHELL_FILES = [
-  '/SpanishMenuCheater/',
-  '/SpanishMenuCheater/index.html',
-  '/SpanishMenuCheater/manifest.json',
-  '/SpanishMenuCheater/styles/main.css',
-  '/SpanishMenuCheater/styles/components.css',
-  '/SpanishMenuCheater/js/main.js',
-  '/SpanishMenuCheater/js/dataManager.js',
-  '/SpanishMenuCheater/js/searchEngine.js',
-  '/SpanishMenuCheater/js/updateManager.js'
+  '/EuropeanMenuAssistant/',
+  '/EuropeanMenuAssistant/index.html',
+  '/EuropeanMenuAssistant/manifest.json',
+  '/EuropeanMenuAssistant/styles/main.css',
+  '/EuropeanMenuAssistant/styles/components.css',
+  '/EuropeanMenuAssistant/js/main.js',
+  '/EuropeanMenuAssistant/js/dataManager.js',
+  '/EuropeanMenuAssistant/js/countryManager.js',
+  '/EuropeanMenuAssistant/js/searchEngine.js',
+  '/EuropeanMenuAssistant/js/updateManager.js'
 ];
 
 // Critical data files for offline search functionality
 const DATA_FILES = [
-  '/SpanishMenuCheater/data/countries/spain/menu-items.csv'
+  '/EuropeanMenuAssistant/data/countries/spain/menu-items.csv'
 ];
 
 // External resources with fallback handling
@@ -256,7 +257,7 @@ self.addEventListener('push', event => {
     };
     
     event.waitUntil(
-      self.registration.showNotification(data.title || 'Spanish Menu Cheater', options)
+      self.registration.showNotification(data.title || 'European Menu Assistant', options)
     );
   }
 });

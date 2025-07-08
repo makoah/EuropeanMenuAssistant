@@ -1,30 +1,37 @@
 /**
  * Data Manager Module
  * Handles CSV parsing, data validation, and menu item management
+ * Now supports multiple countries through CountryManager
  */
+
+import { CountryManager } from './countryManager.js';
 
 export class DataManager {
     constructor() {
         this.menuItems = [];
         this.isLoaded = false;
-        this.dataSource = 'data/countries/spain/menu-items.csv';
+        this.countryManager = new CountryManager();
+        this.dataSource = null; // Will be set dynamically by country
         this.version = '1.0.0';
         this.lastUpdated = null;
         
-        // Data validation rules
+        // Data validation rules - now generic and country-specific
         this.requiredFields = [
-            'Spanish Name',
-            'English Translation',
-            'Dutch Translation',
-            'Description',
-            'Dutch Description',
-            'Price Range',
-            'Pork',
-            'Other Meat',
-            'Fish/Seafood',
-            'Dairy',
-            'Vegetarian'
+            'localLanguage',
+            'english',
+            'dutch',
+            'description',
+            'dutchDescription',
+            'priceRange',
+            'pork',
+            'otherMeat',
+            'seafood',
+            'dairy',
+            'vegetarian'
         ];
+        
+        // Listen for country changes
+        window.addEventListener('countryChanged', this.handleCountryChange.bind(this));
         
         // Statistics
         this.stats = {
@@ -40,11 +47,25 @@ export class DataManager {
     }
     
     /**
-     * Load and parse menu data from CSV
+     * Handle country change event
+     */
+    handleCountryChange(event) {
+        console.log('🌍 Country changed, reloading data...');
+        this.isLoaded = false;
+        this.menuItems = [];
+        // Data will be reloaded when requested
+    }
+    
+    /**
+     * Load and parse menu data from CSV for current country
      */
     async loadMenuData() {
         try {
-            console.log('📊 Loading menu data from CSV...');
+            // Get current country's data path
+            this.dataSource = this.countryManager.getDataPath();
+            const countryInfo = this.countryManager.getCountryInfo();
+            
+            console.log(`📊 Loading ${countryInfo.language} menu data from CSV...`);
             
             const csvData = await this.fetchCSVData();
             const parsedData = this.parseCSVData(csvData);
@@ -55,7 +76,7 @@ export class DataManager {
             this.lastUpdated = new Date();
             this.calculateStats();
             
-            console.log(`✅ Successfully loaded ${this.menuItems.length} menu items`);
+            console.log(`✅ Successfully loaded ${this.menuItems.length} ${countryInfo.language} menu items`);
             console.log('📈 Data statistics:', this.stats);
             
             return this.menuItems;
@@ -111,8 +132,10 @@ export class DataManager {
                 throw new Error('CSV file has no headers');
             }
             
-            // Validate required headers
-            const missingHeaders = this.requiredFields.filter(field => 
+            // Validate required headers using country-specific field names
+            const csvStructure = this.countryManager.getCSVStructure();
+            const requiredHeaderNames = this.requiredFields.map(field => csvStructure[field]);
+            const missingHeaders = requiredHeaderNames.filter(field => 
                 !headers.includes(field)
             );
             
@@ -216,7 +239,9 @@ export class DataManager {
                     invalidCount++;
                 }
             } catch (error) {
-                console.warn(`Validation failed for item "${item['Spanish Name'] || 'unknown'}": ${error.message}`);
+                const csvStructure = this.countryManager.getCSVStructure();
+                const itemName = item[csvStructure.localLanguage] || 'unknown';
+                console.warn(`Validation failed for item "${itemName}": ${error.message}`);
                 invalidCount++;
             }
         }
@@ -226,60 +251,68 @@ export class DataManager {
     }
     
     /**
-     * Validate and clean a single menu item
+     * Validate and clean a single menu item (country-agnostic)
      */
     validateMenuItem(item) {
-        // Check required fields
-        if (!item['Spanish Name'] || !item['English Translation']) {
+        const csvStructure = this.countryManager.getCSVStructure();
+        
+        // Check required fields using country-specific field names
+        const localLanguageField = csvStructure.localLanguage;
+        const englishField = csvStructure.english;
+        
+        if (!item[localLanguageField] || !item[englishField]) {
             return null; // Skip items without essential fields
         }
         
-        // Clean and normalize the item
+        // Clean and normalize the item using country-specific field mapping
         const cleanItem = {
             // Core information
-            spanishName: this.cleanString(item['Spanish Name']),
-            englishName: this.cleanString(item['English Translation']),
-            dutchName: this.cleanString(item['Dutch Translation'] || item['English Translation']), // Fallback to English if Dutch missing
-            description: this.cleanString(item['Description'] || ''),
-            dutchDescription: this.cleanString(item['Dutch Description'] || item['Description'] || ''), // Fallback to English description
-            priceRange: this.cleanString(item['Price Range'] || ''),
+            localName: this.cleanString(item[csvStructure.localLanguage]),
+            englishName: this.cleanString(item[csvStructure.english]),
+            dutchName: this.cleanString(item[csvStructure.dutch] || item[csvStructure.english]), // Fallback to English if Dutch missing
+            description: this.cleanString(item[csvStructure.description] || ''),
+            dutchDescription: this.cleanString(item[csvStructure.dutchDescription] || item[csvStructure.description] || ''), // Fallback to English description
+            priceRange: this.cleanString(item[csvStructure.priceRange] || ''),
             
             // Dietary information (convert to boolean)
-            hasPork: this.parseBoolean(item['Pork']),
-            hasOtherMeat: this.parseBoolean(item['Other Meat']),
-            hasSeafood: this.parseBoolean(item['Fish/Seafood']),
-            hasDairy: this.parseBoolean(item['Dairy']),
-            isVegetarian: this.parseBoolean(item['Vegetarian']),
+            hasPork: this.parseBoolean(item[csvStructure.pork]),
+            hasOtherMeat: this.parseBoolean(item[csvStructure.otherMeat]),
+            hasSeafood: this.parseBoolean(item[csvStructure.seafood]),
+            hasDairy: this.parseBoolean(item[csvStructure.dairy]),
+            isVegetarian: this.parseBoolean(item[csvStructure.vegetarian]),
             
             // Additional data
-            googleSearchUrl: item['Google Search'] || '',
+            googleSearchUrl: item[csvStructure.googleSearch] || '',
             
             // Metadata
             id: item._id,
             rowNumber: item._rowNumber,
-            lastUpdated: new Date().toISOString()
+            lastUpdated: new Date().toISOString(),
+            country: this.countryManager.currentCountry,
+            language: this.countryManager.getLanguage()
         };
         
         // Additional validation
-        if (cleanItem.spanishName.length === 0 || cleanItem.englishName.length === 0) {
+        if (cleanItem.localName.length === 0 || cleanItem.englishName.length === 0) {
             return null;
         }
         
         // Logical validation - vegetarian items shouldn't have meat
         if (cleanItem.isVegetarian && (cleanItem.hasPork || cleanItem.hasOtherMeat || cleanItem.hasSeafood)) {
-            console.warn(`Item "${cleanItem.spanishName}" marked as vegetarian but contains meat/seafood`);
+            console.warn(`Item "${cleanItem.localName}" marked as vegetarian but contains meat/seafood`);
         }
         
         return cleanItem;
     }
     
     /**
-     * Generate unique ID for menu item
+     * Generate unique ID for menu item (country-agnostic)
      */
     generateItemId(item) {
-        const spanishName = item['Spanish Name'] || '';
-        const englishName = item['English Translation'] || '';
-        const combined = (spanishName + englishName).toLowerCase();
+        const csvStructure = this.countryManager.getCSVStructure();
+        const localName = item[csvStructure.localLanguage] || '';
+        const englishName = item[csvStructure.english] || '';
+        const combined = (localName + englishName).toLowerCase();
         
         // Simple hash function
         let hash = 0;
