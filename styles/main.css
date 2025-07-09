@@ -9,6 +9,14 @@
 @import url('./themes.css');
 
 /* ===================================
+   Component Stylesheets
+   =================================== */
+@import url('./components/cards.css');
+@import url('./components/buttons.css');
+@import url('./components/typography.css');
+@import url('./components/backgrounds.css');
+
+/* ===================================
    CSS Custom Properties (Variables)
    =================================== */
 :root {
@@ -69,7 +77,7 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
   
-  /* Spacing Scale (8px base) */
+  /* Enhanced Spacing Scale (8px base) */
   --space-xs: 0.25rem;   /* 4px */
   --space-sm: 0.5rem;    /* 8px */
   --space-md: 1rem;      /* 16px */
@@ -77,6 +85,16 @@
   --space-xl: 2rem;      /* 32px */
   --space-2xl: 3rem;     /* 48px */
   --space-3xl: 4rem;     /* 64px */
+  --space-4xl: 5rem;     /* 80px */
+  --space-5xl: 6rem;     /* 96px */
+  
+  /* Component-specific spacing */
+  --card-padding: 1.5rem;      /* 24px */
+  --card-gap: 1rem;            /* 16px */
+  --button-padding-x: 1.5rem;  /* 24px */
+  --button-padding-y: 0.75rem; /* 12px */
+  --input-padding-x: 1rem;     /* 16px */
+  --input-padding-y: 0.75rem;  /* 12px */
   
   /* Layout Measurements */
   --container-max-width: 28rem;    /* 448px - optimal for mobile */
@@ -90,22 +108,81 @@
   --radius-lg: 0.75rem;   /* 12px */
   --radius-xl: 1rem;      /* 16px */
   
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(45, 24, 16, 0.05);
+  /* Enhanced Shadow System */
+  --shadow-xs: 0 1px 2px 0 rgba(45, 24, 16, 0.03);
+  --shadow-sm: 0 1px 3px 0 rgba(45, 24, 16, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(45, 24, 16, 0.1), 0 2px 4px -1px rgba(45, 24, 16, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(45, 24, 16, 0.1), 0 4px 6px -2px rgba(45, 24, 16, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(45, 24, 16, 0.1), 0 10px 10px -5px rgba(45, 24, 16, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(45, 24, 16, 0.25);
   
-  /* Transitions */
+  /* Component-specific shadows */
+  --shadow-card: 0 4px 12px rgba(45, 24, 16, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(45, 24, 16, 0.12);
+  --shadow-button: 0 2px 8px rgba(45, 24, 16, 0.1);
+  --shadow-button-hover: 0 4px 16px rgba(45, 24, 16, 0.15);
+  --shadow-input: inset 0 2px 4px rgba(45, 24, 16, 0.05);
+  --shadow-input-focus: 0 0 0 3px rgba(var(--primary-color), 0.1);
+  
+  /* Colored shadows for countries */
+  --shadow-spain: 0 4px 12px rgba(196, 30, 58, 0.15);
+  --shadow-spain-hover: 0 8px 24px rgba(196, 30, 58, 0.25);
+  --shadow-france: 0 4px 12px rgba(0, 45, 116, 0.15);
+  --shadow-france-hover: 0 8px 24px rgba(0, 45, 116, 0.25);
+  --shadow-germany: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-germany-hover: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-italy: 0 4px 12px rgba(0, 146, 70, 0.15);
+  --shadow-italy-hover: 0 8px 24px rgba(0, 146, 70, 0.25);
+  
+  /* Enhanced Transition System */
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
+  --transition-slower: 500ms ease-in-out;
   
-  /* Z-index Scale */
+  /* Easing functions */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Component-specific transitions */
+  --transition-card: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  --transition-button: all 0.2s var(--ease-out);
+  --transition-input: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+  --transition-theme: all 0.5s var(--ease-in-out);
+  --transition-hover: transform 0.2s var(--ease-out);
+  
+  /* Animation durations */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+  --duration-slowest: 750ms;
+  
+  /* Enhanced Z-index Scale */
+  --z-base: 0;
   --z-dropdown: 100;
   --z-sticky: 200;
   --z-modal: 300;
   --z-tooltip: 400;
+  --z-overlay: 500;
+  --z-top: 9999;
+  
+  /* Animation keyframes variables */
+  --keyframes-fade-in: fadeIn;
+  --keyframes-fade-out: fadeOut;
+  --keyframes-slide-in: slideIn;
+  --keyframes-slide-out: slideOut;
+  --keyframes-scale-in: scaleIn;
+  --keyframes-scale-out: scaleOut;
+  --keyframes-bounce: bounce;
+  --keyframes-pulse: pulse;
+  --keyframes-shake: shake;
+  --keyframes-float: float;
+  --keyframes-shimmer: shimmer;
+  --keyframes-gradient-shift: gradientShift;
 }
 
 /* ===================================
@@ -628,6 +705,74 @@ body {
   .app-header {
     border-bottom: 2px solid var(--color-text-primary);
   }
+}
+
+/* ===================================
+   Enhanced Animation Keyframes
+   =================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-20px); opacity: 0; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes scaleOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.9); opacity: 0; }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+  40%, 43% { transform: translateY(-10px); }
+  70% { transform: translateY(-5px); }
+  90% { transform: translateY(-2px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ===================================

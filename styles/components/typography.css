@@ -1,0 +1,467 @@
+/**
+ * Enhanced Typography Components - Country-Specific Styling
+ * European Menu Assistant
+ * 
+ * Provides sophisticated typography designs with country-specific variations
+ * for enhanced visual appeal and cultural authenticity
+ */
+
+/* ===== BASE TYPOGRAPHY ===== */
+.text-primary {
+  color: var(--text-color);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.text-accent {
+  color: var(--primary-color);
+}
+
+/* ===== HEADING STYLES ===== */
+.heading-primary {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.heading-secondary {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.heading-tertiary {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.heading-quaternary {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* ===== BODY TEXT ===== */
+.body-large {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
+.body-regular {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
+.body-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem 0;
+}
+
+.body-tiny {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-light);
+  margin: 0 0 0.5rem 0;
+}
+
+/* ===== SPECIALIZED TEXT STYLES ===== */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-strong {
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* ===== COUNTRY-SPECIFIC TYPOGRAPHY ===== */
+
+/* Spanish Typography - Vibrant Elegance */
+:root[data-country="spain"] .heading-primary {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: var(--flag-red);
+  text-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+:root[data-country="spain"] .heading-secondary {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: var(--flag-red);
+  font-weight: 600;
+}
+
+:root[data-country="spain"] .heading-tertiary {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+:root[data-country="spain"] .body-large {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+:root[data-country="spain"] .body-regular {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+:root[data-country="spain"] .menu-item-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 600;
+  color: var(--flag-red);
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+:root[data-country="spain"] .menu-item-subtitle {
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* French Typography - Sophisticated Refinement */
+:root[data-country="france"] .heading-primary {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  color: var(--flag-blue);
+  text-shadow: 0 2px 4px rgba(0, 45, 116, 0.2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+:root[data-country="france"] .heading-secondary {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  color: var(--flag-blue);
+  font-weight: 500;
+}
+
+:root[data-country="france"] .heading-tertiary {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+:root[data-country="france"] .body-large {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+:root[data-country="france"] .body-regular {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+:root[data-country="france"] .menu-item-title {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-weight: 500;
+  color: var(--flag-blue);
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+:root[data-country="france"] .menu-item-subtitle {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+/* German Typography - Modern Precision */
+:root[data-country="germany"] .heading-primary {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  color: var(--flag-black);
+  text-shadow: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+:root[data-country="germany"] .heading-secondary {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  color: var(--flag-black);
+  font-weight: 600;
+}
+
+:root[data-country="germany"] .heading-tertiary {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+:root[data-country="germany"] .body-large {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+:root[data-country="germany"] .body-regular {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+:root[data-country="germany"] .menu-item-title {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  color: var(--flag-black);
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+:root[data-country="germany"] .menu-item-subtitle {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* Italian Typography - Rustic Charm */
+:root[data-country="italy"] .heading-primary {
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  color: var(--flag-green);
+  text-shadow: 0 2px 4px rgba(0, 146, 70, 0.2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:root[data-country="italy"] .heading-secondary {
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  color: var(--flag-green);
+  font-weight: 600;
+}
+
+:root[data-country="italy"] .heading-tertiary {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-color);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+:root[data-country="italy"] .body-large {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+:root[data-country="italy"] .body-regular {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+:root[data-country="italy"] .menu-item-title {
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  font-weight: 600;
+  color: var(--flag-green);
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+:root[data-country="italy"] .menu-item-subtitle {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* ===== WELCOME MESSAGE TYPOGRAPHY ===== */
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.welcome-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.welcome-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+@media (max-width: 768px) {
+  .heading-primary {
+    font-size: 2rem;
+  }
+  
+  .heading-secondary {
+    font-size: 1.5rem;
+  }
+  
+  .heading-tertiary {
+    font-size: 1.25rem;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .welcome-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-primary {
+    font-size: 1.75rem;
+  }
+  
+  .heading-secondary {
+    font-size: 1.375rem;
+  }
+  
+  .welcome-title {
+    font-size: 1.75rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* ===== SPECIAL EFFECTS ===== */
+.text-animate-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-hover-underline {
+  position: relative;
+  cursor: pointer;
+}
+
+.text-hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.text-hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

@@ -1,0 +1,470 @@
+/**
+ * Enhanced Background Components - Country-Specific Styling
+ * European Menu Assistant
+ * 
+ * Provides sophisticated background treatments with country-specific variations
+ * for enhanced visual appeal and cultural authenticity
+ */
+
+/* ===== BASE BACKGROUND UTILITIES ===== */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color);
+}
+
+.bg-card {
+  background-color: var(--card-background);
+}
+
+.bg-modal {
+  background-color: var(--modal-background);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+/* ===== GRADIENT BACKGROUNDS ===== */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(135deg, var(--card-background), rgba(var(--primary-color), 0.05));
+}
+
+.bg-header-gradient {
+  background: var(--header-gradient);
+}
+
+/* ===== PATTERN BACKGROUNDS ===== */
+.bg-pattern-dots {
+  background-image: radial-gradient(circle, rgba(var(--primary-color), 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-pattern-grid {
+  background-image: 
+    linear-gradient(rgba(var(--primary-color), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-color), 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-pattern-diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(var(--primary-color), 0.05) 0px,
+    rgba(var(--primary-color), 0.05) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+/* ===== COUNTRY-SPECIFIC BACKGROUNDS ===== */
+
+/* Spanish Backgrounds - Vibrant Elegance */
+:root[data-country="spain"] .bg-main {
+  background: linear-gradient(135deg, 
+    #FFF8F0 0%, 
+    #FFEBDA 30%, 
+    #FFF8F0 70%, 
+    #FFEBDA 100%
+  );
+  position: relative;
+}
+
+:root[data-country="spain"] .bg-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(196, 30, 58, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+:root[data-country="spain"] .bg-hero {
+  background: linear-gradient(135deg, 
+    rgba(196, 30, 58, 0.9) 0%, 
+    rgba(255, 215, 0, 0.8) 50%, 
+    rgba(196, 30, 58, 0.9) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="spain"] .bg-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 20px
+    );
+}
+
+:root[data-country="spain"] .bg-card-enhanced {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 248, 240, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196, 30, 58, 0.1);
+}
+
+/* French Backgrounds - Sophisticated Refinement */
+:root[data-country="france"] .bg-main {
+  background: linear-gradient(135deg, 
+    #F8FAFC 0%, 
+    #E0E7FF 25%, 
+    #F1F5F9 50%, 
+    #E0E7FF 75%, 
+    #F8FAFC 100%
+  );
+  position: relative;
+}
+
+:root[data-country="france"] .bg-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0, 45, 116, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(193, 39, 45, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+:root[data-country="france"] .bg-hero {
+  background: linear-gradient(135deg, 
+    rgba(0, 45, 116, 0.9) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(193, 39, 45, 0.9) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="france"] .bg-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      30deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+}
+
+:root[data-country="france"] .bg-card-enhanced {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(224, 231, 255, 0.85) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 45, 116, 0.1);
+}
+
+/* German Backgrounds - Modern Precision */
+:root[data-country="germany"] .bg-main {
+  background: linear-gradient(135deg, 
+    #F5F5F5 0%, 
+    #FAFAFA 50%, 
+    #F5F5F5 100%
+  );
+  position: relative;
+}
+
+:root[data-country="germany"] .bg-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+:root[data-country="germany"] .bg-hero {
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.9) 0%, 
+    rgba(221, 0, 0, 0.8) 50%, 
+    rgba(255, 206, 0, 0.9) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="germany"] .bg-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+}
+
+:root[data-country="germany"] .bg-card-enhanced {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 249, 250, 0.98) 100%
+  );
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Italian Backgrounds - Rustic Charm */
+:root[data-country="italy"] .bg-main {
+  background: linear-gradient(135deg, 
+    #F8FFF8 0%, 
+    #F0FFF0 30%, 
+    #F8FFF8 70%, 
+    #F0FFF0 100%
+  );
+  position: relative;
+}
+
+:root[data-country="italy"] .bg-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(0, 146, 70, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(206, 43, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+:root[data-country="italy"] .bg-hero {
+  background: linear-gradient(90deg, 
+    rgba(0, 146, 70, 0.9) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(206, 43, 55, 0.9) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="italy"] .bg-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 2px,
+      transparent 2px,
+      transparent 18px
+    );
+}
+
+:root[data-country="italy"] .bg-card-enhanced {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 255, 248, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 146, 70, 0.1);
+}
+
+/* ===== ANIMATED BACKGROUNDS ===== */
+.bg-animated-gradient {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color),
+    var(--primary-color)
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-floating-particles {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-floating-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(var(--primary-color), 0.2), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(var(--secondary-color), 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(var(--accent-color), 0.2), transparent);
+  background-size: 100px 100px;
+  animation: float 20s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
+}
+
+/* ===== OVERLAY BACKGROUNDS ===== */
+.bg-overlay {
+  position: relative;
+}
+
+.bg-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.bg-overlay-light {
+  position: relative;
+}
+
+.bg-overlay-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+}
+
+.bg-overlay-gradient {
+  position: relative;
+}
+
+.bg-overlay-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-color), 0.8),
+    rgba(var(--secondary-color), 0.6)
+  );
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE BACKGROUNDS ===== */
+@media (max-width: 768px) {
+  .bg-pattern-dots {
+    background-size: 15px 15px;
+  }
+  
+  .bg-pattern-grid {
+    background-size: 15px 15px;
+  }
+  
+  .bg-floating-particles::before {
+    background-size: 80px 80px;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.bg-blur {
+  backdrop-filter: blur(10px);
+}
+
+.bg-blur-light {
+  backdrop-filter: blur(5px);
+}
+
+.bg-blur-heavy {
+  backdrop-filter: blur(20px);
+}
+
+.bg-fixed {
+  background-attachment: fixed;
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-contain {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bg-animated-gradient {
+    animation: none;
+  }
+  
+  .bg-floating-particles::before {
+    animation: none;
+  }
+}
+
+/* ===== THEME TRANSITIONS ===== */
+.bg-transition {
+  transition: background-color 0.3s ease, background-image 0.3s ease;
+}
