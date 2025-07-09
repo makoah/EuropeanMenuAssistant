@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Menu Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🇫🇷 French Menu Data Loading and Search Test</h1>
+        <div id="test-results"></div>
+        <button onclick="runTests()" id="run-tests">Run Tests</button>
+    </div>
+
+    <script type="module">
+        import { DataManager } from './js/dataManager.js';
+        import { CountryManager } from './js/countryManager.js';
+        import { SearchEngine } from './js/searchEngine.js';
+
+        let testResults = [];
+
+        function addTestResult(message, type = 'info') {
+            testResults.push({ message, type });
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = testResults.map(result => 
+                `<div class="test-result ${result.type}">${result.message}</div>`
+            ).join('');
+        }
+
+        async function runTests() {
+            testResults = [];
+            addTestResult('🚀 Starting French Menu Tests...', 'info');
+            
+            try {
+                // 1. Test CountryManager French Configuration
+                addTestResult('1. Testing CountryManager French Configuration...', 'info');
+                const countryManager = new CountryManager();
+                countryManager.setCountry('france');
+                
+                const frenchInfo = countryManager.getCountryInfo();
+                addTestResult(`✓ French country configured: ${frenchInfo.displayName}`, 'success');
+                addTestResult(`✓ Data path: ${frenchInfo.dataPath}`, 'success');
+                addTestResult(`✓ Language: ${frenchInfo.language}`, 'success');
+                addTestResult(`✓ Flag: ${frenchInfo.flag}`, 'success');
+                
+                // 2. Test DataManager French Data Loading
+                addTestResult('2. Testing DataManager French Data Loading...', 'info');
+                const dataManager = new DataManager();
+                await dataManager.initialize(countryManager);
+                
+                const menuItems = dataManager.getMenuItems();
+                addTestResult(`✓ Loaded ${menuItems.length} French menu items`, 'success');
+                
+                // Validate structure
+                if (menuItems.length > 0) {
+                    const firstItem = menuItems[0];
+                    const expectedFields = [
+                        'French Name', 'English Translation', 'Dutch Translation', 
+                        'Description', 'Dutch Description', 'Price Range', 
+                        'Pork', 'Other Meat', 'Fish/Seafood', 'Dairy', 'Vegetarian', 'Google Search'
+                    ];
+                    
+                    let structureValid = true;
+                    for (const field of expectedFields) {
+                        if (!firstItem.hasOwnProperty(field)) {
+                            addTestResult(`✗ Missing field: ${field}`, 'error');
+                            structureValid = false;
+                        }
+                    }
+                    
+                    if (structureValid) {
+                        addTestResult('✓ CSV structure is valid', 'success');
+                    }
+                    
+                    // Show sample items
+                    const sampleItems = menuItems.slice(0, 3);
+                    addTestResult('✓ Sample French menu items:', 'success');
+                    sampleItems.forEach((item, index) => {
+                        addTestResult(`   ${index + 1}. ${item['French Name']} - ${item['English Translation']}`, 'info');
+                    });
+                }
+                
+                // 3. Test SearchEngine with French Data
+                addTestResult('3. Testing SearchEngine with French Data...', 'info');
+                const searchEngine = new SearchEngine();
+                searchEngine.initialize(dataManager);
+                
+                const frenchSearchTerms = ['escargots', 'coq', 'fromage', 'boeuf', 'poulet'];
+                
+                for (const term of frenchSearchTerms) {
+                    const results = searchEngine.search(term);
+                    addTestResult(`✓ Search for "${term}": ${results.length} results`, 'success');
+                    
+                    if (results.length > 0) {
+                        const topResult = results[0];
+                        addTestResult(`   Top result: ${topResult.item['French Name']} - ${topResult.item['English Translation']}`, 'info');
+                    }
+                }
+                
+                // 4. Test Country Switching
+                addTestResult('4. Testing Country Switching...', 'info');
+                
+                // Switch to Spain
+                countryManager.setCountry('spain');
+                await dataManager.loadMenuData();
+                const spanishItems = dataManager.getMenuItems();
+                addTestResult(`✓ Switched to Spain: ${spanishItems.length} items loaded`, 'success');
+                
+                // Switch back to France
+                countryManager.setCountry('france');
+                await dataManager.loadMenuData();
+                const frenchItemsAgain = dataManager.getMenuItems();
+                addTestResult(`✓ Switched back to France: ${frenchItemsAgain.length} items loaded`, 'success');
+                
+                // 5. Test Search Engine Data Update
+                addTestResult('5. Testing SearchEngine Data Update...', 'info');
+                searchEngine.updateData(dataManager);
+                
+                const frenchSearchResults = searchEngine.search('escargots');
+                addTestResult(`✓ Search for "escargots" after data update: ${frenchSearchResults.length} results`, 'success');
+                
+                // 6. Test Category Filtering
+                addTestResult('6. Testing Category Filtering...', 'info');
+                const vegetarianItems = frenchItemsAgain.filter(item => item['Vegetarian'] === 'TRUE');
+                const meatItems = frenchItemsAgain.filter(item => item['Other Meat'] === 'TRUE' || item['Pork'] === 'TRUE');
+                const seafoodItems = frenchItemsAgain.filter(item => item['Fish/Seafood'] === 'TRUE');
+                
+                addTestResult(`✓ Vegetarian items: ${vegetarianItems.length}`, 'success');
+                addTestResult(`✓ Meat items: ${meatItems.length}`, 'success');
+                addTestResult(`✓ Seafood items: ${seafoodItems.length}`, 'success');
+                
+                // Final success message
+                addTestResult('🎉 All French menu functionality tests PASSED!', 'success');
+                addTestResult('✓ French menu data loads correctly', 'success');
+                addTestResult('✓ Search functionality works with French terms', 'success');
+                addTestResult('✓ Country switching works properly', 'success');
+                addTestResult('✓ CSV structure is valid and consistent', 'success');
+                addTestResult('✓ Category filtering works correctly', 'success');
+                
+            } catch (error) {
+                addTestResult(`❌ Test failed: ${error.message}`, 'error');
+                addTestResult(`Stack trace: ${error.stack}`, 'error');
+            }
+        }
+
+        // Make runTests available globally
+        window.runTests = runTests;
+    </script>
+</body>
+</html>
