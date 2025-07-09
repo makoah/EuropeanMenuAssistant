@@ -35,6 +35,11 @@ export class CountryManager {
                 language: 'Spanish',
                 dataPath: 'data/countries/spain/menu-items.csv',
                 flag: '🇪🇸',
+                welcome: {
+                    title: '¡Bienvenido!',
+                    subtitle: 'Your Spanish menu translator',
+                    description: 'Discover what\'s on your plate! Type any Spanish dish to see its translation, ingredients, and dietary information.'
+                },
                 theme: {
                     primary: '#C41E3A',      // Spanish red
                     secondary: '#FFD700',    // Spanish gold
@@ -64,6 +69,11 @@ export class CountryManager {
                 language: 'French',
                 dataPath: 'data/countries/france/menu-items.csv',
                 flag: '🇫🇷',
+                welcome: {
+                    title: 'Bienvenue!',
+                    subtitle: 'Your French menu translator',
+                    description: 'Découvrez la cuisine française! Type any French dish to see its translation, ingredients, and dietary information.'
+                },
                 theme: {
                     primary: '#0055A4',      // French blue
                     secondary: '#FFFFFF',    // White
@@ -93,6 +103,11 @@ export class CountryManager {
                 language: 'German',
                 dataPath: 'data/countries/germany/menu-items.csv',
                 flag: '🇩🇪',
+                welcome: {
+                    title: 'Willkommen!',
+                    subtitle: 'Your German menu translator',
+                    description: 'Entdecken Sie deutsche Küche! Type any German dish to see its translation, ingredients, and dietary information.'
+                },
                 theme: {
                     primary: '#000000',      // German black
                     secondary: '#DD0000',    // German red
@@ -122,6 +137,11 @@ export class CountryManager {
                 language: 'Italian',
                 dataPath: 'data/countries/italy/menu-items.csv',
                 flag: '🇮🇹',
+                welcome: {
+                    title: 'Benvenuti!',
+                    subtitle: 'Your Italian menu translator',
+                    description: 'Scoprite la cucina italiana! Type any Italian dish to see its translation, ingredients, and dietary information.'
+                },
                 theme: {
                     primary: '#009246',      // Italian green
                     secondary: '#FFFFFF',    // White
@@ -254,6 +274,31 @@ export class CountryManager {
         const flagElement = document.querySelector('.country-flag:not(.app-title .country-flag)');
         if (flagElement) {
             flagElement.textContent = country.flag;
+        }
+        
+        // Update welcome message
+        const welcomeIcon = document.querySelector('.welcome-icon');
+        const welcomeTitle = document.querySelector('.welcome-title');
+        const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+        const welcomeDescription = document.querySelector('.welcome-description p');
+        
+        if (welcomeIcon) {
+            welcomeIcon.textContent = country.flag;
+        }
+        if (welcomeTitle) {
+            welcomeTitle.textContent = country.welcome.title;
+        }
+        if (welcomeSubtitle) {
+            welcomeSubtitle.textContent = country.welcome.subtitle;
+        }
+        if (welcomeDescription) {
+            welcomeDescription.textContent = country.welcome.description;
+        }
+        
+        // Update search placeholder
+        const searchInput = document.querySelector('#search-input');
+        if (searchInput) {
+            searchInput.placeholder = `Type a ${country.language} menu item...`;
         }
         
         // Update any error messages to be generic
