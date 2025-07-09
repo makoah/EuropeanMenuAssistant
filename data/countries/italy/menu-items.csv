@@ -1,0 +1,16 @@
+Italian Name,English Translation,Dutch Translation,Description,Dutch Description,Price Range,Pork,Other Meat,Fish/Seafood,Dairy,Vegetarian,Google Search
+Spaghetti Carbonara,Spaghetti Carbonara,Spaghetti Carbonara,Pasta with eggs cheese and pancetta,"Pasta met eieren, kaas en pancetta, Romeinse specialiteit",€8-12,TRUE,FALSE,FALSE,TRUE,FALSE,https://www.google.com/search?q=spaghetti%20carbonara&tbm=isch
+Margherita Pizza,Margherita Pizza,Margherita Pizza,Pizza with tomato mozzarella and basil,"Pizza met tomaat, mozzarella en basilicum, klassiek",€7-11,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=margherita%20pizza&tbm=isch
+Risotto,Risotto,Risotto,Creamy rice dish from Northern Italy,"Romige rijstschotel uit Noord-Italië, vele varianten",€9-14,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=risotto%20italian&tbm=isch
+Osso Buco,Osso Buco,Osso Buco,Braised veal shanks,"Gestoofde kalfspootjes, traditioneel Milanese gerecht",€16-22,FALSE,TRUE,FALSE,FALSE,FALSE,https://www.google.com/search?q=osso%20buco%20italian&tbm=isch
+Bruschetta,Bruschetta,Bruschetta,Grilled bread with tomatoes,"Gegrild brood met tomaten, knoflook en olijfolie",€4-6,FALSE,FALSE,FALSE,FALSE,TRUE,https://www.google.com/search?q=bruschetta%20italian&tbm=isch
+Lasagna,Lasagna,Lasagne,Layered pasta with meat and cheese,"Gelaagde pasta met vlees, kaas en bechamelsaus",€10-15,FALSE,TRUE,FALSE,TRUE,FALSE,https://www.google.com/search?q=lasagna%20italian&tbm=isch
+Prosciutto,Prosciutto,Prosciutto,Dry-cured ham,"Gedroogde ham, vaak geserveerd met meloen",€8-12,TRUE,FALSE,FALSE,FALSE,FALSE,https://www.google.com/search?q=prosciutto%20italian&tbm=isch
+Tiramisu,Tiramisu,Tiramisu,Coffee-flavored dessert,"Koffiesmaak dessert met mascarpone en ladyfingers",€5-7,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=tiramisu%20italian&tbm=isch
+Minestrone,Minestrone,Minestrone,Vegetable soup,"Groentesoep met pasta of rijst, hartig en gezond",€4-6,FALSE,FALSE,FALSE,FALSE,TRUE,https://www.google.com/search?q=minestrone%20italian&tbm=isch
+Parmigiana,Parmigiana,Parmigiana,Eggplant with tomato and cheese,"Aubergine met tomaat en kaas, klassiek comfort food",€8-12,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=parmigiana%20italian&tbm=isch
+Gelato,Gelato,Gelato,Italian ice cream,"Italiaans ijs, dichter en romiger dan gewoon ijs",€3-5,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=gelato%20italian&tbm=isch
+Carpaccio,Carpaccio,Carpaccio,Thinly sliced raw beef,"Dun gesneden ruw rundvlees met rucola en parmezaan",€9-13,FALSE,TRUE,FALSE,TRUE,FALSE,https://www.google.com/search?q=carpaccio%20italian&tbm=isch
+Gnocchi,Gnocchi,Gnocchi,Potato dumplings,"Aardappelknoedels, geserveerd met verschillende sauzen",€6-10,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=gnocchi%20italian&tbm=isch
+Antipasto,Antipasto,Antipasto,Appetizer platter,"Voorgerecht met vlees, kaas, olijven en groenten",€8-12,TRUE,FALSE,FALSE,TRUE,FALSE,https://www.google.com/search?q=antipasto%20italian&tbm=isch
+Panna Cotta,Panna Cotta,Panna Cotta,Cream dessert,"Roomdessert, vaak geserveerd met bessen of karamel",€4-6,FALSE,FALSE,FALSE,TRUE,TRUE,https://www.google.com/search?q=panna%20cotta%20italian&tbm=isch
