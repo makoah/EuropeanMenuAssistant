@@ -21,17 +21,21 @@
 
 - [ ] 1.0 Design Planning and Architecture
   - [ ] 1.1 Create styles/components/ directory structure for modular component styling
-  - [ ] 1.2 Define comprehensive design system with country-specific visual identities
-  - [ ] 1.3 Document color palettes, typography, and design principles for each country
-  - [ ] 1.4 Create design tokens for consistent spacing, shadows, and transitions
+  - [ ] 1.2 Create styles/components/cards.css with base card styling and country-specific variations
+  - [ ] 1.3 Create styles/components/buttons.css with enhanced button designs for each country
+  - [ ] 1.4 Create styles/components/typography.css with country-specific font hierarchies
+  - [ ] 1.5 Create styles/components/backgrounds.css with country-specific background treatments
+  - [ ] 1.6 Update styles/main.css to import component stylesheets
+  - [ ] 1.7 Define design tokens for spacing, shadows, transitions, and animations
 - [ ] 2.0 Enhanced French Theme - "Sophisticated Refinement"
-  - [ ] 2.1 Implement elegant card design with sophisticated shadows and borders
-  - [ ] 2.2 Add refined typography with French-inspired font combinations
-  - [ ] 2.3 Create sophisticated color gradients and background treatments
-  - [ ] 2.4 Design elegant button styling with French flag-inspired gradients
-  - [ ] 2.5 Enhance price display with refined styling and better visual integration
-  - [ ] 2.6 Add subtle animations and hover effects for enhanced interactivity
-  - [ ] 2.7 Test and refine French theme for maximum visual impact
+  - [ ] 2.1 Update French theme colors in themes.css with sophisticated navy, gold, and red palette
+  - [ ] 2.2 Implement elegant card design with sophisticated shadows and subtle borders
+  - [ ] 2.3 Add refined typography with French-inspired font combinations and proper hierarchy
+  - [ ] 2.4 Create sophisticated background gradients with French lavender and cream tones
+  - [ ] 2.5 Design elegant button styling with French flag-inspired gradients and hover effects
+  - [ ] 2.6 Enhance price display with refined styling and better visual integration
+  - [ ] 2.7 Add subtle animations and transitions for enhanced French elegance
+  - [ ] 2.8 Test French theme across different screen sizes and interactions
 - [ ] 3.0 Enhanced Spanish Theme - "Vibrant Elegance"
   - [ ] 3.1 Implement vibrant card design with warm shadows and Mediterranean feel
   - [ ] 3.2 Add bold, passionate typography with Spanish-inspired fonts
