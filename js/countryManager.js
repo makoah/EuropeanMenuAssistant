@@ -196,7 +196,7 @@ export class CountryManager {
     }
     
     /**
-     * Apply theme for current country
+     * Apply theme for current country using CSS custom properties
      */
     applyTheme(countryCode) {
         const country = this.countries[countryCode];
@@ -209,14 +209,12 @@ export class CountryManager {
         }
         
         const root = document.documentElement;
-        const theme = country.theme;
         
-        // Apply CSS custom properties
-        root.style.setProperty('--color-primary', theme.primary);
-        root.style.setProperty('--color-secondary', theme.secondary);
-        root.style.setProperty('--color-accent', theme.accent);
-        root.style.setProperty('--color-background', theme.background);
-        root.style.setProperty('--color-text', theme.text);
+        // Set data-country attribute for CSS theme selector
+        root.setAttribute('data-country', countryCode);
+        
+        // Add theme transition class for smooth animations
+        root.classList.add('theme-transition');
         
         // Update app title
         const titleElement = document.querySelector('title');
@@ -226,6 +224,13 @@ export class CountryManager {
         
         // Update any country-specific UI elements
         this.updateCountryUI(country);
+        
+        // Remove transition class after animation completes
+        setTimeout(() => {
+            root.classList.remove('theme-transition');
+        }, 500);
+        
+        console.log(`🎨 Theme applied for ${country.name} (${countryCode})`);
     }
     
     /**
@@ -235,11 +240,18 @@ export class CountryManager {
         // Update header title if it exists
         const headerTitle = document.querySelector('.app-title');
         if (headerTitle) {
-            headerTitle.textContent = country.displayName;
+            // Remove existing flag
+            const existingFlag = headerTitle.querySelector('.country-flag');
+            if (existingFlag) {
+                existingFlag.remove();
+            }
+            
+            // Update title text
+            headerTitle.innerHTML = `${country.displayName} <span class="country-flag">${country.flag}</span>`;
         }
         
-        // Update flag display if it exists
-        const flagElement = document.querySelector('.country-flag');
+        // Update standalone flag display if it exists
+        const flagElement = document.querySelector('.country-flag:not(.app-title .country-flag)');
         if (flagElement) {
             flagElement.textContent = country.flag;
         }
@@ -250,6 +262,23 @@ export class CountryManager {
             if (msg.textContent.includes('Spanish Menu Cheater')) {
                 msg.textContent = msg.textContent.replace('Spanish Menu Cheater', country.displayName);
             }
+        });
+        
+        // Update page meta description
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', `Discover and translate authentic ${country.language} cuisine with the ${country.displayName}`);
+        }
+        
+        // Update any country selector dropdowns
+        const countrySelectors = document.querySelectorAll('.country-selector');
+        countrySelectors.forEach(selector => {
+            const options = selector.querySelectorAll('option');
+            options.forEach(option => {
+                if (option.value === country.code) {
+                    option.selected = true;
+                }
+            });
         });
     }
     
@@ -311,6 +340,44 @@ export class CountryManager {
      */
     getAppName() {
         return this.getCountryInfo().displayName;
+    }
+    
+    /**
+     * Get country flag emoji
+     */
+    getFlag() {
+        return this.getCountryInfo().flag;
+    }
+    
+    /**
+     * Get country theme colors
+     */
+    getTheme() {
+        return this.getCountryInfo().theme;
+    }
+    
+    /**
+     * Switch to next available country (for demo purposes)
+     */
+    switchToNextCountry() {
+        const countries = Object.keys(this.countries);
+        const currentIndex = countries.indexOf(this.currentCountry);
+        const nextIndex = (currentIndex + 1) % countries.length;
+        this.setCountry(countries[nextIndex]);
+    }
+    
+    /**
+     * Get country display info for UI
+     */
+    getCountryDisplayInfo() {
+        const country = this.getCountryInfo();
+        return {
+            name: country.name,
+            displayName: country.displayName,
+            flag: country.flag,
+            language: country.language,
+            code: country.code
+        };
     }
     
     /**

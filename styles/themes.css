@@ -1,0 +1,308 @@
+/**
+ * Country-Specific Theme Variables
+ * European Menu Assistant
+ * 
+ * This file contains CSS custom properties for country-specific theming
+ * inspired by national flag colors and European design patterns.
+ */
+
+/* ===== SPANISH THEME ===== */
+:root[data-country="spain"] {
+  /* Spanish Flag Colors */
+  --flag-red: #C41E3A;
+  --flag-yellow: #FFD700;
+  --flag-dark-red: #AA1929;
+  
+  /* Primary Theme Colors */
+  --primary-color: var(--flag-red);
+  --secondary-color: var(--flag-yellow);
+  --accent-color: #FF6B35;
+  
+  /* Background Colors */
+  --background-color: #FFF8F0;
+  --card-background: #FFFFFF;
+  --modal-background: #FFFFFF;
+  
+  /* Text Colors */
+  --text-color: #2C1810;
+  --text-secondary: #5D4037;
+  --text-light: #8D6E63;
+  
+  /* Header Gradient - Spanish Flag Inspired */
+  --header-gradient: linear-gradient(135deg, 
+    var(--flag-red) 0%, 
+    var(--flag-red) 25%, 
+    var(--flag-yellow) 25%, 
+    var(--flag-yellow) 75%, 
+    var(--flag-red) 75%, 
+    var(--flag-red) 100%);
+  
+  /* Button Styles */
+  --button-primary: var(--flag-red);
+  --button-primary-hover: var(--flag-dark-red);
+  --button-secondary: var(--flag-yellow);
+  --button-secondary-hover: #E6C200;
+  
+  /* Border and Shadow */
+  --border-color: #E0E0E0;
+  --shadow-color: rgba(196, 30, 58, 0.1);
+  --shadow-hover: rgba(196, 30, 58, 0.2);
+  
+  /* Status Colors */
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --warning-color: #FF9800;
+  --info-color: var(--flag-red);
+}
+
+/* ===== FRENCH THEME ===== */
+:root[data-country="france"] {
+  /* French Flag Colors */
+  --flag-blue: #0055A4;
+  --flag-white: #FFFFFF;
+  --flag-red: #EF4135;
+  --flag-dark-blue: #003D7A;
+  
+  /* Primary Theme Colors */
+  --primary-color: var(--flag-blue);
+  --secondary-color: var(--flag-red);
+  --accent-color: var(--flag-white);
+  
+  /* Background Colors */
+  --background-color: #F8F9FF;
+  --card-background: #FFFFFF;
+  --modal-background: #FFFFFF;
+  
+  /* Text Colors */
+  --text-color: #1A1A2E;
+  --text-secondary: #2C3E50;
+  --text-light: #6C7B8A;
+  
+  /* Header Gradient - French Flag Inspired */
+  --header-gradient: linear-gradient(90deg, 
+    var(--flag-blue) 0%, 
+    var(--flag-blue) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  
+  /* Button Styles */
+  --button-primary: var(--flag-blue);
+  --button-primary-hover: var(--flag-dark-blue);
+  --button-secondary: var(--flag-red);
+  --button-secondary-hover: #CC2E1F;
+  
+  /* Border and Shadow */
+  --border-color: #E0E6FF;
+  --shadow-color: rgba(0, 85, 164, 0.1);
+  --shadow-hover: rgba(0, 85, 164, 0.2);
+  
+  /* Status Colors */
+  --success-color: #27AE60;
+  --error-color: #E74C3C;
+  --warning-color: #F39C12;
+  --info-color: var(--flag-blue);
+}
+
+/* ===== GERMAN THEME (PLACEHOLDER) ===== */
+:root[data-country="germany"] {
+  /* German Flag Colors */
+  --flag-black: #000000;
+  --flag-red: #DD0000;
+  --flag-gold: #FFCE00;
+  
+  /* Primary Theme Colors */
+  --primary-color: var(--flag-black);
+  --secondary-color: var(--flag-red);
+  --accent-color: var(--flag-gold);
+  
+  /* Background Colors */
+  --background-color: #F5F5F5;
+  --card-background: #FFFFFF;
+  --modal-background: #FFFFFF;
+  
+  /* Text Colors */
+  --text-color: #2C2C2C;
+  --text-secondary: #4A4A4A;
+  --text-light: #757575;
+  
+  /* Header Gradient - German Flag Inspired */
+  --header-gradient: linear-gradient(180deg, 
+    var(--flag-black) 0%, 
+    var(--flag-black) 33.33%, 
+    var(--flag-red) 33.33%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-gold) 66.66%, 
+    var(--flag-gold) 100%);
+  
+  /* Button Styles */
+  --button-primary: var(--flag-black);
+  --button-primary-hover: #333333;
+  --button-secondary: var(--flag-red);
+  --button-secondary-hover: #BB0000;
+  
+  /* Border and Shadow */
+  --border-color: #E0E0E0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  
+  /* Status Colors */
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --warning-color: #FF9800;
+  --info-color: var(--flag-black);
+}
+
+/* ===== ITALIAN THEME (PLACEHOLDER) ===== */
+:root[data-country="italy"] {
+  /* Italian Flag Colors */
+  --flag-green: #009246;
+  --flag-white: #FFFFFF;
+  --flag-red: #CE2B37;
+  
+  /* Primary Theme Colors */
+  --primary-color: var(--flag-green);
+  --secondary-color: var(--flag-red);
+  --accent-color: var(--flag-white);
+  
+  /* Background Colors */
+  --background-color: #F8FFF8;
+  --card-background: #FFFFFF;
+  --modal-background: #FFFFFF;
+  
+  /* Text Colors */
+  --text-color: #1B4D3E;
+  --text-secondary: #2E7D32;
+  --text-light: #66BB6A;
+  
+  /* Header Gradient - Italian Flag Inspired */
+  --header-gradient: linear-gradient(90deg, 
+    var(--flag-green) 0%, 
+    var(--flag-green) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  
+  /* Button Styles */
+  --button-primary: var(--flag-green);
+  --button-primary-hover: #007A3D;
+  --button-secondary: var(--flag-red);
+  --button-secondary-hover: #B8242E;
+  
+  /* Border and Shadow */
+  --border-color: #E8F5E8;
+  --shadow-color: rgba(0, 146, 70, 0.1);
+  --shadow-hover: rgba(0, 146, 70, 0.2);
+  
+  /* Status Colors */
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --warning-color: #FF9800;
+  --info-color: var(--flag-green);
+}
+
+/* ===== EUROPEAN UNION DEFAULT THEME ===== */
+:root {
+  /* EU Flag Colors */
+  --eu-blue: #003399;
+  --eu-gold: #FFCC00;
+  
+  /* Default Theme Colors */
+  --primary-color: var(--eu-blue);
+  --secondary-color: var(--eu-gold);
+  --accent-color: #FFFFFF;
+  
+  /* Background Colors */
+  --background-color: #F0F4FF;
+  --card-background: #FFFFFF;
+  --modal-background: #FFFFFF;
+  
+  /* Text Colors */
+  --text-color: #1A1A2E;
+  --text-secondary: #2C3E50;
+  --text-light: #6C7B8A;
+  
+  /* Header Gradient - EU Inspired */
+  --header-gradient: linear-gradient(135deg, 
+    var(--eu-blue) 0%, 
+    #0055CC 50%, 
+    var(--eu-gold) 100%);
+  
+  /* Button Styles */
+  --button-primary: var(--eu-blue);
+  --button-primary-hover: #002266;
+  --button-secondary: var(--eu-gold);
+  --button-secondary-hover: #E6B800;
+  
+  /* Border and Shadow */
+  --border-color: #E0E6FF;
+  --shadow-color: rgba(0, 51, 153, 0.1);
+  --shadow-hover: rgba(0, 51, 153, 0.2);
+  
+  /* Status Colors */
+  --success-color: #27AE60;
+  --error-color: #E74C3C;
+  --warning-color: #F39C12;
+  --info-color: var(--eu-blue);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.flag-gradient {
+  background: var(--header-gradient);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.country-button {
+  background: var(--button-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.country-button:hover {
+  background: var(--button-primary-hover);
+  box-shadow: 0 4px 8px var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.country-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.country-card:hover {
+  box-shadow: 0 4px 16px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  :root {
+    /* Reduce header gradient complexity on mobile */
+    --header-gradient: linear-gradient(135deg, 
+      var(--primary-color) 0%, 
+      var(--secondary-color) 100%);
+  }
+}
+
+/* ===== THEME TRANSITION ANIMATIONS ===== */
+* {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+.theme-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

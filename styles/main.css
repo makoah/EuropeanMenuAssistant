@@ -1,50 +1,49 @@
 /* ===================================
-   Spanish-Themed Font Imports
+   European-Themed Font Imports
    =================================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+/* ===================================
+   Country-Specific Theme Imports
+   =================================== */
+@import url('./themes.css');
 
 /* ===================================
    CSS Custom Properties (Variables)
    =================================== */
 :root {
-  /* Spanish-themed Color Palette - Inspired by Spanish architecture and culture */
-  --color-primary: #D2691E;        /* Peru/Orange - warm Spanish terra cotta */
-  --color-primary-light: #F4A460;  /* Sandy brown - lighter accent */
-  --color-primary-dark: #A0522D;   /* Sienna - darker accent */
-  --color-primary-vibrant: #E67E22; /* Vibrant orange for highlights */
+  /* Legacy color mappings for compatibility */
+  --color-primary: var(--primary-color);
+  --color-primary-light: var(--button-secondary);
+  --color-primary-dark: var(--button-primary-hover);
+  --color-primary-vibrant: var(--accent-color);
   
-  --color-secondary: #CD853F;      /* Peru - complementary warm tone */
-  --color-accent: #B22222;         /* Fire brick - Spanish red accent */
-  --color-accent-light: #DC143C;   /* Crimson red for emphasis */
-  
-  /* Spanish Cultural Colors */
-  --color-flamenco-red: #C41E3A;   /* Deep passionate red */
-  --color-seville-gold: #DAA520;   /* Golden yellow accent */
-  --color-mediterranean: #4682B4;  /* Mediterranean blue */
-  --color-olive: #6B8E23;          /* Spanish olive green */
+  --color-secondary: var(--secondary-color);
+  --color-accent: var(--accent-color);
+  --color-accent-light: var(--secondary-color);
   
   /* Neutral Colors */
-  --color-background: #FFFEF7;     /* Warm white background */
-  --color-surface: #FFFFFF;        /* Pure white for cards/surfaces */
-  --color-surface-alt: #F8F6F0;    /* Slightly warm grey for alternating surfaces */
+  --color-background: var(--background-color);
+  --color-surface: var(--card-background);
+  --color-surface-alt: var(--background-color);
   
   /* Text Colors */
-  --color-text-primary: #2D1810;   /* Dark brown - main text */
-  --color-text-secondary: #5D4E37; /* Medium brown - secondary text */
-  --color-text-tertiary: #8B7355;  /* Light brown - tertiary text */
-  --color-text-inverse: #FFFFFF;   /* White text for dark backgrounds */
+  --color-text-primary: var(--text-color);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-light);
+  --color-text-inverse: #FFFFFF;
   
   /* Status Colors */
-  --color-success: #228B22;        /* Forest green */
-  --color-warning: #FF8C00;        /* Dark orange */
-  --color-error: #DC143C;          /* Crimson */
-  --color-info: #4682B4;           /* Steel blue */
+  --color-success: var(--success-color);
+  --color-warning: var(--warning-color);
+  --color-error: var(--error-color);
+  --color-info: var(--info-color);
   
   /* Interactive States */
-  --color-interactive: var(--color-primary);
-  --color-interactive-hover: var(--color-primary-dark);
-  --color-interactive-active: var(--color-accent);
-  --color-interactive-disabled: var(--color-text-tertiary);
+  --color-interactive: var(--button-primary);
+  --color-interactive-hover: var(--button-primary-hover);
+  --color-interactive-active: var(--button-secondary);
+  --color-interactive-disabled: var(--text-light);
   
   /* Typography Scale - Spanish-inspired fonts */
   --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
@@ -214,7 +213,7 @@ body {
 
 /* Header */
 .app-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-vibrant) 50%, var(--color-accent) 100%);
+  background: var(--header-gradient);
   color: var(--color-text-inverse);
   padding: var(--space-sm) var(--space-md);
   box-shadow: var(--shadow-md);
@@ -223,9 +222,10 @@ body {
   z-index: var(--z-sticky);
   position: relative;
   overflow: hidden;
+  transition: background 0.5s ease;
 }
 
-/* Spanish decorative element */
+/* European flag-inspired decorative element */
 .app-header::before {
   content: '';
   position: absolute;
@@ -234,9 +234,22 @@ body {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 30%),
-    radial-gradient(circle at 80% 20%, rgba(196, 30, 58, 0.1) 0%, transparent 30%);
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%);
   pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Country flag indicator */
+.app-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--header-gradient);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .header-content {
@@ -258,11 +271,15 @@ body {
   z-index: 1;
 }
 
-.app-title::after {
-  content: '🇪🇸';
+.app-title .country-flag {
   margin-left: var(--space-sm);
   font-size: 0.8em;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.app-title .country-flag:hover {
+  transform: scale(1.1);
 }
 
 .header-controls {

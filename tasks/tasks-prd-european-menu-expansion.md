@@ -39,12 +39,12 @@
   - [ ] 3.2 Create data/countries/france/menu-items.csv with proper CSV structure (id, french, english, category, description, tags, allergens, dietary, region, popularity)
   - [ ] 3.3 Validate French data format matches Spanish CSV structure exactly
   - [ ] 3.4 Test French menu data loading and search functionality
-- [ ] 4.0 Implement Country-Specific Theming
-  - [ ] 4.1 Create styles/themes.css with CSS custom properties for each country theme
-  - [ ] 4.2 Define French flag colors (#0055A4, #FFFFFF, #EF4135) and Spanish theme colors
-  - [ ] 4.3 Update styles/main.css to use CSS custom properties instead of hardcoded colors
-  - [ ] 4.4 Implement theme switching logic in countryManager.js
-  - [ ] 4.5 Add flag icons or subtle flag elements to header for selected country
+- [x] 4.0 Implement Country-Specific Theming
+  - [x] 4.1 Create styles/themes.css with CSS custom properties for each country theme
+  - [x] 4.2 Define French flag colors (#0055A4, #FFFFFF, #EF4135) and Spanish theme colors
+  - [x] 4.3 Update styles/main.css to use CSS custom properties instead of hardcoded colors
+  - [x] 4.4 Implement theme switching logic in countryManager.js
+  - [x] 4.5 Add flag icons or subtle flag elements to header for selected country
 - [ ] 5.0 Update Settings Interface for Country Selection
   - [ ] 5.1 Add country selector dropdown to settings modal in index.html
   - [ ] 5.2 Update settingsManager.js to handle country preference saving/loading
