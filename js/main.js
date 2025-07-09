@@ -455,6 +455,9 @@ class EuropeanMenuAssistant {
             this.elements.hideDislikedFilter.addEventListener('click', this.handleFilterClick.bind(this));
         }
         
+        // Country change event listener
+        window.addEventListener('countryChanged', this.handleCountryChange.bind(this));
+        
         console.log('🎯 Event listeners set up successfully');
         
         // Debug: Global click listener to detect settings button clicks
@@ -670,7 +673,8 @@ class EuropeanMenuAssistant {
             if (this.settingsManager && !this.settingsManager.isInitialized) {
                 await this.settingsManager.initialize({
                     usageTracker: this.usageTracker,
-                    googleVisionOCR: this.hybridOCRProcessor ? this.hybridOCRProcessor.googleVisionOCR : null
+                    googleVisionOCR: this.hybridOCRProcessor ? this.hybridOCRProcessor.googleVisionOCR : null,
+                    countryManager: this.countryManager
                 });
             }
             
@@ -686,6 +690,125 @@ class EuropeanMenuAssistant {
         } catch (error) {
             console.error('❌ Error opening settings:', error);
             alert('Unable to open settings. Please try again.');
+        }
+    }
+
+    /**
+     * Handle country change event
+     */
+    async handleCountryChange(event) {
+        try {
+            const { country, countryInfo } = event.detail;
+            console.log(`🌍 Country changed to: ${countryInfo.displayName}`);
+            
+            // Update data manager to use new country
+            if (this.dataManager) {
+                console.log('📊 Reloading menu data for new country...');
+                await this.dataManager.loadMenuData();
+                
+                // Update search engine with new data
+                if (this.searchEngine) {
+                    this.searchEngine.updateData(this.dataManager);
+                }
+                
+                console.log(`✅ Menu data reloaded: ${this.dataManager.getMenuItems().length} items`);
+            }
+            
+            // Clear current search results
+            this.clearSearchResults();
+            
+            // Update welcome message or any country-specific UI
+            this.updateWelcomeMessage(countryInfo);
+            
+            // Show success notification
+            this.showCountryChangeNotification(countryInfo);
+            
+        } catch (error) {
+            console.error('❌ Error handling country change:', error);
+            alert('Failed to switch country. Please try again.');
+        }
+    }
+
+    /**
+     * Update welcome message for new country
+     */
+    updateWelcomeMessage(countryInfo) {
+        const welcomeMessage = document.querySelector('.welcome-message');
+        if (welcomeMessage) {
+            const title = welcomeMessage.querySelector('h2');
+            const subtitle = welcomeMessage.querySelector('p');
+            
+            if (title) {
+                title.textContent = `Welcome to ${countryInfo.displayName}!`;
+            }
+            
+            if (subtitle) {
+                subtitle.textContent = `Discover and translate authentic ${countryInfo.language} cuisine with our camera-powered menu assistant.`;
+            }
+        }
+    }
+
+    /**
+     * Show country change notification
+     */
+    showCountryChangeNotification(countryInfo) {
+        const notification = document.createElement('div');
+        notification.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.2em;">${countryInfo.flag}</span>
+                <span>Switched to ${countryInfo.displayName}</span>
+            </div>
+        `;
+        notification.style.cssText = `
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    /**
+     * Clear search results
+     */
+    clearSearchResults() {
+        if (this.elements.searchInput) {
+            this.elements.searchInput.value = '';
+        }
+        
+        if (this.elements.resultsList) {
+            this.elements.resultsList.innerHTML = '';
+        }
+        
+        // Hide results container
+        const resultsContainer = document.querySelector('.search-results');
+        if (resultsContainer) {
+            resultsContainer.classList.add('hidden');
+        }
+        
+        // Show welcome message
+        const welcomeMessage = document.querySelector('.welcome-message');
+        if (welcomeMessage) {
+            welcomeMessage.classList.remove('hidden');
         }
     }
 
@@ -1779,7 +1902,8 @@ class EuropeanMenuAssistant {
             if (!this.settingsManager.isInitialized) {
                 await this.settingsManager.initialize({
                     usageTracker: this.usageTracker,
-                    googleVisionOCR: this.hybridOCRProcessor.googleVisionOCR
+                    googleVisionOCR: this.hybridOCRProcessor.googleVisionOCR,
+                    countryManager: this.countryManager
                 });
             }
             

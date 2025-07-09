@@ -21,22 +21,50 @@
         }
         
         .theme-card {
-            background: var(--card-background);
-            border: 1px solid var(--border-color);
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 15px;
             padding: 0;
-            box-shadow: 0 4px 12px var(--shadow-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
         }
         
         .theme-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px var(--shadow-hover);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         
-        .theme-header {
-            background: var(--header-gradient);
+        /* Spanish theme header */
+        .theme-card.spain .theme-header {
+            background: linear-gradient(135deg, #C41E3A 0%, #C41E3A 25%, #FFD700 25%, #FFD700 75%, #C41E3A 75%, #C41E3A 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* French theme header */
+        .theme-card.france .theme-header {
+            background: linear-gradient(90deg, #0055A4 0%, #0055A4 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #EF4135 66.66%, #EF4135 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* German theme header */
+        .theme-card.germany .theme-header {
+            background: linear-gradient(180deg, #000000 0%, #000000 33.33%, #DD0000 33.33%, #DD0000 66.66%, #FFCE00 66.66%, #FFCE00 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Italian theme header */
+        .theme-card.italy .theme-header {
+            background: linear-gradient(90deg, #009246 0%, #009246 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #CE2B37 66.66%, #CE2B37 100%);
             color: white;
             padding: 20px;
             text-align: center;
@@ -67,8 +95,6 @@
         }
         
         .theme-demo-button {
-            background: var(--button-primary);
-            color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 25px;
@@ -76,23 +102,52 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px var(--shadow-color);
             margin: 10px 5px;
+            color: white;
         }
         
-        .theme-demo-button:hover {
-            background: var(--button-primary-hover);
+        .theme-card.spain .theme-demo-button {
+            background: #C41E3A;
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+        }
+        
+        .theme-card.spain .theme-demo-button:hover {
+            background: #AA1929;
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px var(--shadow-hover);
+            box-shadow: 0 4px 16px rgba(196, 30, 58, 0.4);
         }
         
-        .theme-demo-button.secondary {
-            background: var(--button-secondary);
-            color: var(--text-color);
+        .theme-card.france .theme-demo-button {
+            background: #0055A4;
+            box-shadow: 0 2px 8px rgba(0, 85, 164, 0.3);
         }
         
-        .theme-demo-button.secondary:hover {
-            background: var(--button-secondary-hover);
+        .theme-card.france .theme-demo-button:hover {
+            background: #003D7A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 85, 164, 0.4);
+        }
+        
+        .theme-card.germany .theme-demo-button {
+            background: #000000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-card.germany .theme-demo-button:hover {
+            background: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        .theme-card.italy .theme-demo-button {
+            background: #009246;
+            box-shadow: 0 2px 8px rgba(0, 146, 70, 0.3);
+        }
+        
+        .theme-card.italy .theme-demo-button:hover {
+            background: #007A3D;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 146, 70, 0.4);
         }
         
         .color-palette {
@@ -133,8 +188,6 @@
         }
         
         .switch-button {
-            background: linear-gradient(135deg, #003399, #FFCC00);
-            color: white;
             border: none;
             padding: 15px 30px;
             border-radius: 30px;
@@ -142,13 +195,54 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 51, 153, 0.3);
             margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .switch-button.spain {
+            background: #C41E3A;
+            color: white;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+        }
+        
+        .switch-button.france {
+            background: #0055A4;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 85, 164, 0.3);
+        }
+        
+        .switch-button.germany {
+            background: #000000;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .switch-button.italy {
+            background: #009246;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 146, 70, 0.3);
         }
         
         .switch-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 51, 153, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .switch-button.spain:hover {
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+        
+        .switch-button.france:hover {
+            box-shadow: 0 6px 20px rgba(0, 85, 164, 0.4);
+        }
+        
+        .switch-button.germany:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .switch-button.italy:hover {
+            box-shadow: 0 6px 20px rgba(0, 146, 70, 0.4);
         }
         
         .menu-item-sample {
@@ -189,10 +283,7 @@
         .intro-title {
             font-size: 2.5em;
             margin-bottom: 20px;
-            background: var(--header-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-color);
             font-weight: bold;
         }
         
@@ -214,14 +305,14 @@
         </div>
         
         <div class="controls">
-            <button class="switch-button" onclick="switchToCountry('spain')">🇪🇸 Spain</button>
-            <button class="switch-button" onclick="switchToCountry('france')">🇫🇷 France</button>
-            <button class="switch-button" onclick="switchToCountry('germany')">🇩🇪 Germany</button>
-            <button class="switch-button" onclick="switchToCountry('italy')">🇮🇹 Italy</button>
+            <button class="switch-button spain" onclick="switchToCountry('spain')">🇪🇸 Spain</button>
+            <button class="switch-button france" onclick="switchToCountry('france')">🇫🇷 France</button>
+            <button class="switch-button germany" onclick="switchToCountry('germany')">🇩🇪 Germany</button>
+            <button class="switch-button italy" onclick="switchToCountry('italy')">🇮🇹 Italy</button>
         </div>
         
         <div class="theme-showcase">
-            <div class="theme-card">
+            <div class="theme-card spain">
                 <div class="theme-header">
                     <span class="theme-flag">🇪🇸</span>
                     <h3 class="theme-title">Spanish Menu Assistant</h3>
@@ -242,7 +333,7 @@
                 </div>
             </div>
             
-            <div class="theme-card">
+            <div class="theme-card france">
                 <div class="theme-header">
                     <span class="theme-flag">🇫🇷</span>
                     <h3 class="theme-title">French Menu Assistant</h3>
@@ -263,7 +354,7 @@
                 </div>
             </div>
             
-            <div class="theme-card">
+            <div class="theme-card germany">
                 <div class="theme-header">
                     <span class="theme-flag">🇩🇪</span>
                     <h3 class="theme-title">German Menu Assistant</h3>
@@ -284,7 +375,7 @@
                 </div>
             </div>
             
-            <div class="theme-card">
+            <div class="theme-card italy">
                 <div class="theme-header">
                     <span class="theme-flag">🇮🇹</span>
                     <h3 class="theme-title">Italian Menu Assistant</h3>

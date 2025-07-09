@@ -8,6 +8,7 @@ class SettingsManager {
         this.modal = null;
         this.usageTracker = null;
         this.googleVisionOCR = null;
+        this.countryManager = null;
         
         // DOM elements
         this.elements = {};
@@ -28,11 +29,13 @@ class SettingsManager {
         try {
             this.usageTracker = dependencies.usageTracker;
             this.googleVisionOCR = dependencies.googleVisionOCR;
+            this.countryManager = dependencies.countryManager;
             
             this.initializeElements();
             this.attachEventListeners();
             await this.loadSettings();
             await this.updateUsageDisplay();
+            await this.updateCountrySelector();
             
             console.log('⚙️ Settings manager initialized');
             
@@ -53,6 +56,14 @@ class SettingsManager {
             settingsBtn: document.getElementById('settings-btn'),
             closeBtn: document.getElementById('settings-close'),
             saveBtn: document.getElementById('settings-save'),
+            
+            // Country selector section
+            countrySelector: document.getElementById('country-selector'),
+            countryPreviewFlag: document.getElementById('country-preview-flag'),
+            countryPreviewName: document.getElementById('country-preview-name'),
+            countryMenuCount: document.getElementById('country-menu-count'),
+            countryLanguage: document.getElementById('country-language'),
+            countryDescription: document.getElementById('country-description'),
             
             // API key section
             apiKeyInput: document.getElementById('google-vision-api-key'),
@@ -100,6 +111,9 @@ class SettingsManager {
                 this.closeModal();
             }
         });
+        
+        // Country selector controls
+        this.addEventListenerWithCleanup(this.elements.countrySelector, 'change', () => this.onCountryChange());
         
         // API key controls
         this.addEventListenerWithCleanup(this.elements.apiKeyInput, 'input', () => this.onApiKeyChange());
@@ -587,6 +601,120 @@ class SettingsManager {
     }
 
     /**
+     * Handle country selector change
+     */
+    async onCountryChange() {
+        if (!this.countryManager) {
+            console.warn('Country manager not available');
+            return;
+        }
+        
+        const selectedCountry = this.elements.countrySelector.value;
+        
+        try {
+            // Update country manager
+            this.countryManager.setCountry(selectedCountry);
+            
+            // Update the preview display
+            await this.updateCountrySelector();
+            
+            // Dispatch event for other components to listen to
+            window.dispatchEvent(new CustomEvent('countryChanged', {
+                detail: {
+                    country: selectedCountry,
+                    countryInfo: this.countryManager.getCountryInfo()
+                }
+            }));
+            
+            console.log(`🌍 Country changed to: ${selectedCountry}`);
+            
+        } catch (error) {
+            console.error('Error changing country:', error);
+            this.showNotification('Failed to change country', 'error');
+        }
+    }
+    
+    /**
+     * Update country selector display
+     */
+    async updateCountrySelector() {
+        if (!this.countryManager) {
+            console.warn('Country manager not available');
+            return;
+        }
+        
+        try {
+            const countryInfo = this.countryManager.getCountryInfo();
+            
+            // Update selector value
+            this.elements.countrySelector.value = countryInfo.code;
+            
+            // Update preview display
+            if (this.elements.countryPreviewFlag) {
+                this.elements.countryPreviewFlag.textContent = countryInfo.flag;
+            }
+            
+            if (this.elements.countryPreviewName) {
+                this.elements.countryPreviewName.textContent = countryInfo.displayName;
+            }
+            
+            if (this.elements.countryLanguage) {
+                this.elements.countryLanguage.textContent = countryInfo.language;
+            }
+            
+            // Update description based on country
+            if (this.elements.countryDescription) {
+                const descriptions = {
+                    spain: 'Discover authentic Spanish cuisine with traditional dishes from across Spain\'s diverse regions.',
+                    france: 'Explore the elegance of French gastronomy with classic dishes from France\'s rich culinary heritage.',
+                    germany: 'Experience hearty German cuisine with traditional dishes from Germany\'s regional specialties.',
+                    italy: 'Savor the flavors of Italian cooking with authentic dishes from Italy\'s renowned culinary traditions.'
+                };
+                
+                this.elements.countryDescription.textContent = descriptions[countryInfo.code] || descriptions.spain;
+            }
+            
+            // Update menu count (this would need to be connected to actual data)
+            if (this.elements.countryMenuCount) {
+                const menuCounts = {
+                    spain: '193',
+                    france: '215',
+                    germany: '15',
+                    italy: '15'
+                };
+                
+                this.elements.countryMenuCount.textContent = menuCounts[countryInfo.code] || '0';
+            }
+            
+        } catch (error) {
+            console.error('Error updating country selector:', error);
+        }
+    }
+    
+    /**
+     * Get country preference from settings
+     */
+    getCountryPreference() {
+        if (!this.countryManager) {
+            return 'spain'; // Default fallback
+        }
+        
+        return this.countryManager.currentCountry || 'spain';
+    }
+    
+    /**
+     * Save country preference
+     */
+    saveCountryPreference(countryCode) {
+        if (!this.countryManager) {
+            console.warn('Country manager not available for saving preference');
+            return;
+        }
+        
+        this.countryManager.saveCountryPreference(countryCode);
+    }
+
+    /**
      * Clean up resources
      */
     cleanup() {
@@ -599,6 +727,7 @@ class SettingsManager {
         // Clear references
         this.usageTracker = null;
         this.googleVisionOCR = null;
+        this.countryManager = null;
         this.elements = {};
         
         console.log('🧹 Settings manager cleaned up');

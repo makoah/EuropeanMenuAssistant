@@ -91,6 +91,7 @@ describe('SettingsManager', () => {
     let mockElements;
     let mockUsageTracker;
     let mockGoogleVisionOCR;
+    let mockCountryManager;
 
     beforeEach(() => {
         settingsManager = new SettingsManager();
@@ -101,6 +102,15 @@ describe('SettingsManager', () => {
             settingsBtn: createMockElement('settings-btn', 'button'),
             closeBtn: createMockElement('settings-close', 'button'),
             saveBtn: createMockElement('settings-save', 'button'),
+            
+            // Country selector elements
+            countrySelector: createMockElement('country-selector', 'select'),
+            countryPreviewFlag: createMockElement('country-preview-flag'),
+            countryPreviewName: createMockElement('country-preview-name'),
+            countryMenuCount: createMockElement('country-menu-count'),
+            countryLanguage: createMockElement('country-language'),
+            countryDescription: createMockElement('country-description'),
+            
             apiKeyInput: createMockElement('google-vision-api-key', 'input'),
             toggleVisibilityBtn: createMockElement('toggle-api-key-visibility', 'button'),
             testApiKeyBtn: createMockElement('test-api-key', 'button'),
@@ -157,6 +167,26 @@ describe('SettingsManager', () => {
         // Mock Google Vision OCR
         mockGoogleVisionOCR = {
             processImage: jest.fn()
+        };
+
+        // Mock Country Manager
+        mockCountryManager = {
+            currentCountry: 'spain',
+            getCountryInfo: jest.fn(() => ({
+                code: 'spain',
+                name: 'Spain',
+                displayName: 'Spanish Menu Assistant',
+                language: 'Spanish',
+                flag: '🇪🇸'
+            })),
+            setCountry: jest.fn(),
+            saveCountryPreference: jest.fn(),
+            getAvailableCountries: jest.fn(() => [
+                { code: 'spain', name: 'Spain', displayName: 'Spanish Menu Assistant', language: 'Spanish', flag: '🇪🇸' },
+                { code: 'france', name: 'France', displayName: 'French Menu Assistant', language: 'French', flag: '🇫🇷' },
+                { code: 'germany', name: 'Germany', displayName: 'German Menu Assistant', language: 'German', flag: '🇩🇪' },
+                { code: 'italy', name: 'Italy', displayName: 'Italian Menu Assistant', language: 'Italian', flag: '🇮🇹' }
+            ])
         };
 
         // Clear localStorage and mocks
@@ -570,6 +600,156 @@ describe('SettingsManager', () => {
             });
 
             await expect(settingsManager.initialize()).rejects.toThrow();
+        });
+    });
+
+    describe('Country Selection', () => {
+        beforeEach(async () => {
+            await settingsManager.initialize({
+                usageTracker: mockUsageTracker,
+                googleVisionOCR: mockGoogleVisionOCR,
+                countryManager: mockCountryManager
+            });
+        });
+
+        test('should initialize with country manager', async () => {
+            expect(settingsManager.countryManager).toBe(mockCountryManager);
+        });
+
+        test('should update country selector display', async () => {
+            await settingsManager.updateCountrySelector();
+
+            expect(mockElements.countrySelector.value).toBe('spain');
+            expect(mockElements.countryPreviewFlag.textContent).toBe('🇪🇸');
+            expect(mockElements.countryPreviewName.textContent).toBe('Spanish Menu Assistant');
+            expect(mockElements.countryLanguage.textContent).toBe('Spanish');
+            expect(mockElements.countryMenuCount.textContent).toBe('193');
+        });
+
+        test('should update country selector for different countries', async () => {
+            mockCountryManager.getCountryInfo.mockReturnValue({
+                code: 'france',
+                name: 'France',
+                displayName: 'French Menu Assistant',
+                language: 'French',
+                flag: '🇫🇷'
+            });
+
+            await settingsManager.updateCountrySelector();
+
+            expect(mockElements.countrySelector.value).toBe('france');
+            expect(mockElements.countryPreviewFlag.textContent).toBe('🇫🇷');
+            expect(mockElements.countryPreviewName.textContent).toBe('French Menu Assistant');
+            expect(mockElements.countryLanguage.textContent).toBe('French');
+            expect(mockElements.countryMenuCount.textContent).toBe('215');
+        });
+
+        test('should handle country change', async () => {
+            mockElements.countrySelector.value = 'france';
+
+            await settingsManager.onCountryChange();
+
+            expect(mockCountryManager.setCountry).toHaveBeenCalledWith('france');
+            // Test passes if country manager is called correctly
+            // Event dispatching functionality is tested in integration tests
+        });
+
+        test('should handle country change without country manager', async () => {
+            settingsManager.countryManager = null;
+            
+            await settingsManager.onCountryChange();
+
+            // Should not throw error
+            expect(true).toBe(true);
+        });
+
+        test('should handle country change errors gracefully', async () => {
+            mockCountryManager.setCountry.mockImplementation(() => {
+                throw new Error('Country change error');
+            });
+
+            mockElements.countrySelector.value = 'france';
+
+            await settingsManager.onCountryChange();
+
+            // Should not throw error
+            expect(true).toBe(true);
+        });
+
+        test('should get country preference', () => {
+            const preference = settingsManager.getCountryPreference();
+            expect(preference).toBe('spain');
+        });
+
+        test('should get default country preference without country manager', () => {
+            settingsManager.countryManager = null;
+            
+            const preference = settingsManager.getCountryPreference();
+            expect(preference).toBe('spain');
+        });
+
+        test('should save country preference', () => {
+            settingsManager.saveCountryPreference('france');
+            
+            expect(mockCountryManager.saveCountryPreference).toHaveBeenCalledWith('france');
+        });
+
+        test('should handle saving country preference without country manager', () => {
+            settingsManager.countryManager = null;
+            
+            settingsManager.saveCountryPreference('france');
+            
+            // Should not throw error
+            expect(true).toBe(true);
+        });
+
+        test('should handle updateCountrySelector without country manager', async () => {
+            settingsManager.countryManager = null;
+            
+            await settingsManager.updateCountrySelector();
+            
+            // Should not throw error
+            expect(true).toBe(true);
+        });
+
+        test('should update country descriptions correctly', async () => {
+            const descriptions = {
+                spain: 'Discover authentic Spanish cuisine with traditional dishes from across Spain\'s diverse regions.',
+                france: 'Explore the elegance of French gastronomy with classic dishes from France\'s rich culinary heritage.',
+                germany: 'Experience hearty German cuisine with traditional dishes from Germany\'s regional specialties.',
+                italy: 'Savor the flavors of Italian cooking with authentic dishes from Italy\'s renowned culinary traditions.'
+            };
+
+            for (const [country, description] of Object.entries(descriptions)) {
+                mockCountryManager.getCountryInfo.mockReturnValue({
+                    code: country,
+                    name: country.charAt(0).toUpperCase() + country.slice(1),
+                    displayName: `${country.charAt(0).toUpperCase() + country.slice(1)} Menu Assistant`,
+                    language: country.charAt(0).toUpperCase() + country.slice(1),
+                    flag: '🏳️'
+                });
+
+                await settingsManager.updateCountrySelector();
+
+                expect(mockElements.countryDescription.textContent).toBe(description);
+            }
+        });
+
+        test('should attach country selector event listener', async () => {
+            expect(mockElements.countrySelector.addEventListener).toHaveBeenCalledWith('change', expect.any(Function));
+        });
+
+        test('should handle missing country selector elements gracefully', async () => {
+            settingsManager.elements.countryPreviewFlag = null;
+            settingsManager.elements.countryPreviewName = null;
+            settingsManager.elements.countryLanguage = null;
+            settingsManager.elements.countryDescription = null;
+            settingsManager.elements.countryMenuCount = null;
+
+            await settingsManager.updateCountrySelector();
+
+            // Should not throw error
+            expect(true).toBe(true);
         });
     });
 });

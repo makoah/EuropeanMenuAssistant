@@ -235,6 +235,48 @@
                 </div>
                 
                 <div class="settings-content">
+                    <!-- Country Selection Section -->
+                    <section class="settings-section">
+                        <div class="section-header">
+                            <h4 class="section-title">🌍 Country Selection</h4>
+                            <span class="section-subtitle">Choose your European cuisine region</span>
+                        </div>
+                        
+                        <div class="country-selector-section">
+                            <label for="country-selector" class="input-label">
+                                Menu Language & Region
+                                <span class="label-help">Select the country whose menu you want to translate</span>
+                            </label>
+                            <div class="country-selector-container">
+                                <select id="country-selector" class="country-selector">
+                                    <option value="spain" data-flag="🇪🇸">🇪🇸 Spain - Spanish Menu Assistant</option>
+                                    <option value="france" data-flag="🇫🇷">🇫🇷 France - French Menu Assistant</option>
+                                    <option value="germany" data-flag="🇩🇪">🇩🇪 Germany - German Menu Assistant</option>
+                                    <option value="italy" data-flag="🇮🇹">🇮🇹 Italy - Italian Menu Assistant</option>
+                                </select>
+                                <div class="country-preview">
+                                    <span class="preview-flag" id="country-preview-flag">🇪🇸</span>
+                                    <span class="preview-name" id="country-preview-name">Spanish Menu Assistant</span>
+                                </div>
+                            </div>
+                            <div class="country-info">
+                                <div class="info-stats">
+                                    <span class="stat-item">
+                                        <span class="stat-label">Menu Items:</span>
+                                        <span class="stat-value" id="country-menu-count">193</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <span class="stat-label">Language:</span>
+                                        <span class="stat-value" id="country-language">Spanish</span>
+                                    </span>
+                                </div>
+                                <div class="country-description" id="country-description">
+                                    Discover authentic Spanish cuisine with traditional dishes from across Spain's diverse regions.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Google Vision API Section -->
                     <section class="settings-section">
                         <div class="section-header">

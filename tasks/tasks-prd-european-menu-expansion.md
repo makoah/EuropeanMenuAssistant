@@ -45,9 +45,9 @@
   - [x] 4.3 Update styles/main.css to use CSS custom properties instead of hardcoded colors
   - [x] 4.4 Implement theme switching logic in countryManager.js
   - [x] 4.5 Add flag icons or subtle flag elements to header for selected country
-- [ ] 5.0 Update Settings Interface for Country Selection
-  - [ ] 5.1 Add country selector dropdown to settings modal in index.html
-  - [ ] 5.2 Update settingsManager.js to handle country preference saving/loading
-  - [ ] 5.3 Implement country change handler that triggers data reload and theme switch
-  - [ ] 5.4 Add unit tests for settings country functionality
-  - [ ] 5.5 Ensure Spanish remains default selection for existing users
+- [x] 5.0 Update Settings Interface for Country Selection
+  - [x] 5.1 Add country selector dropdown to settings modal in index.html
+  - [x] 5.2 Update settingsManager.js to handle country preference saving/loading
+  - [x] 5.3 Implement country change handler that triggers data reload and theme switch
+  - [x] 5.4 Add unit tests for settings country functionality
+  - [x] 5.5 Ensure Spanish remains default selection for existing users
