@@ -90,12 +90,16 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, #6B7280, #9CA3AF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: right;
   min-width: 80px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(147, 197, 253, 0.1);
+  border: 1px solid rgba(147, 197, 253, 0.2);
 }
 
 .menu-item-description {
@@ -137,91 +141,487 @@
 
 /* Spanish Cards - Vibrant Elegance */
 :root[data-country="spain"] .menu-item-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F0 100%);
-  border: 2px solid rgba(196, 30, 58, 0.1);
-  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.15);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 248, 240, 0.95) 30%,
+    rgba(255, 235, 218, 0.9) 70%,
+    rgba(255, 248, 240, 0.98) 100%);
+  border: 2px solid rgba(196, 30, 58, 0.15);
+  box-shadow: 
+    0 8px 24px rgba(196, 30, 58, 0.2),
+    0 2px 8px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 :root[data-country="spain"] .menu-item-card:hover {
-  box-shadow: 0 12px 32px rgba(196, 30, 58, 0.25);
-  border-color: rgba(196, 30, 58, 0.2);
+  box-shadow: 
+    0 16px 40px rgba(196, 30, 58, 0.3),
+    0 4px 16px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(196, 30, 58, 0.25);
+  transform: translateY(-4px) scale(1.02);
 }
 
 :root[data-country="spain"] .menu-item-card::before {
-  background: linear-gradient(90deg, #C41E3A 0%, #FFD700 50%, #C41E3A 100%);
+  background: linear-gradient(90deg, 
+    var(--flag-red) 0%, 
+    var(--flag-yellow) 25%,
+    #FF8C42 50%,
+    var(--flag-yellow) 75%,
+    var(--flag-red) 100%);
   height: 5px;
+  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.4);
+}
+
+:root[data-country="spain"] .menu-item-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+:root[data-country="spain"] .menu-item-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 700;
+  color: var(--flag-red);
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(196, 30, 58, 0.15);
+  line-height: 1.3;
+}
+
+:root[data-country="spain"] .menu-item-subtitle {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+:root[data-country="spain"] .menu-item-price {
+  background: linear-gradient(135deg, var(--flag-red) 0%, var(--flag-yellow) 50%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  position: relative;
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 95px;
+}
+
+:root[data-country="spain"] .menu-item-price::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 240, 0.8) 0%, 
+    rgba(255, 235, 218, 0.9) 50%,
+    rgba(255, 248, 240, 0.8) 100%);
+  border-radius: 12px;
+  border: 2px solid rgba(196, 30, 58, 0.2);
+  box-shadow: 
+    0 4px 12px rgba(196, 30, 58, 0.2),
+    0 1px 4px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  z-index: -1;
+}
+
+:root[data-country="spain"] .menu-item-price::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--flag-yellow), transparent);
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+:root[data-country="spain"] .menu-item-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
 }
 
 /* French Cards - Sophisticated Refinement */
 :root[data-country="france"] .menu-item-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(224, 231, 255, 0.8) 100%);
-  border: 2px solid rgba(30, 64, 175, 0.1);
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(230, 240, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.98) 100%);
+  border: 1px solid var(--border-color);
+  box-shadow: 
+    0 4px 16px var(--shadow-color),
+    0 1px 3px rgba(0, 45, 116, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
 :root[data-country="france"] .menu-item-card:hover {
-  box-shadow: 0 16px 40px rgba(30, 64, 175, 0.25);
-  border-color: rgba(30, 64, 175, 0.2);
+  box-shadow: 
+    0 8px 32px var(--shadow-hover),
+    0 2px 8px rgba(0, 45, 116, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: var(--border-accent);
+  transform: translateY(-3px);
 }
 
 :root[data-country="france"] .menu-item-card::before {
-  background: linear-gradient(90deg, #002D74 0%, #FFFFFF 50%, #C1272D 100%);
-  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--flag-blue) 0%, 
+    var(--flag-gold) 30%,
+    var(--flag-white) 50%, 
+    var(--flag-gold) 70%,
+    var(--flag-red) 100%);
+  height: 3px;
+  box-shadow: 0 1px 3px rgba(0, 45, 116, 0.3);
+}
+
+:root[data-country="france"] .menu-item-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--flag-gold) 50%, 
+    transparent 100%);
+  opacity: 0.6;
 }
 
 :root[data-country="france"] .menu-item-title {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--text-color);
+  text-shadow: 0 1px 2px rgba(0, 45, 116, 0.1);
+}
+
+:root[data-country="france"] .menu-item-subtitle {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-style: italic;
+  color: var(--text-secondary);
+  opacity: 0.9;
+}
+
+:root[data-country="france"] .menu-item-price {
+  background: linear-gradient(135deg, var(--flag-blue) 0%, var(--flag-gold) 50%, var(--flag-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  text-align: center;
+  min-width: 90px;
+}
+
+:root[data-country="france"] .menu-item-price::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(230, 240, 255, 0.6) 0%, 
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(230, 240, 255, 0.6) 100%);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  box-shadow: 
+    0 2px 8px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+
+:root[data-country="france"] .menu-item-price::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--flag-gold), transparent);
+  opacity: 0.7;
+}
+
+:root[data-country="france"] .menu-item-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
   font-family: 'Georgia', serif;
-  font-weight: 500;
-  letter-spacing: 0.3px;
 }
 
 /* German Cards - Modern Precision */
 :root[data-country="germany"] .menu-item-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 249, 250, 0.96) 30%,
+    rgba(255, 255, 255, 0.98) 70%,
+    rgba(248, 249, 250, 0.96) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
 }
 
 :root[data-country="germany"] .menu-item-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(221, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(221, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 :root[data-country="germany"] .menu-item-card::before {
-  background: linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCE00 100%);
-  height: 3px;
+  background: linear-gradient(90deg, 
+    #000000 0%, 
+    #000000 33.33%, 
+    #DD0000 33.33%, 
+    #DD0000 66.66%, 
+    #FFCE00 66.66%, 
+    #FFCE00 100%);
+  height: 2px;
+  border-radius: 0;
+}
+
+:root[data-country="germany"] .menu-item-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    transparent 100%);
 }
 
 :root[data-country="germany"] .menu-item-title {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 600;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+:root[data-country="germany"] .menu-item-description {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 400;
+  color: #2D3748;
+  line-height: 1.4;
+  font-size: 0.9rem;
   letter-spacing: 0.2px;
+}
+
+:root[data-country="germany"] .menu-item-price {
+  background: linear-gradient(135deg, var(--flag-black) 0%, var(--medium-gray) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  background-color: rgba(255, 206, 0, 0.08);
+  position: relative;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+:root[data-country="germany"] .menu-item-price::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    var(--flag-black) 0%, 
+    var(--flag-black) 33.33%, 
+    var(--flag-red) 33.33%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-gold) 66.66%, 
+    var(--flag-gold) 100%);
+  opacity: 0.6;
+}
+
+:root[data-country="germany"] .menu-item-price::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: linear-gradient(135deg, 
+    rgba(255, 206, 0, 0.1) 0%, 
+    rgba(255, 206, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.02) 100%);
+  pointer-events: none;
 }
 
 /* Italian Cards - Rustic Charm */
 :root[data-country="italy"] .menu-item-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8FFF8 100%);
-  border: 2px solid rgba(0, 146, 70, 0.1);
-  box-shadow: 0 6px 20px rgba(0, 146, 70, 0.12);
-  border-radius: 14px;
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 255, 248, 0.95) 30%,
+    rgba(255, 255, 255, 0.98) 70%,
+    rgba(240, 255, 240, 0.95) 100%);
+  border: 2px solid rgba(0, 146, 70, 0.15);
+  box-shadow: 
+    0 8px 24px rgba(0, 146, 70, 0.15),
+    0 3px 8px rgba(206, 43, 55, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
 }
 
 :root[data-country="italy"] .menu-item-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 146, 70, 0.2);
-  border-color: rgba(0, 146, 70, 0.15);
+  box-shadow: 
+    0 16px 40px rgba(0, 146, 70, 0.25),
+    0 6px 16px rgba(206, 43, 55, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 146, 70, 0.25);
+  transform: translateY(-4px) scale(1.02);
 }
 
 :root[data-country="italy"] .menu-item-card::before {
-  background: linear-gradient(90deg, #009246 0%, #FFFFFF 50%, #CE2B37 100%);
-  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--flag-green) 0%, 
+    var(--flag-green) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  height: 5px;
+  border-radius: 0 0 8px 8px;
+}
+
+:root[data-country="italy"] .menu-item-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 146, 70, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(206, 43, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 30%);
+  pointer-events: none;
+  border-radius: 18px;
 }
 
 :root[data-country="italy"] .menu-item-title {
-  font-family: 'Times New Roman', serif;
-  font-weight: 500;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  font-weight: 600;
   color: #1B4D3E;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+:root[data-country="italy"] .menu-item-description {
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 400;
+  color: #2D5B47;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+:root[data-country="italy"] .menu-item-price {
+  background: linear-gradient(135deg, var(--flag-green) 0%, #006B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  padding: 8px 16px;
+  border: 2px solid rgba(0, 146, 70, 0.2);
+  border-radius: 12px;
+  background-color: rgba(0, 146, 70, 0.05);
+  position: relative;
+  text-align: center;
+  min-width: 85px;
+  box-shadow: 
+    0 2px 8px rgba(0, 146, 70, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+:root[data-country="italy"] .menu-item-price::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--flag-green) 0%, 
+    var(--flag-green) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  border-radius: 0 0 12px 12px;
+  opacity: 0.8;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

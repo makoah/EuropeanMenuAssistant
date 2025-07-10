@@ -776,6 +776,622 @@ body {
 }
 
 /* ===================================
+   French-Specific Animations - Sophisticated Refinement
+   =================================== */
+:root[data-country="france"] .menu-item-card {
+  animation: frenchCardEntrance 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+:root[data-country="france"] .menu-item-card:hover {
+  animation: frenchCardElegantHover 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+:root[data-country="france"] .menu-item-title {
+  animation: frenchTextRefinement 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+:root[data-country="france"] .menu-item-price::before {
+  animation: frenchPriceGlow 2s ease-in-out infinite alternate;
+}
+
+:root[data-country="france"] .btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+:root[data-country="france"] .welcome-message {
+  animation: frenchWelcomeElegance 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes frenchCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes frenchCardElegantHover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 16px var(--shadow-color);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.005);
+    box-shadow: 0 6px 24px var(--shadow-hover);
+  }
+  100% {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 32px var(--shadow-hover);
+  }
+}
+
+@keyframes frenchTextRefinement {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    letter-spacing: -0.02em;
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(2px);
+    letter-spacing: 0.01em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: -0.005em;
+  }
+}
+
+@keyframes frenchPriceGlow {
+  0% {
+    box-shadow: 
+      0 2px 8px var(--shadow-color),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 
+      0 4px 16px var(--shadow-accent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes frenchWelcomeElegance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    filter: blur(3px);
+  }
+  30% {
+    opacity: 0.3;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(2px);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(5px) scale(1.02);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* French Staggered Animation Delays */
+:root[data-country="france"] .menu-item-card:nth-child(1) { animation-delay: 0.1s; }
+:root[data-country="france"] .menu-item-card:nth-child(2) { animation-delay: 0.2s; }
+:root[data-country="france"] .menu-item-card:nth-child(3) { animation-delay: 0.3s; }
+:root[data-country="france"] .menu-item-card:nth-child(4) { animation-delay: 0.4s; }
+:root[data-country="france"] .menu-item-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===================================
+   Spanish-Specific Animations - Vibrant Energy
+   =================================== */
+:root[data-country="spain"] .menu-item-card {
+  animation: spanishCardFlamenco 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+:root[data-country="spain"] .menu-item-card:hover {
+  animation: spanishCardPassion 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+:root[data-country="spain"] .menu-item-title {
+  animation: spanishTextFiesta 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+:root[data-country="spain"] .menu-item-price::before {
+  animation: spanishPriceGlow 1.5s ease-in-out infinite alternate;
+}
+
+:root[data-country="spain"] .menu-item-price::after {
+  animation: spanishGoldShimmer 2s linear infinite;
+}
+
+:root[data-country="spain"] .btn {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+:root[data-country="spain"] .welcome-message {
+  animation: spanishWelcomeCelebration 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes spanishCardFlamenco {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateZ(-5deg) scale(0.9);
+    filter: blur(3px);
+  }
+  30% {
+    opacity: 0.4;
+    transform: translateY(20px) rotateZ(-3deg) scale(0.95);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) rotateZ(2deg) scale(1.05);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes spanishCardPassion {
+  0% {
+    transform: translateY(0) scale(1) rotateZ(0deg);
+    box-shadow: 0 8px 24px rgba(196, 30, 58, 0.2);
+  }
+  25% {
+    transform: translateY(-2px) scale(1.02) rotateZ(1deg);
+    box-shadow: 0 12px 32px rgba(196, 30, 58, 0.25);
+  }
+  75% {
+    transform: translateY(-6px) scale(1.04) rotateZ(-1deg);
+    box-shadow: 0 20px 48px rgba(196, 30, 58, 0.35);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02) rotateZ(0deg);
+    box-shadow: 0 16px 40px rgba(196, 30, 58, 0.3);
+  }
+}
+
+@keyframes spanishTextFiesta {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.8);
+    letter-spacing: -0.05em;
+    color: transparent;
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateX(5px) scale(1.1);
+    letter-spacing: 0.02em;
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateX(-2px) scale(1.05);
+    letter-spacing: 0.01em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes spanishPriceGlow {
+  0% {
+    box-shadow: 
+      0 4px 12px rgba(196, 30, 58, 0.2),
+      0 1px 4px rgba(255, 215, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: 
+      0 8px 24px rgba(196, 30, 58, 0.4),
+      0 3px 12px rgba(255, 215, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+}
+
+@keyframes spanishGoldShimmer {
+  0% {
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent);
+    transform: translateX(-100%);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 1), transparent);
+    transform: translateX(0%);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent);
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spanishWelcomeCelebration {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8) rotateZ(-3deg);
+    filter: blur(4px);
+  }
+  20% {
+    opacity: 0.3;
+    transform: translateY(30px) scale(0.9) rotateZ(-2deg);
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-10px) scale(1.1) rotateZ(2deg);
+    filter: blur(1px);
+  }
+  80% {
+    opacity: 0.95;
+    transform: translateY(5px) scale(1.05) rotateZ(-1deg);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateZ(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Spanish Energetic Staggered Animation Delays */
+:root[data-country="spain"] .menu-item-card:nth-child(1) { animation-delay: 0.2s; }
+:root[data-country="spain"] .menu-item-card:nth-child(2) { animation-delay: 0.4s; }
+:root[data-country="spain"] .menu-item-card:nth-child(3) { animation-delay: 0.6s; }
+:root[data-country="spain"] .menu-item-card:nth-child(4) { animation-delay: 0.8s; }
+:root[data-country="spain"] .menu-item-card:nth-child(5) { animation-delay: 1.0s; }
+
+/* Spanish Cultural Element Animations */
+:root[data-country="spain"] .heading-primary::after {
+  animation: spanishUnderlineGrow 1.5s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes spanishUnderlineGrow {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  100% {
+    width: 60%;
+    opacity: 0.8;
+  }
+}
+
+/* ===================================
+   German-Specific Animations - Engineering Precision
+   =================================== */
+:root[data-country="germany"] .menu-item-card {
+  animation: germanCardPrecision 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+:root[data-country="germany"] .menu-item-card:hover {
+  animation: germanCardEngineering 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+:root[data-country="germany"] .menu-item-title {
+  animation: germanTextStructured 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+:root[data-country="germany"] .menu-item-price::before {
+  animation: germanFlagStripe 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.3s;
+}
+
+:root[data-country="germany"] .btn {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+:root[data-country="germany"] .welcome-message {
+  animation: germanWelcomePrecision 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes germanCardPrecision {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(5px) scale(0.99);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes germanCardEngineering {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+@keyframes germanTextStructured {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    letter-spacing: -0.5px;
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(2px);
+    letter-spacing: 0.3px;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: 0.05em;
+  }
+}
+
+@keyframes germanFlagStripe {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  30% {
+    transform: scaleX(0.33);
+    opacity: 0.6;
+  }
+  60% {
+    transform: scaleX(0.66);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes germanWelcomePrecision {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* German Engineering Hover Effects */
+:root[data-country="germany"] .heading-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="germany"] .heading-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--flag-black) 0%, 
+    var(--flag-black) 33.33%, 
+    var(--flag-red) 33.33%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-gold) 66.66%, 
+    var(--flag-gold) 100%);
+  animation: germanUnderlinePrecision 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes germanUnderlinePrecision {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  100% {
+    width: 50%;
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   Italian-Specific Animations - Rustic Hospitality
+   =================================== */
+:root[data-country="italy"] .menu-item-card {
+  animation: italianCardWelcome 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+:root[data-country="italy"] .menu-item-card:hover {
+  animation: italianCardHospitality 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+:root[data-country="italy"] .menu-item-title {
+  animation: italianTextFlow 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+:root[data-country="italy"] .menu-item-price::before {
+  animation: italianFlagWave 2s ease-in-out infinite alternate;
+}
+
+:root[data-country="italy"] .btn {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+:root[data-country="italy"] .welcome-message {
+  animation: italianWelcomeWarmth 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes italianCardWelcome {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) rotateZ(-2deg) scale(0.95);
+    filter: blur(2px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateY(15px) rotateZ(-1deg) scale(0.98);
+    filter: blur(1px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(-3px) rotateZ(1deg) scale(1.02);
+    filter: blur(0.3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes italianCardHospitality {
+  0% {
+    transform: translateY(0) scale(1) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.01) rotateZ(0.5deg);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02) rotateZ(0deg);
+  }
+}
+
+@keyframes italianTextFlow {
+  0% {
+    opacity: 0;
+    transform: translateX(-15px) scale(0.98);
+    letter-spacing: -0.5px;
+  }
+  30% {
+    opacity: 0.4;
+    transform: translateX(-8px) scale(0.99);
+    letter-spacing: -0.2px;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateX(3px) scale(1.01);
+    letter-spacing: 0.01em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes italianFlagWave {
+  0% {
+    opacity: 0.6;
+    transform: scaleX(1) skewX(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleX(1.02) skewX(1deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scaleX(1) skewX(0deg);
+  }
+}
+
+@keyframes italianWelcomeWarmth {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Italian Hospitality Hover Effects */
+:root[data-country="italy"] .heading-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="italy"] .heading-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--flag-green) 0%, 
+    var(--flag-green) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  border-radius: 2px;
+  animation: italianUnderlineWarmth 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes italianUnderlineWarmth {
+  0% {
+    width: 0%;
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  70% {
+    width: 65%;
+    opacity: 0.9;
+    transform: translateX(5px);
+  }
+  100% {
+    width: 60%;
+    opacity: 0.85;
+    transform: translateX(0);
+  }
+}
+
+/* Italian Cultural Element Animations */
+:root[data-country="italy"] .btn-like::after {
+  animation: italianHeartPulse 2s ease-in-out infinite;
+}
+
+@keyframes italianHeartPulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* ===================================
    Reduced Motion Support
    =================================== */
 @media (prefers-reduced-motion: reduce) {

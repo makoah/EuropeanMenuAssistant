@@ -55,152 +55,191 @@
   --info-color: var(--flag-red);
 }
 
-/* ===== FRENCH THEME ===== */
+/* ===== FRENCH THEME - "Sophisticated Refinement" ===== */
 :root[data-country="france"] {
-  /* French Flag Colors */
-  --flag-blue: #0055A4;
-  --flag-white: #FFFFFF;
-  --flag-red: #EF4135;
-  --flag-dark-blue: #003D7A;
+  /* Enhanced French Sophistication Colors */
+  --flag-blue: #002D74;         /* Deep Navy - Sophisticated depth */
+  --flag-white: #FFFFFF;        /* Pure White - Classic elegance */
+  --flag-red: #C1272D;          /* Classic Red - Refined passion */
+  --flag-dark-blue: #001A4D;    /* Darker navy for depth */
+  --flag-gold: #F59E0B;         /* Elegant Gold - Luxury accent */
+  --flag-light-blue: #E6F0FF;   /* Light blue for subtle backgrounds */
   
   /* Primary Theme Colors */
   --primary-color: var(--flag-blue);
-  --secondary-color: var(--flag-red);
-  --accent-color: var(--flag-white);
+  --secondary-color: var(--flag-gold);
+  --accent-color: var(--flag-red);
+  --tertiary-color: var(--flag-light-blue);
   
-  /* Background Colors */
-  --background-color: #F8F9FF;
-  --card-background: #FFFFFF;
-  --modal-background: #FFFFFF;
+  /* Background Colors - Sophisticated Palette */
+  --background-color: #F8FAFF;           /* Subtle blue-white */
+  --card-background: #FFFFFF;            /* Pure white cards */
+  --modal-background: #FFFFFF;           /* Clean modal background */
+  --section-background: #F5F8FF;         /* Light section background */
+  --hover-background: var(--flag-light-blue);
   
-  /* Text Colors */
-  --text-color: #1A1A2E;
-  --text-secondary: #2C3E50;
-  --text-light: #6C7B8A;
+  /* Text Colors - Refined Typography */
+  --text-color: #1A2332;                 /* Deep navy text */
+  --text-secondary: #2C3E50;             /* Secondary navy */
+  --text-light: #64748B;                 /* Light gray-blue */
+  --text-accent: var(--flag-gold);       /* Gold accent text */
+  --text-on-dark: #FFFFFF;               /* White on dark backgrounds */
   
-  /* Header Gradient - French Flag Inspired */
-  --header-gradient: linear-gradient(90deg, 
+  /* Header Gradient - Sophisticated French Elegance */
+  --header-gradient: linear-gradient(135deg, 
     var(--flag-blue) 0%, 
-    var(--flag-blue) 33.33%, 
-    var(--flag-white) 33.33%, 
-    var(--flag-white) 66.66%, 
-    var(--flag-red) 66.66%, 
+    #0038A8 25%,
+    var(--flag-white) 50%,
+    #C1272D 75%,
     var(--flag-red) 100%);
   
-  /* Button Styles */
+  /* Button Styles - Refined Interactions */
   --button-primary: var(--flag-blue);
   --button-primary-hover: var(--flag-dark-blue);
-  --button-secondary: var(--flag-red);
-  --button-secondary-hover: #CC2E1F;
+  --button-secondary: var(--flag-gold);
+  --button-secondary-hover: #E6890A;
+  --button-accent: var(--flag-red);
+  --button-accent-hover: #A91F24;
   
-  /* Border and Shadow */
-  --border-color: #E0E6FF;
-  --shadow-color: rgba(0, 85, 164, 0.1);
-  --shadow-hover: rgba(0, 85, 164, 0.2);
+  /* Border and Shadow - Sophisticated Depth */
+  --border-color: #D1E4FF;               /* Light blue border */
+  --border-accent: var(--flag-gold);     /* Gold accent border */
+  --shadow-color: rgba(0, 45, 116, 0.15); /* Blue-tinted shadows */
+  --shadow-hover: rgba(0, 45, 116, 0.25);
+  --shadow-accent: rgba(245, 158, 11, 0.2); /* Gold accent shadows */
   
-  /* Status Colors */
-  --success-color: #27AE60;
-  --error-color: #E74C3C;
-  --warning-color: #F39C12;
-  --info-color: var(--flag-blue);
+  /* Status Colors - French Sophistication */
+  --success-color: #059669;              /* Sophisticated green */
+  --error-color: #DC2626;                /* Refined red */
+  --warning-color: #D97706;              /* Elegant amber */
+  --info-color: var(--flag-blue);        /* Navy info */
 }
 
 /* ===== GERMAN THEME (PLACEHOLDER) ===== */
 :root[data-country="germany"] {
-  /* German Flag Colors */
-  --flag-black: #000000;
-  --flag-red: #DD0000;
-  --flag-gold: #FFCE00;
+  /* Enhanced German Engineering Colors */
+  --flag-black: #000000;           /* Pure Engineering Black */
+  --flag-red: #DD0000;             /* Precision Red */
+  --flag-gold: #FFCE00;            /* Industrial Gold */
+  --dark-gray: #1A202C;            /* Deep Engineering Gray */
+  --medium-gray: #2D3748;          /* Structural Gray */
+  --light-gray: #4A5568;           /* Precision Light Gray */
+  --engineering-white: #F7FAFC;    /* Clean White */
+  --steel-gray: #718096;           /* Steel Accent */
   
-  /* Primary Theme Colors */
+  /* Primary Theme Colors - Engineering Hierarchy */
   --primary-color: var(--flag-black);
   --secondary-color: var(--flag-red);
   --accent-color: var(--flag-gold);
+  --tertiary-color: var(--engineering-white);
   
-  /* Background Colors */
-  --background-color: #F5F5F5;
-  --card-background: #FFFFFF;
-  --modal-background: #FFFFFF;
+  /* Background Colors - Modern Precision */
+  --background-color: #F7FAFC;              /* Clean engineering background */
+  --card-background: #FFFFFF;               /* Pure precision white */
+  --modal-background: #FFFFFF;              /* Clean modal surface */
+  --section-background: #EDF2F7;            /* Subtle structural background */
+  --hover-background: rgba(0, 0, 0, 0.02);  /* Minimal hover feedback */
   
-  /* Text Colors */
-  --text-color: #2C2C2C;
-  --text-secondary: #4A4A4A;
-  --text-light: #757575;
+  /* Text Colors - Structured Hierarchy */
+  --text-color: #1A202C;                    /* Primary engineering text */
+  --text-secondary: #2D3748;                /* Secondary precision text */
+  --text-light: #4A5568;                    /* Light structural text */
+  --text-accent: var(--flag-red);           /* Red accent text */
+  --text-on-dark: #FFFFFF;                  /* White on dark surfaces */
   
-  /* Header Gradient - German Flag Inspired */
+  /* Header Gradient - Engineering Precision */
   --header-gradient: linear-gradient(180deg, 
     var(--flag-black) 0%, 
-    var(--flag-black) 33.33%, 
+    rgba(0, 0, 0, 0.95) 32%, 
     var(--flag-red) 33.33%, 
-    var(--flag-red) 66.66%, 
+    rgba(221, 0, 0, 0.95) 65%, 
     var(--flag-gold) 66.66%, 
-    var(--flag-gold) 100%);
+    rgba(255, 206, 0, 0.95) 100%);
   
-  /* Button Styles */
+  /* Button Styles - Precision Engineering */
   --button-primary: var(--flag-black);
-  --button-primary-hover: #333333;
+  --button-primary-hover: var(--dark-gray);
   --button-secondary: var(--flag-red);
   --button-secondary-hover: #BB0000;
+  --button-accent: var(--flag-gold);
+  --button-accent-hover: #E6B800;
   
-  /* Border and Shadow */
-  --border-color: #E0E0E0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --shadow-hover: rgba(0, 0, 0, 0.2);
+  /* Border and Shadow - Structured Precision */
+  --border-color: #E2E8F0;
+  --border-accent: rgba(221, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(0, 0, 0, 0.12);
+  --shadow-accent: rgba(221, 0, 0, 0.15);
   
-  /* Status Colors */
-  --success-color: #4CAF50;
-  --error-color: #F44336;
-  --warning-color: #FF9800;
-  --info-color: var(--flag-black);
+  /* Status Colors - Engineering Standards */
+  --success-color: #38A169;         /* Engineering green */
+  --error-color: #E53E3E;           /* Precision red error */
+  --warning-color: #D69E2E;         /* Industrial warning */
+  --info-color: var(--flag-black);  /* Black information */
 }
 
 /* ===== ITALIAN THEME (PLACEHOLDER) ===== */
 :root[data-country="italy"] {
-  /* Italian Flag Colors */
-  --flag-green: #009246;
-  --flag-white: #FFFFFF;
-  --flag-red: #CE2B37;
+  /* Enhanced Italian Countryside Colors */
+  --flag-green: #009246;           /* Forest Green - Deep Italian countryside */
+  --flag-white: #FFFFFF;           /* Warm Cream - Tuscan villa white */
+  --flag-red: #CE2B37;             /* Tuscan Red - Warm countryside red */
+  --olive-green: #556B2F;          /* Olive Grove Green */
+  --tuscany-cream: #FFF8E7;        /* Warm Tuscan Cream */
+  --vineyard-burgundy: #800020;    /* Deep Wine Red */
+  --countryside-sage: #9CAF88;     /* Sage Green Hills */
+  --warm-terracotta: #E07A5F;      /* Terracotta Clay */
+  --golden-wheat: #F4E4BC;         /* Golden Wheat Fields */
   
-  /* Primary Theme Colors */
+  /* Primary Theme Colors - Countryside Harmony */
   --primary-color: var(--flag-green);
   --secondary-color: var(--flag-red);
-  --accent-color: var(--flag-white);
+  --accent-color: var(--warm-terracotta);
+  --tertiary-color: var(--tuscany-cream);
   
-  /* Background Colors */
-  --background-color: #F8FFF8;
-  --card-background: #FFFFFF;
-  --modal-background: #FFFFFF;
+  /* Background Colors - Rustic Warmth */
+  --background-color: #F8FFF8;              /* Soft countryside morning */
+  --card-background: #FFFFFF;               /* Pure villa white */
+  --modal-background: #FFFFFF;              /* Clean modal surface */
+  --section-background: var(--tuscany-cream); /* Warm section background */
+  --hover-background: rgba(0, 146, 70, 0.03); /* Gentle green hover */
   
-  /* Text Colors */
-  --text-color: #1B4D3E;
-  --text-secondary: #2E7D32;
-  --text-light: #66BB6A;
+  /* Text Colors - Countryside Hierarchy */
+  --text-color: #1B4D3E;                    /* Deep forest text */
+  --text-secondary: #2D5B47;                /* Secondary countryside */
+  --text-light: #5A7A65;                    /* Light sage text */
+  --text-accent: var(--flag-red);           /* Red accent text */
+  --text-on-dark: #FFFFFF;                  /* White on dark surfaces */
   
-  /* Header Gradient - Italian Flag Inspired */
+  /* Header Gradient - Countryside Vista */
   --header-gradient: linear-gradient(90deg, 
-    var(--flag-green) 0%, 
-    var(--flag-green) 33.33%, 
-    var(--flag-white) 33.33%, 
-    var(--flag-white) 66.66%, 
-    var(--flag-red) 66.66%, 
-    var(--flag-red) 100%);
+    rgba(0, 146, 70, 0.95) 0%, 
+    rgba(0, 146, 70, 0.9) 32%, 
+    rgba(255, 255, 255, 0.95) 33.33%, 
+    rgba(255, 255, 255, 0.95) 66.66%, 
+    rgba(206, 43, 55, 0.9) 67%, 
+    rgba(206, 43, 55, 0.95) 100%);
   
-  /* Button Styles */
+  /* Button Styles - Rustic Charm */
   --button-primary: var(--flag-green);
-  --button-primary-hover: #007A3D;
+  --button-primary-hover: var(--olive-green);
   --button-secondary: var(--flag-red);
-  --button-secondary-hover: #B8242E;
+  --button-secondary-hover: var(--vineyard-burgundy);
+  --button-accent: var(--warm-terracotta);
+  --button-accent-hover: #D06A4A;
   
-  /* Border and Shadow */
+  /* Border and Shadow - Countryside Softness */
   --border-color: #E8F5E8;
-  --shadow-color: rgba(0, 146, 70, 0.1);
-  --shadow-hover: rgba(0, 146, 70, 0.2);
+  --border-accent: rgba(0, 146, 70, 0.2);
+  --shadow-color: rgba(0, 146, 70, 0.12);
+  --shadow-hover: rgba(0, 146, 70, 0.25);
+  --shadow-accent: rgba(206, 43, 55, 0.15);
   
-  /* Status Colors */
-  --success-color: #4CAF50;
-  --error-color: #F44336;
-  --warning-color: #FF9800;
-  --info-color: var(--flag-green);
+  /* Status Colors - Natural Harmony */
+  --success-color: #4CAF50;         /* Natural green success */
+  --error-color: #D32F2F;           /* Warm red error */
+  --warning-color: #F57C00;         /* Sunset orange warning */
+  --info-color: var(--flag-green);  /* Forest green info */
 }
 
 /* ===== EUROPEAN UNION DEFAULT THEME ===== */

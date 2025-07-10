@@ -708,7 +708,7 @@ class EuropeanMenuAssistant {
                 
                 // Update search engine with new data
                 if (this.searchEngine) {
-                    this.searchEngine.updateData(this.dataManager);
+                    this.searchEngine.rebuildIndex();
                 }
                 
                 console.log(`✅ Menu data reloaded: ${this.dataManager.getMenuItems().length} items`);

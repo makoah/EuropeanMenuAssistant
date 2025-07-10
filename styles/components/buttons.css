@@ -135,42 +135,207 @@
 
 /* Spanish Buttons - Vibrant Elegance */
 :root[data-country="spain"] .btn-primary {
-  background: linear-gradient(135deg, #C41E3A 0%, #AA1929 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+  background: linear-gradient(135deg, var(--button-primary) 0%, var(--button-primary-hover) 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 6px 20px rgba(196, 30, 58, 0.3),
+    0 2px 8px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(196, 30, 58, 0.2);
+  font-family: 'Lato', 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+:root[data-country="spain"] .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(255, 215, 0, 0.2) 30%, 
+    rgba(255, 140, 66, 0.15) 50%,
+    rgba(255, 215, 0, 0.2) 70%,
+    transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+:root[data-country="spain"] .btn-primary:hover::after {
+  opacity: 1;
 }
 
 :root[data-country="spain"] .btn-primary:hover {
   background: linear-gradient(135deg, #AA1929 0%, #8B1520 100%);
-  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+  box-shadow: 
+    0 10px 32px rgba(196, 30, 58, 0.4),
+    0 4px 16px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(255, 215, 0, 0.4);
 }
 
 :root[data-country="spain"] .btn-secondary {
-  background: linear-gradient(135deg, #FFD700 0%, #E6C200 100%);
-  color: #2C1810;
+  background: linear-gradient(135deg, var(--button-secondary) 0%, var(--button-secondary-hover) 100%);
+  color: var(--text-color);
+  border-radius: 14px;
+  box-shadow: 
+    0 6px 20px rgba(255, 215, 0, 0.3),
+    0 2px 8px rgba(196, 30, 58, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  font-family: 'Lato', 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 :root[data-country="spain"] .btn-secondary:hover {
   background: linear-gradient(135deg, #E6C200 0%, #CCA000 100%);
+  box-shadow: 
+    0 10px 32px rgba(255, 215, 0, 0.5),
+    0 4px 16px rgba(196, 30, 58, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px) scale(1.05);
+}
+
+:root[data-country="spain"] .btn-accent {
+  background: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+  color: white;
+  border-radius: 14px;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 53, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  font-family: 'Lato', 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+:root[data-country="spain"] .btn-accent:hover {
+  background: linear-gradient(135deg, #E55A2B 0%, #CC4E24 100%);
+  box-shadow: 
+    0 10px 32px rgba(255, 107, 53, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.05);
+}
+
+:root[data-country="spain"] .btn-outline {
+  background: rgba(255, 248, 240, 0.2);
+  border: 3px solid var(--flag-red);
+  color: var(--flag-red);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+:root[data-country="spain"] .btn-outline:hover {
+  background: var(--flag-red);
+  color: white;
+  border-color: var(--flag-yellow);
+  box-shadow: 
+    0 6px 20px rgba(196, 30, 58, 0.4),
+    0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+:root[data-country="spain"] .btn-ghost {
+  background: transparent;
+  color: var(--flag-red);
+  border-radius: 14px;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+:root[data-country="spain"] .btn-ghost:hover {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--flag-red);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 :root[data-country="spain"] .btn-like {
-  background: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
-  border-radius: 10px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  border-radius: 14px;
+  box-shadow: 
+    0 6px 20px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="spain"] .btn-like::before {
+  content: '¡';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+:root[data-country="spain"] .btn-like:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 
+    0 10px 32px rgba(16, 185, 129, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 :root[data-country="spain"] .btn-pass {
-  background: linear-gradient(135deg, #C41E3A 0%, #AA1929 100%);
-  border-radius: 10px;
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  border-radius: 14px;
+  box-shadow: 
+    0 6px 20px rgba(239, 68, 68, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="spain"] .btn-pass::before {
+  content: '¡No!';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+:root[data-country="spain"] .btn-pass:hover {
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  box-shadow: 
+    0 10px 32px rgba(239, 68, 68, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* French Buttons - Sophisticated Refinement */
 :root[data-country="france"] .btn-primary {
-  background: linear-gradient(135deg, #002D74 0%, #001A4D 100%);
-  border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(0, 45, 116, 0.3);
+  background: linear-gradient(135deg, var(--button-primary) 0%, var(--button-primary-hover) 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 16px var(--shadow-color),
+    0 1px 3px rgba(0, 45, 116, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(0, 45, 116, 0.2);
+  font-family: 'Source Sans Pro', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 :root[data-country="france"] .btn-primary::after {
@@ -180,100 +345,574 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(245, 158, 11, 0.1) 50%, transparent 100%);
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(245, 158, 11, 0.15) 30%, 
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(245, 158, 11, 0.15) 70%,
+    transparent 100%);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+:root[data-country="france"] .btn-primary:hover::after {
+  opacity: 1;
 }
 
 :root[data-country="france"] .btn-primary:hover {
-  background: linear-gradient(135deg, #001A4D 0%, #000D33 100%);
-  box-shadow: 0 6px 24px rgba(0, 45, 116, 0.4);
+  background: linear-gradient(135deg, var(--button-primary-hover) 0%, #00112E 100%);
+  box-shadow: 
+    0 8px 32px var(--shadow-hover),
+    0 2px 8px rgba(0, 45, 116, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  border-color: var(--border-accent);
 }
 
 :root[data-country="france"] .btn-secondary {
-  background: linear-gradient(135deg, #C1272D 0%, #A01E23 100%);
-  border-radius: 6px;
+  background: linear-gradient(135deg, var(--button-secondary) 0%, var(--button-secondary-hover) 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 16px var(--shadow-accent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: var(--text-on-dark);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-family: 'Source Sans Pro', 'Inter', sans-serif;
+  font-weight: 600;
 }
 
 :root[data-country="france"] .btn-secondary:hover {
-  background: linear-gradient(135deg, #A01E23 0%, #7F1A1F 100%);
+  background: linear-gradient(135deg, #E6890A 0%, #CC7A09 100%);
+  box-shadow: 
+    0 8px 32px rgba(245, 158, 11, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+:root[data-country="france"] .btn-accent {
+  background: linear-gradient(135deg, var(--button-accent) 0%, var(--button-accent-hover) 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 16px rgba(193, 39, 45, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--text-on-dark);
+  border: 1px solid rgba(193, 39, 45, 0.3);
+  font-family: 'Source Sans Pro', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+:root[data-country="france"] .btn-accent:hover {
+  background: linear-gradient(135deg, var(--button-accent-hover) 0%, #8B1A1F 100%);
+  box-shadow: 
+    0 8px 32px rgba(193, 39, 45, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+:root[data-country="france"] .btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--border-accent);
+  color: var(--text-accent);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  font-family: 'Source Sans Pro', 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+:root[data-country="france"] .btn-outline:hover {
+  background: var(--text-accent);
+  color: var(--text-on-dark);
+  border-color: var(--text-accent);
+  box-shadow: 0 4px 16px var(--shadow-accent);
+}
+
+:root[data-country="france"] .btn-ghost {
+  background: transparent;
+  color: var(--text-accent);
+  border-radius: 8px;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+:root[data-country="france"] .btn-ghost:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--flag-blue);
+  backdrop-filter: blur(4px);
 }
 
 :root[data-country="france"] .btn-like {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: linear-gradient(135deg, #059669 0%, #10B981 100%);
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 16px rgba(5, 150, 105, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+:root[data-country="france"] .btn-like:hover {
+  background: linear-gradient(135deg, #047857 0%, #059669 100%);
+  box-shadow: 
+    0 8px 32px rgba(5, 150, 105, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 :root[data-country="france"] .btn-pass {
-  background: linear-gradient(135deg, #C1272D 0%, #A01E23 100%);
-  border-radius: 6px;
+  background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 16px rgba(220, 38, 38, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+:root[data-country="france"] .btn-pass:hover {
+  background: linear-gradient(135deg, #B91C1C 0%, #DC2626 100%);
+  box-shadow: 
+    0 8px 32px rgba(220, 38, 38, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* German Buttons - Modern Precision */
 :root[data-country="germany"] .btn-primary {
-  background: linear-gradient(135deg, #000000 0%, #333333 100%);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  font-weight: 700;
+  background: linear-gradient(180deg, 
+    var(--flag-black) 0%, 
+    rgba(0, 0, 0, 0.95) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+:root[data-country="germany"] .btn-primary::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--flag-black) 0%, 
+    var(--flag-black) 33.33%, 
+    var(--flag-red) 33.33%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-gold) 66.66%, 
+    var(--flag-gold) 100%);
 }
 
 :root[data-country="germany"] .btn-primary:hover {
-  background: linear-gradient(135deg, #333333 0%, #000000 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(180deg, 
+    rgba(26, 32, 44, 0.98) 0%, 
+    var(--flag-black) 100%);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(221, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 :root[data-country="germany"] .btn-secondary {
-  background: linear-gradient(135deg, #DD0000 0%, #BB0000 100%);
-  border-radius: 4px;
+  background: linear-gradient(180deg, 
+    var(--flag-red) 0%, 
+    rgba(221, 0, 0, 0.95) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 3px rgba(221, 0, 0, 0.3),
+    0 0 0 1px rgba(221, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: white;
+  border: none;
 }
 
 :root[data-country="germany"] .btn-secondary:hover {
-  background: linear-gradient(135deg, #BB0000 0%, #990000 100%);
+  background: linear-gradient(180deg, 
+    rgba(187, 0, 0, 0.98) 0%, 
+    var(--flag-red) 100%);
+  box-shadow: 
+    0 2px 8px rgba(221, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 206, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+:root[data-country="germany"] .btn-accent {
+  background: linear-gradient(180deg, 
+    var(--flag-gold) 0%, 
+    rgba(255, 206, 0, 0.95) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 3px rgba(255, 206, 0, 0.3),
+    0 0 0 1px rgba(255, 206, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--flag-black);
+  border: none;
+}
+
+:root[data-country="germany"] .btn-accent:hover {
+  background: linear-gradient(180deg, 
+    rgba(230, 184, 0, 0.98) 0%, 
+    var(--flag-gold) 100%);
+  box-shadow: 
+    0 2px 8px rgba(255, 206, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+:root[data-country="germany"] .btn-outline {
+  background: transparent;
+  border: 2px solid var(--flag-black);
+  border-radius: 2px;
+  color: var(--flag-black);
+  font-weight: 700;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-country="germany"] .btn-outline::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--flag-black) 0%, 
+    var(--flag-black) 33.33%, 
+    var(--flag-red) 33.33%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-gold) 66.66%, 
+    var(--flag-gold) 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+:root[data-country="germany"] .btn-outline:hover {
+  background: var(--flag-black);
+  color: white;
+  border-color: var(--flag-red);
+}
+
+:root[data-country="germany"] .btn-outline:hover::before {
+  transform: scaleX(1);
+}
+
+:root[data-country="germany"] .btn-ghost {
+  background: transparent;
+  color: var(--flag-black);
+  border-radius: 2px;
+  font-weight: 600;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: none;
+}
+
+:root[data-country="germany"] .btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--flag-red);
 }
 
 :root[data-country="germany"] .btn-like {
-  background: linear-gradient(135deg, #FFCE00 0%, #E6B800 100%);
-  color: #000000;
-  border-radius: 4px;
-  font-weight: 700;
+  background: linear-gradient(180deg, 
+    var(--flag-gold) 0%, 
+    rgba(255, 206, 0, 0.95) 100%);
+  color: var(--flag-black);
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 3px rgba(255, 206, 0, 0.3),
+    0 0 0 1px rgba(56, 161, 105, 0.2);
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  border: none;
+}
+
+:root[data-country="germany"] .btn-like::after {
+  content: '✓';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 800;
+  color: #38A169;
+}
+
+:root[data-country="germany"] .btn-like:hover {
+  background: linear-gradient(180deg, 
+    rgba(230, 184, 0, 0.98) 0%, 
+    var(--flag-gold) 100%);
+  box-shadow: 
+    0 2px 8px rgba(255, 206, 0, 0.4),
+    0 0 0 1px rgba(56, 161, 105, 0.3);
+  transform: translateY(-1px);
 }
 
 :root[data-country="germany"] .btn-pass {
-  background: linear-gradient(135deg, #DD0000 0%, #BB0000 100%);
-  border-radius: 4px;
+  background: linear-gradient(180deg, 
+    var(--flag-red) 0%, 
+    rgba(221, 0, 0, 0.95) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 1px 3px rgba(221, 0, 0, 0.3),
+    0 0 0 1px rgba(229, 62, 62, 0.2);
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  border: none;
+}
+
+:root[data-country="germany"] .btn-pass::after {
+  content: '✗';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+:root[data-country="germany"] .btn-pass:hover {
+  background: linear-gradient(180deg, 
+    rgba(187, 0, 0, 0.98) 0%, 
+    var(--flag-red) 100%);
+  box-shadow: 
+    0 2px 8px rgba(221, 0, 0, 0.4),
+    0 0 0 1px rgba(229, 62, 62, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Italian Buttons - Rustic Charm */
 :root[data-country="italy"] .btn-primary {
-  background: linear-gradient(135deg, #009246 0%, #007A3D 100%);
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 146, 70, 0.3);
+  background: linear-gradient(135deg, 
+    var(--flag-green) 0%, 
+    var(--olive-green) 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 6px 20px rgba(0, 146, 70, 0.25),
+    0 2px 8px rgba(85, 107, 47, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+:root[data-country="italy"] .btn-primary::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--flag-green) 0%, 
+    var(--flag-green) 33.33%, 
+    var(--flag-white) 33.33%, 
+    var(--flag-white) 66.66%, 
+    var(--flag-red) 66.66%, 
+    var(--flag-red) 100%);
+  border-radius: 0 0 16px 16px;
 }
 
 :root[data-country="italy"] .btn-primary:hover {
-  background: linear-gradient(135deg, #007A3D 0%, #006234 100%);
-  box-shadow: 0 6px 20px rgba(0, 146, 70, 0.4);
+  background: linear-gradient(135deg, 
+    var(--olive-green) 0%, 
+    #4A5B28 100%);
+  box-shadow: 
+    0 10px 32px rgba(0, 146, 70, 0.35),
+    0 4px 16px rgba(85, 107, 47, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.03);
 }
 
 :root[data-country="italy"] .btn-secondary {
-  background: linear-gradient(135deg, #CE2B37 0%, #B8242E 100%);
-  border-radius: 14px;
+  background: linear-gradient(135deg, 
+    var(--flag-red) 0%, 
+    var(--vineyard-burgundy) 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 6px 20px rgba(206, 43, 55, 0.25),
+    0 2px 8px rgba(128, 0, 32, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: white;
+  border: none;
 }
 
 :root[data-country="italy"] .btn-secondary:hover {
-  background: linear-gradient(135deg, #B8242E 0%, #A11E25 100%);
+  background: linear-gradient(135deg, 
+    var(--vineyard-burgundy) 0%, 
+    #660018 100%);
+  box-shadow: 
+    0 10px 32px rgba(206, 43, 55, 0.35),
+    0 4px 16px rgba(128, 0, 32, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.03);
+}
+
+:root[data-country="italy"] .btn-accent {
+  background: linear-gradient(135deg, 
+    var(--warm-terracotta) 0%, 
+    #D06A4A 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 6px 20px rgba(224, 122, 95, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: white;
+  border: none;
+}
+
+:root[data-country="italy"] .btn-accent:hover {
+  background: linear-gradient(135deg, 
+    #D06A4A 0%, 
+    #C05A3A 100%);
+  box-shadow: 
+    0 10px 32px rgba(224, 122, 95, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.03);
+}
+
+:root[data-country="italy"] .btn-outline {
+  background: rgba(255, 248, 231, 0.3);
+  border: 3px solid var(--flag-green);
+  border-radius: 16px;
+  color: var(--flag-green);
+  backdrop-filter: blur(8px);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+:root[data-country="italy"] .btn-outline:hover {
+  background: var(--flag-green);
+  color: white;
+  border-color: var(--warm-terracotta);
+  box-shadow: 
+    0 6px 20px rgba(0, 146, 70, 0.3),
+    0 2px 8px rgba(224, 122, 95, 0.15);
+}
+
+:root[data-country="italy"] .btn-ghost {
+  background: transparent;
+  color: var(--flag-green);
+  border-radius: 16px;
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  border: none;
+}
+
+:root[data-country="italy"] .btn-ghost:hover {
+  background: rgba(0, 146, 70, 0.08);
+  color: var(--flag-red);
+  backdrop-filter: blur(4px);
 }
 
 :root[data-country="italy"] .btn-like {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8FFF8 100%);
-  color: #009246;
-  border: 2px solid #009246;
-  border-radius: 14px;
+  background: linear-gradient(135deg, 
+    var(--tuscany-cream) 0%, 
+    rgba(255, 248, 231, 0.95) 100%);
+  color: var(--flag-green);
+  border: 3px solid var(--flag-green);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 16px rgba(0, 146, 70, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+:root[data-country="italy"] .btn-like::after {
+  content: '♥';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--flag-red);
+  font-size: 1.1em;
+}
+
+:root[data-country="italy"] .btn-like:hover {
+  background: linear-gradient(135deg, 
+    var(--flag-green) 0%, 
+    var(--olive-green) 100%);
+  color: white;
+  border-color: var(--warm-terracotta);
+  box-shadow: 
+    0 8px 24px rgba(0, 146, 70, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
 
 :root[data-country="italy"] .btn-pass {
-  background: linear-gradient(135deg, #CE2B37 0%, #B8242E 100%);
-  border-radius: 14px;
+  background: linear-gradient(135deg, 
+    var(--flag-red) 0%, 
+    var(--vineyard-burgundy) 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 6px 20px rgba(206, 43, 55, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  border: none;
+}
+
+:root[data-country="italy"] .btn-pass::after {
+  content: '✕';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #FFFFFF;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+:root[data-country="italy"] .btn-pass:hover {
+  background: linear-gradient(135deg, 
+    var(--vineyard-burgundy) 0%, 
+    #660018 100%);
+  box-shadow: 
+    0 10px 32px rgba(206, 43, 55, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* ===== BUTTON SIZES ===== */
