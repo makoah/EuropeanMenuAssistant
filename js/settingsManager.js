@@ -16,6 +16,7 @@ class SettingsManager {
         // State
         this.isApiKeyValid = false;
         this.isTestingApiKey = false;
+        this.isInitialized = false;
         
         // Event listeners
         this.eventListeners = [];
@@ -37,6 +38,7 @@ class SettingsManager {
             await this.updateUsageDisplay();
             await this.updateCountrySelector();
             
+            this.isInitialized = true;
             console.log('⚙️ Settings manager initialized');
             
         } catch (error) {
