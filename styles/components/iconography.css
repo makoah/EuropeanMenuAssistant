@@ -1,0 +1,587 @@
+/* ===================================
+   COUNTRY-SPECIFIC ICONOGRAPHY & VISUAL ELEMENTS
+   Cultural icons and visual enhancements
+   =================================== */
+
+/* ===================================
+   Base Icon System
+   =================================== */
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.icon-large {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-small {
+  width: 12px;
+  height: 12px;
+}
+
+/* ===================================
+   Country Flag Elements
+   =================================== */
+
+.country-flag {
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* French Flag */
+[data-country="france"] .country-flag {
+  background: linear-gradient(to right, 
+    #002654 0%, #002654 33.33%, 
+    #FFFFFF 33.33%, #FFFFFF 66.66%, 
+    #CE1126 66.66%, #CE1126 100%
+  );
+}
+
+/* Spanish Flag */
+[data-country="spain"] .country-flag {
+  background: linear-gradient(to bottom, 
+    #C41E3A 0%, #C41E3A 25%, 
+    #FFD700 25%, #FFD700 75%, 
+    #C41E3A 75%, #C41E3A 100%
+  );
+}
+
+/* German Flag */
+[data-country="germany"] .country-flag {
+  background: linear-gradient(to bottom, 
+    #000000 0%, #000000 33.33%, 
+    #DD0000 33.33%, #DD0000 66.66%, 
+    #FFCE00 66.66%, #FFCE00 100%
+  );
+}
+
+/* Italian Flag */
+[data-country="italy"] .country-flag {
+  background: linear-gradient(to right, 
+    #009246 0%, #009246 33.33%, 
+    #FFFFFF 33.33%, #FFFFFF 66.66%, 
+    #CE2B37 66.66%, #CE2B37 100%
+  );
+}
+
+/* ===================================
+   Cultural Icons Using CSS
+   =================================== */
+
+/* French Icons */
+.french-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.french-icon.eiffel-tower::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 16px;
+  background: var(--accent-color);
+  border-radius: 1px;
+}
+
+.french-icon.eiffel-tower::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 2px;
+  background: var(--accent-color);
+  border-radius: 1px;
+}
+
+.french-icon.croissant::before {
+  content: '🥐';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Spanish Icons */
+.spanish-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.spanish-icon.flamenco::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+.spanish-icon.flamenco::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 1px;
+}
+
+.spanish-icon.paella::before {
+  content: '🥘';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* German Icons */
+.german-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.german-icon.pretzel::before {
+  content: '🥨';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.german-icon.beer::before {
+  content: '🍺';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Italian Icons */
+.italian-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.italian-icon.pasta::before {
+  content: '🍝';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.italian-icon.pizza::before {
+  content: '🍕';
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===================================
+   Dietary Information Icons
+   =================================== */
+
+.dietary-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Vegetarian Icon */
+.dietary-icon.vegetarian::before {
+  content: '🥬';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Meat Icon */
+.dietary-icon.meat::before {
+  content: '🥩';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Fish Icon */
+.dietary-icon.fish::before {
+  content: '🐟';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Dairy Icon */
+.dietary-icon.dairy::before {
+  content: '🧀';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Pork Icon */
+.dietary-icon.pork::before {
+  content: '🐷';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===================================
+   Price Range Indicators
+   =================================== */
+
+.price-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 8px;
+}
+
+.price-indicator::before {
+  content: attr(data-price-level);
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* Country-specific price styling */
+[data-country="france"] .price-indicator::before {
+  content: '€';
+  font-family: 'Times New Roman', serif;
+}
+
+[data-country="spain"] .price-indicator::before {
+  content: '€';
+  color: var(--accent-color);
+  text-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+[data-country="germany"] .price-indicator::before {
+  content: '€';
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+[data-country="italy"] .price-indicator::before {
+  content: '€';
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* ===================================
+   Cultural Decorative Elements
+   =================================== */
+
+/* French Ornamental Elements */
+[data-country="france"] .decorative-element {
+  position: relative;
+}
+
+[data-country="france"] .decorative-element::before {
+  content: '❦';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: var(--accent-color);
+  font-size: 12px;
+  opacity: 0.3;
+}
+
+/* Spanish Tile Pattern Elements */
+[data-country="spain"] .decorative-element {
+  position: relative;
+}
+
+[data-country="spain"] .decorative-element::before {
+  content: '✦';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: var(--accent-color);
+  font-size: 14px;
+  opacity: 0.4;
+  animation: spanish-sparkle 3s ease-in-out infinite;
+}
+
+@keyframes spanish-sparkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* German Geometric Elements */
+[data-country="germany"] .decorative-element {
+  position: relative;
+}
+
+[data-country="germany"] .decorative-element::before {
+  content: '▦';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: var(--accent-color);
+  font-size: 10px;
+  opacity: 0.3;
+}
+
+/* Italian Organic Elements */
+[data-country="italy"] .decorative-element {
+  position: relative;
+}
+
+[data-country="italy"] .decorative-element::before {
+  content: '❀';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: var(--accent-color);
+  font-size: 12px;
+  opacity: 0.4;
+  animation: italian-bloom 4s ease-in-out infinite;
+}
+
+@keyframes italian-bloom {
+  0%, 100% { opacity: 0.4; transform: rotate(0deg); }
+  50% { opacity: 0.7; transform: rotate(10deg); }
+}
+
+/* ===================================
+   Header and Navigation Icons
+   =================================== */
+
+.header-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.settings-icon::before {
+  content: '⚙️';
+  font-size: 18px;
+}
+
+.camera-icon::before {
+  content: '📷';
+  font-size: 18px;
+}
+
+.upload-icon::before {
+  content: '📁';
+  font-size: 18px;
+}
+
+.search-icon::before {
+  content: '🔍';
+  font-size: 18px;
+}
+
+/* ===================================
+   Menu Category Icons
+   =================================== */
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.category-icon.appetizers::before {
+  content: '🥗';
+  font-size: 20px;
+}
+
+.category-icon.main-course::before {
+  content: '🍽️';
+  font-size: 20px;
+}
+
+.category-icon.desserts::before {
+  content: '🍰';
+  font-size: 20px;
+}
+
+.category-icon.beverages::before {
+  content: '🥤';
+  font-size: 20px;
+}
+
+/* ===================================
+   Status and Feedback Icons
+   =================================== */
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.status-icon.success::before {
+  content: '✅';
+  font-size: 14px;
+}
+
+.status-icon.error::before {
+  content: '❌';
+  font-size: 14px;
+}
+
+.status-icon.warning::before {
+  content: '⚠️';
+  font-size: 14px;
+}
+
+.status-icon.info::before {
+  content: 'ℹ️';
+  font-size: 14px;
+}
+
+/* ===================================
+   Interactive Icon Animations
+   =================================== */
+
+.icon-interactive {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-interactive:hover {
+  transform: scale(1.1);
+}
+
+/* Country-specific icon interactions */
+[data-country="france"] .icon-interactive:hover {
+  filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.5));
+}
+
+[data-country="spain"] .icon-interactive:hover {
+  animation: spanish-icon-dance 0.5s ease-in-out;
+}
+
+@keyframes spanish-icon-dance {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.2) rotate(5deg); }
+}
+
+[data-country="germany"] .icon-interactive:hover {
+  filter: contrast(1.2) brightness(1.1);
+}
+
+[data-country="italy"] .icon-interactive:hover {
+  animation: italian-icon-warm 0.8s ease-in-out;
+}
+
+@keyframes italian-icon-warm {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ===================================
+   Accessibility Enhancements
+   =================================== */
+
+/* Screen reader support */
+.icon[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .icon,
+  .dietary-icon,
+  .status-icon {
+    filter: contrast(2);
+  }
+  
+  .decorative-element::before {
+    display: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .icon-interactive:hover,
+  .decorative-element::before {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+  .decorative-element::before {
+    display: none;
+  }
+  
+  .icon-interactive {
+    filter: none;
+  }
+  
+  .country-flag {
+    border: 1px solid black;
+  }
+}

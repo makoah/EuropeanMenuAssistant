@@ -335,13 +335,119 @@
   }
 }
 
-/* ===== THEME TRANSITION ANIMATIONS ===== */
+/* ===== ENHANCED THEME TRANSITION ANIMATIONS ===== */
 * {
-  transition: background-color 0.3s ease, 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-transition {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-specific transition animations */
+.theme-transition-spain {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy, passionate */
+}
+
+.theme-transition-france {
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth, elegant */
+}
+
+.theme-transition-germany {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.6, 1); /* Precise, efficient */
+}
+
+.theme-transition-italy {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Organic, flowing */
+}
+
+/* Staggered transitions for complex elements */
+.menu-item-card {
+  transition: 
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s, 0.1s, 0.2s, 0s;
+}
+
+.menu-item-title {
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.menu-item-price {
+  transition: 
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+/* Header gradient transition */
+.app-header {
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button transitions */
+.base-button,
+.btn {
+  transition: 
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade transition for theme switching */
+@keyframes themeSwitch {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.theme-switching {
+  animation: themeSwitch 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations for transitions */
+.menu-item-card,
+.base-button,
+.base-card {
+  will-change: transform, box-shadow;
+}
+
+.menu-item-card:hover,
+.base-button:hover,
+.base-card:hover {
+  will-change: auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .theme-transition,
+  .theme-transition-spain,
+  .theme-transition-france,
+  .theme-transition-germany,
+  .theme-transition-italy,
+  .menu-item-card,
+  .menu-item-title,
+  .menu-item-price,
+  .app-header,
+  .base-button,
+  .btn {
+    transition: none !important;
+    animation: none !important;
+  }
 }

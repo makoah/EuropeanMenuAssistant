@@ -11,10 +11,21 @@
 /* ===================================
    Component Stylesheets
    =================================== */
+@import url('./components/layout.css');
+@import url('./components/utils.css');
+@import url('./components/responsive.css');
+@import url('./components/performance.css');
+@import url('./components/accessibility.css');
 @import url('./components/cards.css');
 @import url('./components/buttons.css');
 @import url('./components/typography.css');
 @import url('./components/backgrounds.css');
+@import url('./components/micro-interactions.css');
+@import url('./components/patterns.css');
+@import url('./components/loading-states.css');
+@import url('./components/hover-effects.css');
+@import url('./components/iconography.css');
+@import url('./components/surprise-elements.css');
 
 /* ===================================
    CSS Custom Properties (Variables)
@@ -160,6 +171,35 @@
   --duration-slow: 350ms;
   --duration-slower: 500ms;
   --duration-slowest: 750ms;
+  
+  /* Layout consistency tokens */
+  --layout-grid-gap: 1rem;
+  --layout-section-gap: 2rem;
+  --layout-container-padding: 1rem;
+  
+  /* Component consistency tokens */
+  --component-border-width: 1px;
+  --component-border-radius: 8px;
+  --component-focus-outline: 2px solid var(--primary-color);
+  --component-focus-offset: 2px;
+  
+  /* Responsive breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  
+  /* Enhanced mobile-first responsive design tokens */
+  --mobile-header-height: 3.5rem;
+  --mobile-padding: var(--space-md);
+  --tablet-padding: var(--space-lg);
+  --desktop-padding: var(--space-xl);
+  
+  /* Touch target sizes */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  --touch-target-large: 52px;
   
   /* Enhanced Z-index Scale */
   --z-base: 0;

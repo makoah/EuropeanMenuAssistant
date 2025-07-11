@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Country Switch</title>
+</head>
+<body>
+    <h1>Debug Country Switch</h1>
+    <button onclick="testCountrySwitch()">Test Country Switch to Germany</button>
+    <div id="result"></div>
+
+    <script type="module">
+        import { CountryManager } from './js/countryManager.js';
+        import { DataManager } from './js/dataManager.js';
+
+        window.testCountrySwitch = async function() {
+            try {
+                console.log('🔧 Testing country switch...');
+                
+                // Initialize managers
+                const countryManager = new CountryManager();
+                const dataManager = new DataManager(countryManager);
+                
+                console.log('✅ Managers initialized');
+                console.log('Current country:', countryManager.currentCountry);
+                
+                // Try switching to Germany
+                console.log('🇩🇪 Switching to Germany...');
+                countryManager.setCountry('germany');
+                
+                console.log('Current country after switch:', countryManager.currentCountry);
+                
+                // Try loading data
+                console.log('📊 Loading German menu data...');
+                const data = await dataManager.loadMenuData();
+                
+                console.log('✅ Success! Loaded', data.length, 'items');
+                document.getElementById('result').innerHTML = `✅ Success! Loaded ${data.length} German menu items`;
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                document.getElementById('result').innerHTML = `❌ Error: ${error.message}`;
+            }
+        };
+    </script>
+</body>
+</html>

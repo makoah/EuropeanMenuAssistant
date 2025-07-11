@@ -1,0 +1,347 @@
+/* ===================================
+   MICRO-INTERACTIONS COMPONENT
+   Advanced interactions for enhanced UX
+   =================================== */
+
+/* ===================================
+   Pulse and Heartbeat Effects
+   =================================== */
+
+@keyframes pulse-gentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes pulse-vibrant {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes heartbeat {
+  0%, 28%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===================================
+   Country-Specific Micro-Interactions
+   =================================== */
+
+/* French: Elegant Reveal */
+@keyframes french-elegant-reveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: translateY(10px) scale(0.98);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Spanish: Flamenco Flourish */
+@keyframes spanish-flamenco-flourish {
+  0% { 
+    transform: rotate(-2deg) scale(0.95);
+    opacity: 0.8;
+  }
+  25% { 
+    transform: rotate(1deg) scale(1.02);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: rotate(-0.5deg) scale(1.05);
+    opacity: 1;
+  }
+  75% { 
+    transform: rotate(0.5deg) scale(1.02);
+  }
+  100% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* German: Precise Engineering */
+@keyframes german-precise-slide {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  60% { 
+    transform: translateX(5%);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Italian: Organic Welcome */
+@keyframes italian-organic-welcome {
+  0% { 
+    transform: scale(0.8) rotate(-5deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+  50% { 
+    transform: scale(1.1) rotate(2deg);
+    opacity: 0.8;
+    border-radius: 20px;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    border-radius: var(--border-radius);
+  }
+}
+
+/* ===================================
+   Interactive Element Enhancements
+   =================================== */
+
+/* Card Micro-Interactions */
+.menu-item {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+/* French Interactions */
+[data-country="france"] .menu-item:hover {
+  animation: french-elegant-reveal 0.6s ease-out;
+  box-shadow: 
+    0 10px 30px rgba(0, 45, 116, 0.15),
+    0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+[data-country="france"] .menu-item .item-name:hover {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Spanish Interactions */
+[data-country="spain"] .menu-item:hover {
+  animation: spanish-flamenco-flourish 0.8s ease-out;
+  box-shadow: 
+    0 15px 35px rgba(196, 30, 58, 0.2),
+    0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+[data-country="spain"] .menu-item .price:hover {
+  animation: pulse-vibrant 1s ease-in-out infinite;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* German Interactions */
+[data-country="germany"] .menu-item:hover {
+  animation: german-precise-slide 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 0 0 2px rgba(221, 0, 0, 0.1);
+}
+
+[data-country="germany"] .menu-item .dietary-info span:hover {
+  transform: translateX(5px);
+  transition: transform 0.2s ease;
+}
+
+/* Italian Interactions */
+[data-country="italy"] .menu-item:hover {
+  animation: italian-organic-welcome 0.7s ease-out;
+  box-shadow: 
+    0 12px 40px rgba(0, 146, 70, 0.15),
+    inset 0 0 20px rgba(255, 248, 231, 0.3);
+}
+
+[data-country="italy"] .menu-item .item-description:hover {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+/* ===================================
+   Button Micro-Interactions
+   =================================== */
+
+/* Enhanced button feedback */
+.btn, button, .settings-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn:before, button:before, .settings-btn:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.btn:active:before, button:active:before, .settings-btn:active:before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Country-specific button interactions */
+[data-country="france"] .btn:hover,
+[data-country="france"] button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 45, 116, 0.3);
+}
+
+[data-country="spain"] .btn:hover,
+[data-country="spain"] button:hover {
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+[data-country="germany"] .btn:hover,
+[data-country="germany"] button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-country="italy"] .btn:hover,
+[data-country="italy"] button:hover {
+  animation: pulse-gentle 1.5s ease-in-out infinite;
+  border-radius: 25px;
+}
+
+/* ===================================
+   Loading and Feedback States
+   =================================== */
+
+/* Typing indicator for search */
+@keyframes typing {
+  0%, 20% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  80%, 100% { transform: scale(1); opacity: 1; }
+}
+
+.typing-indicator {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: typing 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Success feedback */
+@keyframes success-checkmark {
+  0% { transform: scale(0) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+.success-feedback {
+  display: inline-block;
+  animation: success-checkmark 0.6s ease-out;
+}
+
+/* ===================================
+   Hover State Enhancements
+   =================================== */
+
+/* Enhanced focus states */
+.menu-item:focus-within,
+.btn:focus,
+button:focus,
+input:focus,
+select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
+/* Country-specific focus enhancements */
+[data-country="france"] *:focus {
+  outline-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+[data-country="spain"] *:focus {
+  outline-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+[data-country="germany"] *:focus {
+  outline-color: var(--accent-color);
+  box-shadow: 0 0 8px rgba(255, 206, 0, 0.5);
+}
+
+[data-country="italy"] *:focus {
+  outline-color: var(--accent-color);
+  box-shadow: 0 0 12px rgba(206, 43, 55, 0.3);
+}
+
+/* ===================================
+   Accessibility Considerations
+   =================================== */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .menu-item,
+  .btn,
+  button,
+  .settings-btn {
+    animation: none !important;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .menu-item:hover {
+    transform: none;
+    opacity: 0.9;
+  }
+  
+  .typing-indicator span {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .menu-item:hover {
+    border: 2px solid;
+    background: transparent;
+  }
+  
+  .btn:hover,
+  button:hover {
+    border: 2px solid;
+    background: transparent;
+  }
+}

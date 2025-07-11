@@ -1,0 +1,493 @@
+/* ===================================
+   DELIGHTFUL SURPRISE ELEMENTS
+   Hidden gems for enhanced engagement
+   =================================== */
+
+/* ===================================
+   Easter Egg Animations
+   =================================== */
+
+/* Konami Code Celebration */
+.konami-celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.konami-celebration.active {
+  opacity: 1;
+}
+
+.konami-celebration::before {
+  content: '🎉';
+  position: absolute;
+  font-size: 30px;
+  animation: celebration-fall 3s ease-in-out infinite;
+}
+
+@keyframes celebration-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* ===================================
+   Country-Specific Surprise Elements
+   =================================== */
+
+/* French: Hidden Sophistication */
+[data-country="france"] .surprise-element {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-country="france"] .surprise-element::before {
+  content: '✨';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 80% 80%, rgba(0, 45, 116, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px, 25px 25px;
+  opacity: 0;
+  animation: french-sparkle-reveal 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes french-sparkle-reveal {
+  0%, 90% { opacity: 0; }
+  5%, 85% { opacity: 1; }
+}
+
+/* French Menu Item Special Effect */
+[data-country="france"] .menu-item:nth-child(7):hover {
+  animation: french-special-glow 2s ease-in-out;
+}
+
+@keyframes french-special-glow {
+  0%, 100% { box-shadow: 0 8px 25px rgba(0, 45, 116, 0.15); }
+  50% { 
+    box-shadow: 
+      0 20px 40px rgba(245, 158, 11, 0.3),
+      0 0 30px rgba(245, 158, 11, 0.2),
+      inset 0 0 20px rgba(245, 158, 11, 0.1);
+  }
+}
+
+/* Spanish: Fiesta Moments */
+[data-country="spain"] .surprise-element {
+  position: relative;
+}
+
+[data-country="spain"] .surprise-element::before {
+  content: '🎊';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: 
+    radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.2) 3px, transparent 3px),
+    radial-gradient(circle at 70% 30%, rgba(196, 30, 58, 0.15) 2px, transparent 2px);
+  background-size: 40px 40px, 35px 35px;
+  opacity: 0;
+  animation: spanish-fiesta-burst 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes spanish-fiesta-burst {
+  0%, 85% { opacity: 0; transform: scale(1); }
+  5%, 80% { opacity: 1; transform: scale(1.1); }
+  10%, 75% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Spanish Special Menu Item */
+[data-country="spain"] .menu-item:nth-child(5):hover {
+  animation: spanish-ole-effect 1.5s ease-in-out;
+}
+
+@keyframes spanish-ole-effect {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(2deg) scale(1.05); }
+  50% { transform: rotate(-1deg) scale(1.1); }
+  75% { transform: rotate(1deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* German: Precision Surprise */
+[data-country="germany"] .surprise-element {
+  position: relative;
+}
+
+[data-country="germany"] .surprise-element::before {
+  content: '⚡';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: 
+    linear-gradient(45deg, rgba(255, 206, 0, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(221, 0, 0, 0.08) 25%, transparent 25%);
+  background-size: 20px 20px, 20px 20px;
+  opacity: 0;
+  animation: german-precision-flash 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes german-precision-flash {
+  0%, 95% { opacity: 0; }
+  2%, 93% { opacity: 1; }
+  4%, 91% { opacity: 0; }
+  6%, 89% { opacity: 1; }
+}
+
+/* German Engineering Marvel */
+[data-country="germany"] .menu-item:nth-child(3):hover {
+  animation: german-engineering-marvel 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes german-engineering-marvel {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(10px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+/* Italian: Warm Surprise */
+[data-country="italy"] .surprise-element {
+  position: relative;
+}
+
+[data-country="italy"] .surprise-element::before {
+  content: '🌿';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  background: 
+    radial-gradient(ellipse at 40% 60%, rgba(0, 146, 70, 0.15) 4px, transparent 4px),
+    radial-gradient(ellipse at 60% 40%, rgba(206, 43, 55, 0.12) 3px, transparent 3px);
+  background-size: 50px 35px, 45px 32px;
+  opacity: 0;
+  animation: italian-countryside-breeze 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes italian-countryside-breeze {
+  0%, 88% { opacity: 0; transform: rotate(0deg); }
+  5%, 83% { opacity: 1; transform: rotate(5deg); }
+  10%, 78% { opacity: 0.8; transform: rotate(-3deg); }
+  15%, 73% { opacity: 1; transform: rotate(2deg); }
+}
+
+/* Italian Nonna's Special */
+[data-country="italy"] .menu-item:nth-child(6):hover {
+  animation: italian-nonna-blessing 2s ease-in-out;
+}
+
+@keyframes italian-nonna-blessing {
+  0%, 100% { 
+    transform: scale(1);
+    border-radius: var(--border-radius);
+  }
+  50% { 
+    transform: scale(1.03);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 146, 70, 0.2);
+  }
+}
+
+/* ===================================
+   Hidden Achievement System
+   =================================== */
+
+.achievement-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+  max-width: 300px;
+}
+
+.achievement-notification.show {
+  transform: translateX(0);
+}
+
+.achievement-notification::before {
+  content: '🏆';
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.achievement-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.achievement-description {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===================================
+   Seasonal Surprises
+   =================================== */
+
+/* Christmas Theme (December) */
+.seasonal-christmas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.seasonal-christmas::before {
+  content: '❄️';
+  position: absolute;
+  font-size: 20px;
+  animation: snowfall 10s linear infinite;
+}
+
+@keyframes snowfall {
+  0% { transform: translateY(-100vh) translateX(0); }
+  100% { transform: translateY(100vh) translateX(100px); }
+}
+
+/* Halloween Theme (October) */
+.seasonal-halloween {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.08;
+}
+
+.seasonal-halloween::before {
+  content: '🎃';
+  position: absolute;
+  font-size: 18px;
+  animation: spooky-float 8s ease-in-out infinite;
+}
+
+@keyframes spooky-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* ===================================
+   Interactive Surprise Triggers
+   =================================== */
+
+/* Long Press Surprise */
+.long-press-surprise {
+  position: relative;
+}
+
+.long-press-surprise:active {
+  animation: long-press-magic 2s ease-in-out;
+}
+
+@keyframes long-press-magic {
+  0%, 100% { transform: scale(1); }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+}
+
+/* Rapid Click Surprise */
+.rapid-click-counter {
+  position: relative;
+}
+
+.rapid-click-counter.activated {
+  animation: rapid-click-celebration 1s ease-in-out;
+}
+
+@keyframes rapid-click-celebration {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(5deg); }
+  50% { transform: scale(1.1) rotate(-5deg); }
+  75% { transform: scale(1.15) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ===================================
+   Secret Menu Reveal
+   =================================== */
+
+.secret-menu-item {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  pointer-events: none;
+}
+
+.secret-menu-item.revealed {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  animation: secret-reveal-glow 2s ease-in-out;
+}
+
+@keyframes secret-reveal-glow {
+  0%, 100% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+  50% { box-shadow: 0 20px 40px rgba(var(--accent-color-rgb), 0.3); }
+}
+
+/* ===================================
+   Country-Specific Secret Animations
+   =================================== */
+
+/* French Secret: Champagne Bubbles */
+[data-country="france"] .secret-revealed::before {
+  content: '🥂';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: champagne-bubbles 3s ease-in-out;
+}
+
+@keyframes champagne-bubbles {
+  0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(-40px) scale(1.2); opacity: 0; }
+}
+
+/* Spanish Secret: Flamenco Flair */
+[data-country="spain"] .secret-revealed::before {
+  content: '💃';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: flamenco-flair 2s ease-in-out;
+}
+
+@keyframes flamenco-flair {
+  0%, 100% { transform: translateX(-50%) rotate(0deg); }
+  25% { transform: translateX(-50%) rotate(10deg); }
+  75% { transform: translateX(-50%) rotate(-10deg); }
+}
+
+/* German Secret: Precision Engineering */
+[data-country="germany"] .secret-revealed::before {
+  content: '⚙️';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: precision-engineering 2s ease-in-out;
+}
+
+@keyframes precision-engineering {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* Italian Secret: Amore Heart */
+[data-country="italy"] .secret-revealed::before {
+  content: '❤️';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: amore-heart 2s ease-in-out;
+}
+
+@keyframes amore-heart {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.3); }
+}
+
+/* ===================================
+   Accessibility Considerations
+   =================================== */
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .konami-celebration,
+  .surprise-element::before,
+  .achievement-notification,
+  .seasonal-christmas::before,
+  .seasonal-halloween::before,
+  .secret-menu-item,
+  .secret-revealed::before {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .surprise-element::before,
+  .seasonal-christmas,
+  .seasonal-halloween {
+    display: none;
+  }
+  
+  .achievement-notification {
+    border: 2px solid;
+    background: transparent;
+    color: inherit;
+  }
+}
+
+/* Print styles */
+@media print {
+  .surprise-element::before,
+  .achievement-notification,
+  .seasonal-christmas,
+  .seasonal-halloween,
+  .secret-revealed::before {
+    display: none !important;
+  }
+}
+
+/* ===================================
+   Performance Optimizations
+   =================================== */
+
+/* Use transform3d for hardware acceleration */
+@keyframes optimized-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+/* Lazy load surprise elements */
+.surprise-element:not(.visible) {
+  visibility: hidden;
+}
+
+.surprise-element.visible {
+  visibility: visible;
+}

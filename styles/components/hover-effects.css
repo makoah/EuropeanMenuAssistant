@@ -1,0 +1,529 @@
+/* ===================================
+   ADVANCED HOVER EFFECTS & STATE TRANSITIONS
+   Enhanced interactive states
+   =================================== */
+
+/* ===================================
+   Base Hover System
+   =================================== */
+
+.hover-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.hover-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.hover-enhanced:hover::before {
+  transform: translateX(100%);
+}
+
+.hover-enhanced > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===================================
+   Country-Specific Hover Effects
+   =================================== */
+
+/* French: Sophisticated Elevation */
+[data-country="france"] .menu-item {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+
+[data-country="france"] .menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.08) 0%,
+    rgba(0, 45, 116, 0.05) 50%,
+    rgba(193, 39, 45, 0.03) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+[data-country="france"] .menu-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 45, 116, 0.15),
+    0 0 0 1px rgba(245, 158, 11, 0.3),
+    0 0 20px rgba(245, 158, 11, 0.1);
+}
+
+[data-country="france"] .menu-item:hover::before {
+  opacity: 1;
+}
+
+[data-country="france"] .menu-item:hover .item-name {
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+[data-country="france"] .menu-item:hover .price {
+  transform: scale(1.1);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Spanish: Passionate Flamenco */
+[data-country="spain"] .menu-item {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  transform-origin: center bottom;
+}
+
+[data-country="spain"] .menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 70%,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(196, 30, 58, 0.08) 50%,
+    rgba(210, 105, 30, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+[data-country="spain"] .menu-item:hover {
+  transform: rotate(1deg) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(196, 30, 58, 0.25),
+    0 0 30px rgba(255, 215, 0, 0.15),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+[data-country="spain"] .menu-item:hover::before {
+  opacity: 1;
+}
+
+[data-country="spain"] .menu-item:hover .item-name {
+  animation: spanish-text-dance 0.6s ease-in-out;
+}
+
+@keyframes spanish-text-dance {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  75% { transform: translateY(2px); }
+}
+
+[data-country="spain"] .menu-item:hover .price {
+  animation: spanish-price-glow 1s ease-in-out infinite;
+}
+
+@keyframes spanish-price-glow {
+  0%, 100% { 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transform: scale(1.1);
+  }
+}
+
+/* German: Precise Engineering */
+[data-country="germany"] .menu-item {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  border: 1px solid transparent;
+}
+
+[data-country="germany"] .menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(221, 0, 0, 0.03) 50%,
+    rgba(255, 206, 0, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+[data-country="germany"] .menu-item:hover {
+  transform: translateX(5px);
+  border-color: rgba(255, 206, 0, 0.3);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    -5px 0 15px rgba(221, 0, 0, 0.1);
+}
+
+[data-country="germany"] .menu-item:hover::before {
+  opacity: 1;
+}
+
+[data-country="germany"] .menu-item:hover .item-name {
+  transform: translateX(5px);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+[data-country="germany"] .menu-item:hover .dietary-info {
+  transform: translateX(3px);
+}
+
+[data-country="germany"] .menu-item:hover .price {
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Italian: Organic Warmth */
+[data-country="italy"] .menu-item {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  border-radius: var(--border-radius);
+}
+
+[data-country="italy"] .menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(255, 248, 231, 0.15) 0%,
+    rgba(0, 146, 70, 0.08) 40%,
+    rgba(206, 43, 55, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: var(--border-radius);
+  z-index: 1;
+}
+
+[data-country="italy"] .menu-item:hover {
+  transform: scale(1.03);
+  border-radius: 20px;
+  box-shadow: 
+    0 12px 40px rgba(0, 146, 70, 0.15),
+    inset 0 0 20px rgba(255, 248, 231, 0.3),
+    0 0 25px rgba(206, 43, 55, 0.1);
+}
+
+[data-country="italy"] .menu-item:hover::before {
+  opacity: 1;
+}
+
+[data-country="italy"] .menu-item:hover .item-name {
+  animation: italian-warm-welcome 0.8s ease-in-out;
+}
+
+@keyframes italian-warm-welcome {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+[data-country="italy"] .menu-item:hover .price {
+  animation: italian-heart-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes italian-heart-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===================================
+   Button Hover Enhancements
+   =================================== */
+
+/* Enhanced button states */
+.btn,
+button,
+.settings-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.btn::after,
+button::after,
+.settings-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  transition: all 0.4s ease;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.btn:hover::after,
+button:hover::after,
+.settings-btn:hover::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Country-specific button hovers */
+[data-country="france"] .btn:hover,
+[data-country="france"] button:hover,
+[data-country="france"] .settings-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 45, 116, 0.3);
+  background: linear-gradient(135deg, var(--button-primary), var(--accent-color));
+}
+
+[data-country="spain"] .btn:hover,
+[data-country="spain"] button:hover,
+[data-country="spain"] .settings-btn:hover {
+  animation: spanish-button-fiesta 0.5s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes spanish-button-fiesta {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+[data-country="germany"] .btn:hover,
+[data-country="germany"] button:hover,
+[data-country="germany"] .settings-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--accent-color);
+}
+
+[data-country="italy"] .btn:hover,
+[data-country="italy"] button:hover,
+[data-country="italy"] .settings-btn:hover {
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 146, 70, 0.2);
+  background: linear-gradient(45deg, var(--button-primary), var(--accent-color));
+}
+
+/* ===================================
+   Interactive Element States
+   =================================== */
+
+/* Input field enhancements */
+input[type="text"],
+input[type="file"],
+select,
+textarea {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* Country-specific input focus */
+[data-country="france"] input:focus,
+[data-country="france"] select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+[data-country="spain"] input:focus,
+[data-country="spain"] select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  animation: spanish-input-pulse 2s ease-in-out infinite;
+}
+
+@keyframes spanish-input-pulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.5); }
+}
+
+[data-country="germany"] input:focus,
+[data-country="germany"] select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(255, 206, 0, 0.4);
+  border-width: 2px;
+}
+
+[data-country="italy"] input:focus,
+[data-country="italy"] select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(206, 43, 55, 0.2);
+  border-radius: 15px;
+}
+
+/* ===================================
+   Dietary Information Hover Effects
+   =================================== */
+
+.dietary-info span {
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.dietary-info span:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Country-specific dietary info hovers */
+[data-country="france"] .dietary-info span:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px rgba(245, 158, 11, 0.3);
+}
+
+[data-country="spain"] .dietary-info span:hover {
+  color: var(--accent-color);
+  animation: spanish-dietary-bounce 0.3s ease-in-out;
+}
+
+@keyframes spanish-dietary-bounce {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
+}
+
+[data-country="germany"] .dietary-info span:hover {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 2px;
+}
+
+[data-country="italy"] .dietary-info span:hover {
+  color: var(--accent-color);
+  border-radius: 10px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  padding: 2px 6px;
+}
+
+/* ===================================
+   Advanced State Transitions
+   =================================== */
+
+/* Loading to content transition */
+.content-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.content-transition.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation for multiple items */
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
+.menu-item:nth-child(4) { animation-delay: 0.4s; }
+.menu-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===================================
+   Accessibility Considerations
+   =================================== */
+
+/* Keyboard navigation enhancements */
+.menu-item:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+  transform: scale(1.02);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .menu-item:hover,
+  .btn:hover,
+  button:hover {
+    border: 3px solid;
+    background: transparent;
+  }
+  
+  .menu-item:hover::before,
+  .btn:hover::after,
+  button:hover::after {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-item,
+  .btn,
+  button,
+  input,
+  select {
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .menu-item:hover,
+  .btn:hover,
+  button:hover {
+    transform: none;
+    animation: none;
+  }
+  
+  .dietary-info span:hover {
+    transform: none;
+  }
+}
+
+/* Focus management for touch devices */
+@media (hover: none) {
+  .menu-item:hover,
+  .btn:hover,
+  button:hover {
+    transform: none;
+    animation: none;
+  }
+  
+  .menu-item:active,
+  .btn:active,
+  button:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}

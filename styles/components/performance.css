@@ -1,0 +1,350 @@
+/**
+ * Performance Optimization Components
+ * European Menu Assistant
+ * 
+ * CSS optimizations for smooth animations, efficient rendering,
+ * and reduced paint/layout operations
+ */
+
+/* ===== GPU ACCELERATION & LAYER PROMOTION ===== */
+
+/* Promote frequently animated elements to their own layers */
+.menu-item-card,
+.base-button,
+.base-card,
+.app-header {
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden; /* Reduce flicker */
+  perspective: 1000px; /* Enable 3D context */
+}
+
+/* Optimize hover effects with GPU acceleration */
+.menu-item-card:hover,
+.base-button:hover,
+.base-card:hover {
+  transform: translateZ(0) translateY(-2px);
+}
+
+/* ===== WILL-CHANGE OPTIMIZATIONS ===== */
+
+/* Hint browser about upcoming changes */
+.menu-item-card {
+  will-change: transform, box-shadow, border-color;
+}
+
+.menu-item-card:hover {
+  will-change: auto; /* Reset after interaction */
+}
+
+.base-button {
+  will-change: transform, background-color, box-shadow;
+}
+
+.base-button:hover {
+  will-change: auto;
+}
+
+.theme-transition {
+  will-change: background-color, border-color, color;
+}
+
+.theme-switching {
+  will-change: opacity, transform;
+}
+
+/* Remove will-change after transitions complete */
+.theme-transition:not(.theme-switching) {
+  will-change: auto;
+}
+
+/* ===== CONTAINMENT FOR LAYOUT OPTIMIZATION ===== */
+
+/* Contain layout calculations within components */
+.menu-item-card {
+  contain: layout style paint;
+}
+
+.base-button {
+  contain: layout style;
+}
+
+.menu-items-grid {
+  contain: layout;
+}
+
+.search-section {
+  contain: layout;
+}
+
+/* ===== EFFICIENT ANIMATIONS ===== */
+
+/* Use transform and opacity for animations (no layout/paint) */
+@keyframes efficientFadeIn {
+  from {
+    opacity: 0;
+    transform: translateZ(0) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) translateY(0);
+  }
+}
+
+@keyframes efficientScaleIn {
+  from {
+    opacity: 0;
+    transform: translateZ(0) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+}
+
+@keyframes efficientSlideUp {
+  from {
+    opacity: 0;
+    transform: translateZ(0) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) translateY(0);
+  }
+}
+
+/* Apply efficient animations */
+.animate-fade-in-efficient {
+  animation: efficientFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in-efficient {
+  animation: efficientScaleIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-up-efficient {
+  animation: efficientSlideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ===== CSS CUSTOM PROPERTIES FOR PERFORMANCE ===== */
+
+/* Pre-calculate frequently used values */
+:root {
+  --hover-transform: translateZ(0) translateY(-2px);
+  --hover-shadow-multiplier: 1.5;
+  --transition-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration-fast: 0.15s;
+  --transition-duration-normal: 0.25s;
+  --transition-duration-slow: 0.35s;
+}
+
+/* ===== OPTIMIZED SHADOW SYSTEM ===== */
+
+/* Use box-shadow with efficient values */
+.shadow-optimized-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.shadow-optimized-md {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-optimized-lg {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Optimized hover shadows */
+.shadow-hover-optimized {
+  transition: box-shadow var(--transition-duration-fast) var(--transition-bezier);
+}
+
+.shadow-hover-optimized:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* ===== EFFICIENT GRADIENTS ===== */
+
+/* Simplified gradients for better performance */
+.gradient-spain-optimized {
+  background: linear-gradient(135deg, #C41E3A 0%, #FFD700 50%, #C41E3A 100%);
+}
+
+.gradient-france-optimized {
+  background: linear-gradient(135deg, #002D74 0%, #F59E0B 50%, #C1272D 100%);
+}
+
+.gradient-germany-optimized {
+  background: linear-gradient(180deg, #000000 33%, #DD0000 34%, #DD0000 66%, #FFCE00 67%);
+}
+
+.gradient-italy-optimized {
+  background: linear-gradient(90deg, #009246 33%, #FFFFFF 34%, #FFFFFF 66%, #CE2B37 67%);
+}
+
+/* ===== CRITICAL CSS OPTIMIZATION ===== */
+
+/* Inline critical styles for above-the-fold content */
+.critical-header {
+  background: var(--header-gradient);
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-md);
+}
+
+.critical-search {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: var(--space-lg) auto;
+  padding: 0 var(--space-md);
+}
+
+.critical-search-input {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+}
+
+/* ===== LAZY LOADING OPTIMIZATION ===== */
+
+/* Placeholder for lazy-loaded content */
+.lazy-placeholder {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Intersection Observer optimization */
+.lazy-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== PERFORMANCE MONITORING ===== */
+
+/* Visual debug indicators for performance (dev only) */
+.perf-debug .menu-item-card {
+  outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.perf-debug .menu-item-card:hover {
+  outline-color: rgba(255, 0, 0, 0.8);
+}
+
+/* ===== COUNTRY-SPECIFIC PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Spanish theme - reduce bounce animation complexity on mobile */
+@media (max-width: 768px) {
+  :root[data-country="spain"] .theme-transition-spain {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Simpler easing */
+  }
+}
+
+/* French theme - optimize backdrop blur on low-end devices */
+@media (max-width: 768px) and (max-resolution: 1dppx) {
+  :root[data-country="france"] .menu-item-card {
+    backdrop-filter: none; /* Remove blur on low-res screens */
+  }
+}
+
+/* German theme - already optimized for performance */
+
+/* Italian theme - reduce scale transforms on mobile */
+@media (max-width: 768px) {
+  :root[data-country="italy"] .menu-item-card:hover {
+    transform: translateY(-3px); /* Remove scale transform */
+  }
+}
+
+/* ===== MEMORY OPTIMIZATION ===== */
+
+/* Limit expensive effects on devices with limited resources */
+@media (max-width: 768px) and (max-device-pixel-ratio: 1.5) {
+  .menu-item-card::after,
+  .menu-item-card::before,
+  .base-card::before {
+    display: none; /* Remove pseudo-elements */
+  }
+  
+  .menu-item-card {
+    box-shadow: var(--shadow-sm); /* Simpler shadows */
+  }
+  
+  .menu-item-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* ===== NETWORK PERFORMANCE ===== */
+
+/* Font display optimization */
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap; /* Show fallback immediately */
+  /* Other font properties */
+}
+
+/* Preload critical resources */
+.preload-critical {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+
+/* ===== REDUCED MOTION PERFORMANCE ===== */
+
+/* Optimize for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-item-card,
+  .base-button,
+  .base-card {
+    will-change: auto; /* Don't hint at changes */
+    transform: none; /* Remove transforms */
+  }
+  
+  .lazy-placeholder {
+    animation: none; /* Stop shimmer animation */
+    background: #f0f0f0; /* Static background */
+  }
+  
+  .theme-switching {
+    animation: none; /* Remove theme switching animation */
+  }
+}
+
+/* ===== BATTERY OPTIMIZATION ===== */
+
+/* Reduce animations when device battery is low */
+@media (prefers-reduced-motion: reduce), 
+       (max-width: 768px) and (battery-level: low) {
+  .animate-fade-in-efficient,
+  .animate-scale-in-efficient,
+  .animate-slide-up-efficient {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== CLEANUP UTILITIES ===== */
+
+/* Force cleanup of GPU layers when not needed */
+.cleanup-gpu {
+  transform: none;
+  will-change: auto;
+  backface-visibility: visible;
+  perspective: none;
+}

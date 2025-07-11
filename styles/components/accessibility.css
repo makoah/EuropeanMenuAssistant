@@ -1,0 +1,548 @@
+/**
+ * Accessibility Components
+ * European Menu Assistant
+ * 
+ * Comprehensive accessibility improvements including WCAG 2.1 AA compliance,
+ * keyboard navigation, screen reader support, and inclusive design patterns
+ */
+
+/* ===== FOCUS MANAGEMENT ===== */
+
+/* Enhanced focus indicators for all interactive elements */
+.base-button:focus-visible,
+.btn:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 5px rgba(var(--primary-color-rgb, 0, 0, 255), 0.2),
+    var(--shadow-button);
+  transition: outline 0.2s ease, box-shadow 0.2s ease;
+}
+
+.base-input:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 1px;
+  border-color: var(--primary-color);
+  box-shadow: 
+    0 0 0 4px rgba(var(--primary-color-rgb, 0, 0, 255), 0.15),
+    var(--shadow-input);
+}
+
+.menu-item-card:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 6px rgba(var(--primary-color-rgb, 0, 0, 255), 0.15),
+    var(--shadow-card-hover);
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: var(--z-top);
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ===== KEYBOARD NAVIGATION ===== */
+
+/* Ensure all interactive elements are keyboard accessible */
+.menu-item-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-item-card[tabindex="0"]:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Custom focus styles for country-specific themes */
+:root[data-country="spain"] .base-button:focus-visible,
+:root[data-country="spain"] .menu-item-card:focus-visible {
+  outline-color: var(--flag-red);
+  box-shadow: 0 0 0 5px rgba(196, 30, 58, 0.2);
+}
+
+:root[data-country="france"] .base-button:focus-visible,
+:root[data-country="france"] .menu-item-card:focus-visible {
+  outline-color: var(--flag-blue);
+  box-shadow: 0 0 0 5px rgba(0, 45, 116, 0.2);
+}
+
+:root[data-country="germany"] .base-button:focus-visible,
+:root[data-country="germany"] .menu-item-card:focus-visible {
+  outline-color: var(--flag-red);
+  box-shadow: 0 0 0 5px rgba(221, 0, 0, 0.2);
+}
+
+:root[data-country="italy"] .base-button:focus-visible,
+:root[data-country="italy"] .menu-item-card:focus-visible {
+  outline-color: var(--flag-green);
+  box-shadow: 0 0 0 5px rgba(0, 146, 70, 0.2);
+}
+
+/* Keyboard navigation helpers */
+.keyboard-nav-active .menu-item-card:hover {
+  transform: none; /* Disable hover effects during keyboard nav */
+}
+
+.keyboard-nav-active .base-button:hover {
+  transform: none;
+}
+
+/* ===== SCREEN READER SUPPORT ===== */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: inherit !important;
+  margin: inherit !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: inherit !important;
+}
+
+/* Enhanced labels for screen readers */
+.menu-item-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--header-gradient);
+}
+
+/* Semantic structure helpers */
+.menu-section {
+  position: relative;
+}
+
+.menu-section[role="region"] {
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.menu-section[role="region"]:focus-within {
+  border-color: var(--border-color);
+  background: rgba(var(--primary-color-rgb, 0, 0, 255), 0.02);
+}
+
+/* ===== COLOR CONTRAST & LEGIBILITY ===== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .menu-item-card {
+    border: 2px solid var(--text-color);
+    background: var(--background-color);
+  }
+  
+  .menu-item-title {
+    color: var(--text-color);
+    font-weight: 700;
+  }
+  
+  .base-button {
+    border: 2px solid currentColor;
+    background: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .base-button:hover,
+  .base-button:focus {
+    background: var(--text-color);
+    color: var(--background-color);
+  }
+  
+  /* Ensure sufficient contrast for price indicators */
+  .menu-item-price {
+    background: var(--text-color);
+    color: var(--background-color);
+    border: 2px solid var(--text-color);
+  }
+}
+
+/* Enhanced color contrast for all themes */
+:root {
+  --text-contrast-ratio: 4.5; /* WCAG AA standard */
+  --large-text-contrast-ratio: 3; /* WCAG AA for large text */
+}
+
+/* Ensure text meets contrast requirements */
+.high-contrast-text {
+  color: var(--text-color);
+  text-shadow: none;
+  font-weight: 500;
+}
+
+.high-contrast-bg {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+/* ===== REDUCED MOTION ACCESSIBILITY ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Remove all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Maintain visual feedback without motion */
+  .menu-item-card:hover,
+  .menu-item-card:focus {
+    transform: none;
+    box-shadow: 0 0 0 3px var(--primary-color);
+  }
+  
+  .base-button:hover,
+  .base-button:focus {
+    transform: none;
+    background: var(--button-primary-hover);
+  }
+  
+  /* Static loading indicators */
+  .lazy-placeholder {
+    background: var(--border-color);
+    animation: none;
+  }
+}
+
+/* ===== TOUCH & POINTER ACCESSIBILITY ===== */
+
+/* Larger touch targets for accessibility */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-target-large {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .menu-item-card {
+    padding: var(--space-lg);
+  }
+  
+  .base-button {
+    min-height: 48px;
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .header-controls button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .menu-item-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .base-button:hover {
+    transform: none;
+  }
+}
+
+/* ===== FONT SIZE & SCALING ===== */
+
+/* Respect user font size preferences */
+@media (min-resolution: 2dppx) {
+  .menu-item-title {
+    font-size: calc(var(--font-size-lg) * 1.1);
+  }
+  
+  .menu-item-description {
+    font-size: calc(var(--font-size-base) * 1.05);
+  }
+}
+
+/* Large text mode support */
+.large-text {
+  font-size: 120%;
+  line-height: 1.6;
+}
+
+.large-text .menu-item-title {
+  font-size: calc(var(--font-size-xl) * 1.2);
+}
+
+.large-text .menu-item-description {
+  font-size: calc(var(--font-size-lg) * 1.1);
+}
+
+/* ===== LANGUAGE & LOCALIZATION ACCESSIBILITY ===== */
+
+/* RTL language support */
+[dir="rtl"] .menu-item-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .menu-item-actions {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .header-controls {
+  flex-direction: row-reverse;
+}
+
+/* Language-specific typography adjustments */
+.lang-ar,
+.lang-he {
+  direction: rtl;
+  text-align: right;
+}
+
+.lang-zh,
+.lang-ja,
+.lang-ko {
+  line-height: 1.7; /* Better spacing for CJK languages */
+}
+
+/* ===== ARIA LIVE REGIONS ===== */
+
+.live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.live-region[aria-live="polite"] {
+  /* Announcements will be made when user is idle */
+}
+
+.live-region[aria-live="assertive"] {
+  /* Announcements will interrupt user */
+}
+
+/* Status messages */
+.status-message {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-sm) 0;
+  border-left: 4px solid;
+}
+
+.status-success {
+  background: rgba(var(--success-color-rgb, 76, 175, 80), 0.1);
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.status-error {
+  background: rgba(var(--error-color-rgb, 244, 67, 54), 0.1);
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+.status-warning {
+  background: rgba(var(--warning-color-rgb, 255, 152, 0), 0.1);
+  border-color: var(--warning-color);
+  color: var(--warning-color);
+}
+
+.status-info {
+  background: rgba(var(--info-color-rgb, 33, 150, 243), 0.1);
+  border-color: var(--info-color);
+  color: var(--info-color);
+}
+
+/* ===== COGNITIVE ACCESSIBILITY ===== */
+
+/* Clear visual hierarchy */
+.content-structure h1,
+.content-structure h2,
+.content-structure h3 {
+  margin-bottom: var(--space-md);
+  font-weight: 600;
+}
+
+.content-structure p {
+  margin-bottom: var(--space-sm);
+  line-height: 1.6;
+}
+
+/* Consistent interaction patterns */
+.interactive-element {
+  cursor: pointer;
+  position: relative;
+}
+
+.interactive-element::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.interactive-element:focus::after {
+  border-color: var(--primary-color);
+}
+
+/* Loading states */
+.loading-accessible {
+  position: relative;
+}
+
+.loading-accessible::before {
+  content: 'Loading...';
+  position: absolute;
+  left: -9999px;
+  speak: always;
+}
+
+.loading-accessible[aria-busy="true"] {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ===== ERROR HANDLING & FEEDBACK ===== */
+
+/* Form validation styling */
+.field-error {
+  border-color: var(--error-color);
+  background: rgba(var(--error-color-rgb, 244, 67, 54), 0.05);
+}
+
+.field-error:focus {
+  box-shadow: 0 0 0 3px rgba(var(--error-color-rgb, 244, 67, 54), 0.2);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.error-message::before {
+  content: '⚠️';
+  flex-shrink: 0;
+}
+
+/* Success feedback */
+.success-message {
+  color: var(--success-color);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.success-message::before {
+  content: '✓';
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+/* ===== PROGRESSIVE ENHANCEMENT ===== */
+
+/* Base styles for no-JS users */
+.no-js .menu-item-card {
+  transition: none;
+}
+
+.no-js .base-button {
+  transition: none;
+}
+
+.no-js .theme-transition {
+  transition: none;
+}
+
+/* Enhanced styles for JS-enabled users */
+.js-enabled .menu-item-card {
+  transition: var(--transition-card);
+}
+
+.js-enabled .base-button {
+  transition: var(--transition-button);
+}
+
+/* ===== PRINT ACCESSIBILITY ===== */
+
+@media print {
+  /* Ensure good contrast in print */
+  .menu-item-card {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    break-inside: avoid;
+  }
+  
+  .menu-item-title {
+    color: #000;
+    font-weight: 700;
+  }
+  
+  .menu-item-description {
+    color: #333;
+  }
+  
+  /* Hide interactive elements */
+  .base-button,
+  .menu-item-actions,
+  .header-controls {
+    display: none;
+  }
+  
+  /* Show URL for links */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+}
