@@ -40,6 +40,24 @@ export class CountryManager {
                     subtitle: 'Your Spanish menu translator',
                     description: 'Discover what\'s on your plate! Type any Spanish dish to see its translation, ingredients, and dietary information.'
                 },
+                searchPlaceholder: 'Type a Spanish menu item...',
+                exampleDishes: [
+                    {
+                        emoji: '🥘',
+                        name: 'paella',
+                        hint: 'Saffron rice dish'
+                    },
+                    {
+                        emoji: '🥓',
+                        name: 'jamón',
+                        hint: 'Spanish ham'
+                    },
+                    {
+                        emoji: '🍅',
+                        name: 'gazpacho',
+                        hint: 'Cold tomato soup'
+                    }
+                ],
                 theme: {
                     primary: '#C41E3A',      // Spanish red
                     secondary: '#FFD700',    // Spanish gold
@@ -74,6 +92,24 @@ export class CountryManager {
                     subtitle: 'Your French menu translator',
                     description: 'Découvrez la cuisine française! Type any French dish to see its translation, ingredients, and dietary information.'
                 },
+                searchPlaceholder: 'Type a French menu item...',
+                exampleDishes: [
+                    {
+                        emoji: '🐌',
+                        name: 'escargot',
+                        hint: 'Snails in garlic butter'
+                    },
+                    {
+                        emoji: '🥖',
+                        name: 'baguette',
+                        hint: 'French bread'
+                    },
+                    {
+                        emoji: '🧀',
+                        name: 'fromage',
+                        hint: 'French cheese'
+                    }
+                ],
                 theme: {
                     primary: '#0055A4',      // French blue
                     secondary: '#FFFFFF',    // White
@@ -108,6 +144,24 @@ export class CountryManager {
                     subtitle: 'Your German menu translator',
                     description: 'Entdecken Sie deutsche Küche! Type any German dish to see its translation, ingredients, and dietary information.'
                 },
+                searchPlaceholder: 'Type a German menu item...',
+                exampleDishes: [
+                    {
+                        emoji: '🌭',
+                        name: 'bratwurst',
+                        hint: 'German sausage'
+                    },
+                    {
+                        emoji: '🥨',
+                        name: 'pretzel',
+                        hint: 'Twisted bread'
+                    },
+                    {
+                        emoji: '🍺',
+                        name: 'bier',
+                        hint: 'German beer'
+                    }
+                ],
                 theme: {
                     primary: '#000000',      // German black
                     secondary: '#DD0000',    // German red
@@ -142,6 +196,24 @@ export class CountryManager {
                     subtitle: 'Your Italian menu translator',
                     description: 'Scoprite la cucina italiana! Type any Italian dish to see its translation, ingredients, and dietary information.'
                 },
+                searchPlaceholder: 'Type an Italian menu item...',
+                exampleDishes: [
+                    {
+                        emoji: '🍝',
+                        name: 'pasta',
+                        hint: 'Italian noodles'
+                    },
+                    {
+                        emoji: '🍕',
+                        name: 'pizza',
+                        hint: 'Italian flatbread'
+                    },
+                    {
+                        emoji: '🍨',
+                        name: 'gelato',
+                        hint: 'Italian ice cream'
+                    }
+                ],
                 theme: {
                     primary: '#009246',      // Italian green
                     secondary: '#FFFFFF',    // White
@@ -298,7 +370,8 @@ export class CountryManager {
         // Update search placeholder
         const searchInput = document.querySelector('#search-input');
         if (searchInput) {
-            searchInput.placeholder = `Type a ${country.language} menu item...`;
+            searchInput.placeholder = country.searchPlaceholder;
+            searchInput.setAttribute('aria-label', country.searchPlaceholder);
         }
         
         // Update any error messages to be generic
