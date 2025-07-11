@@ -1,7 +1,7 @@
 {
-  "name": "spanish-menu-cheater",
+  "name": "european-menu-assistant",
   "version": "1.0.0",
-  "description": "A Progressive Web App to help translate Spanish menu items with dietary information",
+  "description": "A Progressive Web App to help translate European menu items with dietary information",
   "main": "index.html",
   "type": "module",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "pwa",
-    "spanish",
+    "european",
     "menu",
     "translator",
     "restaurant",
@@ -24,16 +24,16 @@
     "food",
     "offline"
   ],
-  "author": "Spanish Menu Cheater Team",
+  "author": "European Menu Assistant Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/makoah/SpanishMenuCheater.git"
+    "url": "https://github.com/makoah/EuropeanMenuAssistant.git"
   },
   "bugs": {
-    "url": "https://github.com/makoah/SpanishMenuCheater/issues"
+    "url": "https://github.com/makoah/EuropeanMenuAssistant/issues"
   },
-  "homepage": "https://github.com/makoah/SpanishMenuCheater#readme",
+  "homepage": "https://github.com/makoah/EuropeanMenuAssistant#readme",
   "dependencies": {
     "tesseract.js": "^5.0.5"
   },

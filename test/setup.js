@@ -1,6 +1,6 @@
 /**
  * Jest Test Setup
- * Global test configuration and mocks for Spanish Menu Cheater PWA
+ * Global test configuration and mocks for European Menu Assistant PWA
  */
 
 import { jest } from '@jest/globals';
@@ -155,7 +155,7 @@ global.setupTestDOM = () => {
   document.body.innerHTML = `
     <header class="app-header">
       <div class="header-content">
-        <h1 class="app-title">Spanish Menu Cheater</h1>
+        <h1 class="app-title">European Menu Assistant</h1>
         <div class="header-controls">
           <button id="language-toggle" class="language-toggle">
             <span class="language-label">EN</span>
@@ -186,7 +186,7 @@ global.setupTestDOM = () => {
       <section class="results-section">
         <div id="search-results" class="search-results">
           <div id="welcome-message" class="welcome-message">
-            <h2>Welcome to Spanish Menu Cheater</h2>
+            <h2>Welcome to European Menu Assistant</h2>
           </div>
           <div id="loading-indicator" class="loading-indicator hidden">
             <div class="spinner"></div>
@@ -202,7 +202,7 @@ global.setupTestDOM = () => {
     
     <footer class="app-footer">
       <div class="footer-content">
-        <p class="app-info">Spanish Menu Cheater - Free offline menu translator</p>
+        <p class="app-info">European Menu Assistant - Free offline menu translator</p>
       </div>
     </footer>
   `;

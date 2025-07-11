@@ -380,12 +380,35 @@ export class CountryManager {
             if (msg.textContent.includes('Spanish Menu Cheater')) {
                 msg.textContent = msg.textContent.replace('Spanish Menu Cheater', country.displayName);
             }
+            if (msg.textContent.includes('European Menu Assistant')) {
+                msg.textContent = msg.textContent.replace('European Menu Assistant', country.displayName);
+            }
         });
         
         // Update page meta description
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
             metaDescription.setAttribute('content', `Discover and translate authentic ${country.language} cuisine with the ${country.displayName}`);
+        }
+        
+        // Update example dishes dynamically
+        const exampleCards = document.querySelectorAll('.example-card');
+        if (exampleCards.length > 0 && country.exampleDishes) {
+            exampleCards.forEach((card, index) => {
+                if (index < country.exampleDishes.length) {
+                    const dish = country.exampleDishes[index];
+                    const emojiSpan = card.querySelector('.dish-emoji');
+                    const nameSpan = card.querySelector('.dish-name');
+                    const hintSpan = card.querySelector('.dish-hint');
+                    
+                    if (emojiSpan) emojiSpan.textContent = dish.emoji;
+                    if (nameSpan) nameSpan.textContent = dish.name;
+                    if (hintSpan) hintSpan.textContent = dish.hint;
+                    
+                    // Update the onclick handler to use the new dish name
+                    card.setAttribute('onclick', `document.getElementById('search-input').value='${dish.name}'; document.getElementById('search-input').dispatchEvent(new Event('input'));`);
+                }
+            });
         }
         
         // Update any country selector dropdowns

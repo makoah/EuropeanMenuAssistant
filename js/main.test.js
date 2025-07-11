@@ -1,5 +1,5 @@
 /**
- * Tests for main.js - Spanish Menu Cheater Main Application
+ * Tests for main.js - European Menu Assistant Main Application
  */
 
 import { describe, test, expect, beforeEach } from '@jest/globals';
@@ -7,7 +7,7 @@ import { describe, test, expect, beforeEach } from '@jest/globals';
 // Note: In a real environment, we'd import the class
 // For now, we'll test the concepts and structure
 
-describe('SpanishMenuCheater Application', () => {
+describe('EuropeanMenuAssistant Application', () => {
   beforeEach(() => {
     // Setup DOM for each test
     setupTestDOM();
@@ -116,7 +116,7 @@ describe('SpanishMenuCheater Application', () => {
       const welcomeMessage = document.getElementById('welcome-message');
       
       // Welcome message should be visible initially
-      expect(welcomeMessage.querySelector('h2').textContent).toBe('Welcome to Spanish Menu Cheater');
+      expect(welcomeMessage.querySelector('h2').textContent).toBe('Welcome to European Menu Assistant');
     });
   });
 
@@ -169,6 +169,6 @@ describe('Integration Tests', () => {
     setupTestDOM(); // Ensure DOM is set up for this test
     expect(document.body.innerHTML).toContain('search-input');
     expect(document.body.innerHTML).toContain('language-toggle');
-    expect(document.body.innerHTML).toContain('Spanish Menu Cheater');
+    expect(document.body.innerHTML).toContain('European Menu Assistant');
   });
 });

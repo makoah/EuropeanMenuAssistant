@@ -1,8 +1,8 @@
 // European Menu Assistant PWA - Service Worker
 // Provides offline functionality for complete app experience
 
-const CACHE_NAME = 'european-menu-assistant-v1.0.0';
-const DATA_CACHE_NAME = 'european-menu-data-v1.0.0';
+const CACHE_NAME = 'european-menu-assistant-v1.0.1';
+const DATA_CACHE_NAME = 'european-menu-data-v1.0.1';
 
 // Define all resources needed for offline functionality
 const APP_SHELL_FILES = [
